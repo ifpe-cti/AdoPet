@@ -1,1 +1,58 @@
-oooi
+<body>
+<div class="ui-g">
+    <div class="login ui-g-12 ui-g-nopad">
+        <div class="ui-g-4">logo</div>
+        
+        <div class="ui-inputgroup">
+        <form #formLogin="ngForm">
+        <table id="login">
+        <tr>    
+            <th> Email </th>
+        <td>
+            <input #campoEmail="ngModel" type="text" pInputText [(ngModel)]="usuario.email" name="email"/>
+        </td>
+        <th> Senha </th>
+        <td>
+            <input #campoSenha="ngModel" type="password" pInputText [(ngModel)]="usuario.senha" name="senha"/>
+        </td>
+        <td>
+            <button pButton type="button" label="Entrar" (click)="entrar()" class="ui-button-success"></button>
+        </td>
+        </tr>
+        </table>
+        </form>
+        </div>
+    </div>
+        <div class="ui-g-5"></div>
+           <div class="ui-inputgroup">
+            <form #formCadasrtro="ngForm">
+            <table id="cadastro">
+            <tr></tr>
+            <tr>  
+                    <th> <h3>Criar nova conta</h3> </th>
+            </tr>
+            <tr>  
+                <th> Nome </th>
+            </tr><tr>
+            <td>
+                <input #campoNome="ngModel" type="text" pInputText [(ngModel)]="usuario.nome" name="email"/>
+            </td></tr>
+            <tr>
+                <th> Email </th>
+            </tr><tr>
+            <td>
+                <input #campoEmail="ngModel" type="text" pInputText [(ngModel)]="usuario.email" name="email"/>
+            </td></tr><tr>
+            <th> Senha </th>
+            </tr><tr>
+            <td>
+                <input #campoSenha="ngModel" type="password" pInputText [(ngModel)]="usuario.senha" name="senha"/>
+            </td></tr><tr>
+            <td>
+                <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button"></button>
+            </td></tr>
+            </table>
+            </form>
+        </div>
+</div>
+</body>
