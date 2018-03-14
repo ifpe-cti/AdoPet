@@ -3,7 +3,26 @@ import { Usuario } from './model/Usuario';
 
 @Injectable()
 export class UsuarioService {
+
+  private usuarios: Usuario[] = new Array<Usuario>();
   
   constructor() {
+  }
+
+  usuario: Usuario;
+  getUsuarios() {
+    return this.usuarios;
+  }
+  add(usuario: Usuario){
+    this.usuarios.push(usuario);
+  }
+  verificar(usuario:Usuario){
+    let ehValido:boolean = false; 
+    for(let i:number =0;i<this.usuarios.length;i++){
+      if(this.usuarios[i].email == this.usuario.email && this.usuarios[i].senha == this.usuario.senha){
+        ehValido = true;
+      }
+    }
+    return ehValido;	
   }
 }

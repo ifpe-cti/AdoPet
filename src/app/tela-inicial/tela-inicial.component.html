@@ -9,11 +9,11 @@
         <tr>    
             <th> Email </th>
         <td>
-            <input #campoEmail="ngModel" type="text" pInputText [(ngModel)]="usuario.email" name="email"/>
+            <input #campoEmail="ngModel" type="text" pInputText [(ngModel)]="usuario.email" name="emailEntrar" placeholder="Ex.: joaoemaria@abc.com"/>
         </td>
         <th> Senha </th>
         <td>
-            <input #campoSenha="ngModel" type="password" pInputText [(ngModel)]="usuario.senha" name="senha"/>
+            <input #campoSenha="ngModel" type="password" pInputText [(ngModel)]="usuario.senha" name="senhaEntrar"/>
         </td>
         <td>
             <button pButton type="button" label="Entrar" (click)="entrar()" class="ui-button-success"></button>
@@ -35,13 +35,13 @@
                 <th> Nome </th>
             </tr><tr>
             <td>
-                <input #campoNome="ngModel" type="text" pInputText [(ngModel)]="usuario.nome" name="email"/>
+                <input #campoNome="ngModel" type="text" pInputText [(ngModel)]="usuario.nome" name="nome" placeholder="Ex.: joaoemaria"/>
             </td></tr>
             <tr>
                 <th> Email </th>
             </tr><tr>
             <td>
-                <input #campoEmail="ngModel" type="text" pInputText [(ngModel)]="usuario.email" name="email"/>
+                <input #campoEmail="ngModel" type="text" pInputText [(ngModel)]="usuario.email" name="email" placeholder="Ex.: joaoemaria@abc.com"/>
             </td></tr><tr>
             <th> Senha </th>
             </tr><tr>
