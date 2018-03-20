@@ -2,7 +2,6 @@
 <div class="ui-g">
     <div class="login ui-g-12 ui-g-nopad">
         <div class="ui-g-4">logo</div>
-        
         <div class="ui-inputgroup">
         <form #formLogin="ngForm">
         <table id="login">
@@ -35,18 +34,18 @@
                 <th> Nome </th>
             </tr><tr>
             <td>
-                <input #campoNome="ngModel" type="text" pInputText [(ngModel)]="usuario.nome" name="nome" placeholder="Ex.: joaoemaria"/>
+                <input #campoNome="ngModel" type="text" pInputText [(ngModel)]="usuarioCadastro.nome" name="nome" placeholder="Ex.: João"/>
             </td></tr>
             <tr>
                 <th> Email </th>
             </tr><tr>
             <td>
-                <input #campoEmail="ngModel" type="text" pInputText [(ngModel)]="usuario.email" name="email" placeholder="Ex.: joaoemaria@abc.com"/>
+                <input #campoEmailNovo="ngModel" type="text" pInputText [(ngModel)]="usuarioCadastro.email" name="email" placeholder="Ex.: joaoemaria@abc.com"/>
             </td></tr><tr>
             <th> Senha </th>
             </tr><tr>
             <td>
-                <input #campoSenha="ngModel" type="password" pInputText [(ngModel)]="usuario.senha" name="senha"/>
+                <input #campoSenhaNova="ngModel" type="password" pInputText [(ngModel)]="usuarioCadastro.senha" name="senha"/>
             </td></tr><tr>
             <td>
                 <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button"></button>
