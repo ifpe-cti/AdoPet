@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from './model/Usuario';
+import {UsuarioCadastro} from './model/UsuarioCadastro';
 
 @Injectable()
 export class UsuarioService {
@@ -16,6 +17,7 @@ export class UsuarioService {
   add(usuario: Usuario){
     this.usuarios.push(usuario);
   }
+
   verificar(usuario:Usuario){
     let ehValido:boolean = false; 
     for(let i:number =0;i<this.usuarios.length;i++){
