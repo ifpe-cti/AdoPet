@@ -2,7 +2,7 @@ import { UsuarioCadastro } from './../model/UsuarioCadastro';
 import { UsuarioService } from './../usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../model/Usuario';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Message } from 'primeng/components/common/api';
 
 @Component({
@@ -15,8 +15,11 @@ export class TelaInicialComponent implements OnInit {
   usuario: Usuario;
   msgs: Message[];
   usuarios: Usuario[];
+  user: Usuario;
 
-  constructor(private usuarioService: UsuarioService, private route: Router) {
+  constructor(private usuarioService: UsuarioService, private route: Router, private rotaAtiva: ActivatedRoute) {
+    this.user = this.rotaAtiva.snapshot.params['user'];
+    this.usuario = {email:"", senha:""};
     this.usuarios = [];
     this.msgs = [];
 		this.usuarioCadastro = {email:"", nome: "", senha:""};
@@ -39,8 +42,7 @@ export class TelaInicialComponent implements OnInit {
 
   salvar(usuario: Usuario){
     this.usuarioService.add(this.usuario);
-    //rota
-    console.log("salvooooooou");
+    this.route.navigate(['feed']);
   }
 
   showError() {

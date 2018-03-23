@@ -8,7 +8,7 @@
         <tr>    
             <th> Email </th>
         <td>
-            <input #campoEmail="ngModel" type="text" pInputText [(ngModel)]="usuario.email" name="emailEntrar" placeholder="Ex.:joaoemaria@abc.com"/>
+            <input #campoEmail="ngModel" type="text" pInputText [(ngModel)]="usuario.email" name="emailEntrar"/>
         </td>
         <th> Senha </th>
         <td>
@@ -22,25 +22,25 @@
         </form>
         </div>
     </div>
-        <div class="ui-g-5"></div>
+        <div class="ui-g-5 cadastro"></div>
            <div class="ui-inputgroup">
             <form #formCadasrtro="ngForm">
             <table id="cadastro">
             <tr></tr>
             <tr>  
-                    <th> <h3>Criar nova conta</h3> </th>
+                <th><h3>Criar nova conta</h3></th>
             </tr>
             <tr>  
                 <th> Nome </th>
             </tr><tr>
             <td>
-                <input #campoNome="ngModel" type="text" pInputText [(ngModel)]="usuarioCadastro.nome" name="nome" placeholder="Ex.: João"/>
+                <input #campoNome="ngModel" type="text" pInputText [(ngModel)]="usuarioCadastro.nome" name="nome"/>
             </td></tr>
             <tr>
                 <th> Email </th>
             </tr><tr>
             <td>
-                <input #campoEmailNovo="ngModel" type="text" pInputText [(ngModel)]="usuarioCadastro.email" name="email" placeholder="Ex.: joaoemaria@abc.com"/>
+                <input #campoEmailNovo="ngModel" type="text" pInputText [(ngModel)]="usuarioCadastro.email" name="email"/>
             </td></tr><tr>
             <th> Senha </th>
             </tr><tr>
