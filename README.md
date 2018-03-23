@@ -14,7 +14,7 @@ Toda a sociedade. Acesso por meio de uma página web.
 - Trello
 
 ## Contribuidores
-(@lsoaresesilva)[https://github.com/lsoaresesilva]como Leonardo Soares (Orientador)
-(@EmelyMelo)[https://github.com/EmelyMelo] como Emely Melo
-(@evicsouza)[https://github.com/evicsouza] como Eva Victória
+- (@lsoaresesilva)[https://github.com/lsoaresesilva] como Leonardo Soares (Orientador)
+- (@EmelyMelo)[https://github.com/EmelyMelo] como Emely Melo
+- (@evicsouza)[https://github.com/evicsouza] como Eva Victória
 
