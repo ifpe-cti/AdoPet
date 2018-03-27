@@ -7,7 +7,7 @@ import { FeedComponent } from './feed/feed.component';
 
 const APP_ROUTES: Routes = [
     {path: '', component: TelaInicialComponent},
-    {path: 'feed/:user', component: FeedComponent}  
+    {path: 'feed', component: FeedComponent}  
 ];
 
 export const routing : ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
