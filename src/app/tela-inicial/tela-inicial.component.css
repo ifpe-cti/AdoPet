@@ -1,5 +1,6 @@
 body{
     font-family: arial, monospace;
+    background-color: rgb(238, 212, 183);
 }
 .login{
     padding: 50px 220px;
@@ -9,3 +10,4 @@ body{
     background-color: #FF82AB;
     border: #FF82AB;
 }
+
