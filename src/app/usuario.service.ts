@@ -27,4 +27,16 @@ export class UsuarioService {
     }
     return ehValido;	
   }
+
+  verificarSeFoiSalvo(usuario: Usuario){
+    for (let i = 0; i < this.usuarios.length; i++) {
+      if(this.usuarios[i].email == this.usuario.email && this.usuarios[i].senha == this.usuario.senha){
+        //salvou
+      }
+      else{
+        //pede pra fazer dnv
+      }
+      
+    }
+  }
 }
