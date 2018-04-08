@@ -29,13 +29,14 @@ export class UsuarioService {
   }
 
   verificarSeFoiSalvo(usuario: Usuario){
+    //NÃO ENTENDI - EM É AQUI QUE TA DANDO ERRO
     for (let i = 0; i < this.usuarios.length; i++) {
       if(this.usuarios[i].email == this.usuario.email && this.usuarios[i].senha == this.usuario.senha){
-        //salvou
+        console.log("salvou");
       }
-      else{
+      //else{
         //pede pra fazer dnv
-      }
+     // }
       
     }
   }

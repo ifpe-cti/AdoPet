@@ -41,8 +41,8 @@ export class TelaInicialComponent implements OnInit {
   }
 
   salvar(usuario: Usuario){
-    this.usuarioService.add(this.usuario);
-    this.usuarioService.verificarSeFoiSalvo(this.usuario);
+    this.usuarioService.add(this.usuarioCadastro);
+    //this.usuarioService.verificarSeFoiSalvo(this.usuarioCadastro);
     sessionStorage.setItem("emailUsuario", this.usuario.email);
     
     this.route.navigate(['feed']);
