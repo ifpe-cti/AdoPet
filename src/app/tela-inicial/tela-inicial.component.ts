@@ -26,7 +26,7 @@ export class TelaInicialComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.usuarios = this.usuarioService.getUsuarios();
+    this.usuario = this.usuarioService.getUsuarios();
   }
   entrar(){
     let podePassar: boolean = false;
@@ -41,7 +41,7 @@ export class TelaInicialComponent implements OnInit {
   }
 
   salvar(usuario: Usuario){
-    this.usuarioService.add(this.usuarioCadastro);
+    this.usuarioService.salvar(this.usuarioCadastro);
     //this.usuarioService.verificarSeFoiSalvo(this.usuarioCadastro);
     sessionStorage.setItem("emailUsuario", this.usuario.email);
     
