@@ -12,6 +12,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import {PasswordModule} from 'primeng/password';
 import {ButtonModule} from 'primeng/button';
 import { DialogModule } from 'primeng/components/dialog/dialog';
+import {TabMenuModule} from 'primeng/tabmenu';
+
 
 //ROTAS
 import { routing } from './app.routing';
@@ -35,6 +37,7 @@ import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
     BancoDeDadosComponent
   ],
   imports: [
+    TabMenuModule,
     BrowserModule,
     InputTextModule,
     FormsModule,

@@ -26,10 +26,10 @@ export class TelaInicialComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.usuario = this.usuarioService.getUsuarios();
+    this.usuarioService.getUsuarios();
   }
   entrar(){
-    let podePassar: boolean = false;
+   /* let podePassar: boolean = false;
     podePassar = this.usuarioService.verificar(this.usuario);
     if(podePassar == true){
       console.log("entrooouu");
@@ -37,13 +37,13 @@ export class TelaInicialComponent implements OnInit {
     }else{
       console.log("pegou mas não pode entrar");
       //this.showError();
-    }
+    }*/
   }
 
   salvar(usuario: Usuario){
     this.usuarioService.salvar(this.usuarioCadastro);
     //this.usuarioService.verificarSeFoiSalvo(this.usuarioCadastro);
-    sessionStorage.setItem("emailUsuario", this.usuario.email);
+    //sessionStorage.setItem("emailUsuario", this.usuario.email);
     
     this.route.navigate(['feed']);
   }
