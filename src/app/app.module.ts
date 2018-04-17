@@ -17,6 +17,7 @@ import {TabMenuModule} from 'primeng/tabmenu';
 
 //ROTAS
 import { routing } from './app.routing';
+
 //SERVIÇO
 import { UsuarioService } from './usuario.service';
 //COMPONENTES
@@ -28,6 +29,7 @@ import { BancoDeDadosComponent } from './banco-de-dados/banco-de-dados.component
 import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
 import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.component';
 import { AnimaisComponent } from './animais/animais.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 
@@ -39,6 +41,7 @@ import { AnimaisComponent } from './animais/animais.component';
     BancoDeDadosComponent,
     AdicionarAnimalComponent,
     AnimaisComponent,
+    PerfilComponent,
   ],
   imports: [
     TabMenuModule,

@@ -4,16 +4,23 @@ import { Routes, RouterModule } from '@angular/router';
 import { FeedComponent } from './feed/feed.component';
 import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.component';
 import { AnimaisComponent } from './animais/animais.component';
+import { NgModule } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { PerfilComponent } from './perfil/perfil.component';
+
+
 
 
 
 const APP_ROUTES: Routes = [
     {path: '', component: TelaInicialComponent},
     {path: 'feed', component: FeedComponent},
-    {path: 'feed', component: FeedComponent, children: [     
-        {path: 'animais', component: AnimaisComponent},
-        {path: 'adicionarAnimal', component: AdicionarAnimalComponent}
-    ]}
+    {path: 'perfil', component: PerfilComponent},    
+    {path: 'animais', component: AnimaisComponent},
+    {path: 'adicionarAnimal', component: AdicionarAnimalComponent},
+    
 ];
+
+
 
 export const routing : ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

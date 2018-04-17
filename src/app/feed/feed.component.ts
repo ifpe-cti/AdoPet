@@ -18,9 +18,9 @@ export class FeedComponent implements OnInit {
     //usuario = this.usuarioServico.carregar(email);
 
     this.items = [
-            {label: 'Meu perfil', icon: 'fas fa-user'},
-            {label: 'Meus animais', icon: 'fas fa-book', routerLink: "animais"},
-            {label: 'Adicionar animal', icon: 'fas fa-plus-square', routerLink: "adicionarAnimal"},
+            {label: 'Meu perfil', icon: 'fas fa-user', routerLink: "/perfil"},
+            {label: 'Meus animais', icon: 'fas fa-book', routerLink: "/animais"},
+            {label: 'Adicionar animal', icon: 'fas fa-plus-square', routerLink: "/adicionarAnimal"},
             
         ];
     
