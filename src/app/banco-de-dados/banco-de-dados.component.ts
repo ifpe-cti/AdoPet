@@ -12,4 +12,6 @@ export class BancoDeDadosComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
 }

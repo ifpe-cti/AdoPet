@@ -26,6 +26,8 @@ import { TelaInicialComponent } from './tela-inicial/tela-inicial.component'
 import { FeedComponent } from './feed/feed.component';
 import { BancoDeDadosComponent } from './banco-de-dados/banco-de-dados.component';
 import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
+import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.component';
+import { AnimaisComponent } from './animais/animais.component';
 
 
 
@@ -34,7 +36,9 @@ import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
     AppComponent,
     TelaInicialComponent,
     FeedComponent,
-    BancoDeDadosComponent
+    BancoDeDadosComponent,
+    AdicionarAnimalComponent,
+    AnimaisComponent,
   ],
   imports: [
     TabMenuModule,
