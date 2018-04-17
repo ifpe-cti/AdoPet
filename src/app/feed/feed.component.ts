@@ -19,8 +19,8 @@ export class FeedComponent implements OnInit {
 
     this.items = [
             {label: 'Meu perfil', icon: 'fas fa-user'},
-            {label: 'Meus animais', icon: 'fas fa-book'},
-            {label: 'Adicionar animal', icon: 'fas fa-plus-square'},
+            {label: 'Meus animais', icon: 'fas fa-book', routerLink: "animais"},
+            {label: 'Adicionar animal', icon: 'fas fa-plus-square', routerLink: "adicionarAnimal"},
             
         ];
     
