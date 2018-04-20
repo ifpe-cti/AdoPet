@@ -20,28 +20,24 @@ import { routing } from './app.routing';
 
 //SERVIÇO
 import { UsuarioService } from './usuario.service';
+
 //COMPONENTES
 import { environment } from './../environments/environment.prod';
 import { AppComponent } from './app.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component'
-import { FeedComponent } from './feed/feed.component';
 import { BancoDeDadosComponent } from './banco-de-dados/banco-de-dados.component';
 import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
-import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.component';
-import { AnimaisComponent } from './animais/animais.component';
-import { PerfilComponent } from './perfil/perfil.component';
-
+import { FeedComponent } from './feed/feed.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TelaInicialComponent,
-    FeedComponent,
     BancoDeDadosComponent,
-    AdicionarAnimalComponent,
-    AnimaisComponent,
-    PerfilComponent,
+    FeedComponent,
+    
+
   ],
   imports: [
     TabMenuModule,
