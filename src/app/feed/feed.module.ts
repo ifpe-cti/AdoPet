@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { PerfilComponent } from './perfil/perfil.component';
 import { MeusAnimaisComponent } from './meus-animais/meus-animais.component';
 import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.component';
+import { FeedComponent } from './feed.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        FeedRoutingModule
+        FeedRoutingModule,
+        FeedComponent
     ],
     exports: [],
     declarations: [
