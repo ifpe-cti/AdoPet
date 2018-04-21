@@ -1,4 +1,5 @@
 import { RouterModule } from '@angular/router';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
 //COMPONENTES
 import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.component';

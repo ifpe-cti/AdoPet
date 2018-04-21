@@ -28,6 +28,7 @@ import { TelaInicialComponent } from './tela-inicial/tela-inicial.component'
 import { BancoDeDadosComponent } from './banco-de-dados/banco-de-dados.component';
 import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
 import { FeedComponent } from './feed/feed.component';
+import { FeedModule } from './feed/feed.module';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { FeedComponent } from './feed/feed.component';
     DialogModule,
     AngularFireModule.initializeApp(BancoFirebaseConfig),
     AngularFirestoreModule.enablePersistence(),
+    FeedModule
 
   ],
   providers: [UsuarioService, AngularFirestore],
