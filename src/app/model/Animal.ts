@@ -1,5 +1,6 @@
 export interface Animal{
     id?: string;
+    especie: string;
     raça: string;
     sexo: string;
     cor: string;

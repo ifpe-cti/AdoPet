@@ -6,11 +6,15 @@ import { MeusAnimaisComponent } from './meus-animais/meus-animais.component';
 import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.component';
 import { FeedComponent } from './feed.component';
 
+import {InputTextModule} from 'primeng/inputtext';
+
+
 @NgModule({
     imports: [
         CommonModule,
         FeedRoutingModule,
-        FeedComponent
+        InputTextModule
+        //FeedComponent
     ],
     exports: [],
     declarations: [
