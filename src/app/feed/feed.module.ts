@@ -7,21 +7,33 @@ import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.co
 import { FeedComponent } from './feed.component';
 
 import {InputTextModule} from 'primeng/inputtext';
+import {ListboxModule} from 'primeng/listbox';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import { AnimalService } from '../animal.service';
+import { FormsModule } from '@angular/forms';
+import {ButtonModule} from 'primeng/button';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
         FeedRoutingModule,
-        InputTextModule
+        InputTextModule,
+        ListboxModule,
+        RadioButtonModule,
+        ButtonModule,
+        InputTextareaModule,
         //FeedComponent
     ],
     exports: [],
     declarations: [
     PerfilComponent,
     MeusAnimaisComponent,
-    AdicionarAnimalComponent
+    AdicionarAnimalComponent,
+    
 ],
-    providers: [],
+    providers: [AnimalService],
 })
 export class FeedModule { }
