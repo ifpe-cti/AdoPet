@@ -36,4 +36,12 @@ export class AnimalService {
               animal.id = resultado.id;
             });
     }
+
+    apagar(animal: Animal){
+      this.animalCollection.doc("animal").delete().then(function(){
+        console.log("Apagado com sucesso!");
+      }).catch(function(error){
+        error.console("Tente novamente!");
+      });
+    }
 }
