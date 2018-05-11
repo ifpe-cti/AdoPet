@@ -13,6 +13,8 @@ import {PasswordModule} from 'primeng/password';
 import {ButtonModule} from 'primeng/button';
 import { DialogModule } from 'primeng/components/dialog/dialog';
 import {TabMenuModule} from 'primeng/tabmenu';
+import {ContextMenuModule} from 'primeng/contextmenu';
+
 
 
 //ROTAS
@@ -51,7 +53,9 @@ import { FeedModule } from './feed/feed.module';
     DialogModule,
     AngularFireModule.initializeApp(BancoFirebaseConfig),
     AngularFirestoreModule.enablePersistence(),
-    FeedModule
+    FeedModule,
+    ContextMenuModule,
+    
 
   ],
   providers: [UsuarioService, AngularFirestore],
