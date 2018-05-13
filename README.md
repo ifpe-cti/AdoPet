@@ -17,8 +17,8 @@ A monetização viria com anúncios de produtos ou serviços que estariam relaci
 - Trello
 ## Contribuidores
 - [@lsoaresesilva](https://github.com/lsoaresesilva) como Leonardo Soares (Orientador)
-- [@EmelyMelo](https://github.com/EmelyMelo) como Emely Melo
-- [@evicsouza](https://github.com/evicsouza) como Eva Victória
+- [@EmelyMelo](https://github.com/EmelyMelo) como Emely Melo (Desenvolvedor)
+- [@evicsouza](https://github.com/evicsouza) como Eva Victória (Desenvolvedor)
 ## Licença 
 The MIT License (MIT)
 
