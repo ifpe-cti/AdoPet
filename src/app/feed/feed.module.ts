@@ -13,6 +13,8 @@ import { AnimalService } from '../animal.service';
 import { FormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import {GrowlModule} from 'primeng/growl';
+
 
 
 @NgModule({
@@ -25,7 +27,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
         RadioButtonModule,
         ButtonModule,
         InputTextareaModule,
-        //FeedComponent
+        GrowlModule
     ],
     exports: [],
     declarations: [

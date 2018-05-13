@@ -1,8 +1,9 @@
 <body>
-<br/> <br/> <br/>
+<br/> <br/>
 <div class="ui-g">
     <div class="ui-g-4"></div>
     <div class="ui-g-5">
+        <p-growl [(value)]="msgs"></p-growl>  
         <h3>Insira os dados do seu animal</h3>
         <p>
         Nome: <br/>
@@ -14,7 +15,7 @@
         <p-radioButton label="Gato" value="gato" [(ngModel)]="animal.tipo"></p-radioButton> <br/>
         </p>
         <p>
-        Faixa etária: <br/>
+        Idade: <br/>
         <p-radioButton label="Filhote" value="filhote" [(ngModel)]="animal.faixaEtaria"></p-radioButton> <br/>
         <p-radioButton label="Adulto" value="adulto" [(ngModel)]="animal.faixaEtaria"></p-radioButton> <br/>
         </p>
@@ -33,7 +34,7 @@
         </p>
         <div class="ui-g-4"></div>
 
-        <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button-success"></button>
+        <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button-success ui-growl-container"></button>
  
     </div>
     <div class="ui-g-4"></div>

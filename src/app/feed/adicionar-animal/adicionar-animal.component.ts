@@ -21,6 +21,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
 import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../model/Animal';
 import { AnimalService } from '../../animal.service';
+import { Router } from '@angular/router';
+import { Message } from 'primeng/components/common/api';
+
 
 @Component({
   selector: 'app-adicionar-animal',
@@ -29,17 +32,30 @@ import { AnimalService } from '../../animal.service';
 })
 export class AdicionarAnimalComponent implements OnInit {
   animal: Animal;
+	msgs: Message[];
 
-  constructor(private animalService: AnimalService) { 
-    this.animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", faixaEtaria: " ", descrição: " "};
+
+  constructor(private animalService: AnimalService, private route: Router) { 
+    this.animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: " ", descrição: " "};
+    this.msgs = [];
   }
 
   ngOnInit() {
     this.animalService.getAnimal();
 
   }
-  salvar(){
-    console.log("ooi");
+  salvar(animal: Animal){
+    if(this.animal.nome == " " && this.animal.tipo == " " && this.animal.sexo == " " && this.animal.cor == " " && this.animal.idade == " " && this.animal.descrição == " "){
+      this.showError();
+      
+    }else{
+      this.animalService.salvar(this.animal);
+      this.route.navigate(['/feed']);
+   }
+  }
+  showError() {
+  this.msgs = [];
+  this.msgs.push({severity:'error', summary:'Erro', detail:'Preencha os dados corretamente'});
   }
 
 }
