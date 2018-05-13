@@ -44,6 +44,7 @@ export class TelaInicialComponent implements OnInit {
     this.msgs = [];
 		this.usuarioCadastro = {email:"", nome: "", senha:""};
    }
+   //colocar a logo
 
   ngOnInit() {
     this.usuarioService.getUsuarios();
