@@ -41,6 +41,7 @@ export class FeedComponent implements OnInit {
     //this.email = sessionStorage.getItem("emailUsuario");
     //usuario = this.usuarioServico.carregar(email);
     this.items = [
+            {label: 'Feeeeeeed', icon: 'fas fa-user', routerLink: ["/feed"]},
             {label: 'Meu perfil', icon: 'fas fa-user', routerLink: ["/feed/perfil"]},
             {label: 'Meus animais', icon: 'fas fa-book', routerLink: ["/feed/meus-animais"]},
             {label: 'Adicionar animal', icon: 'fas fa-plus-square', routerLink: ["/feed/adicionar-animal"]},
