@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {GrowlModule} from 'primeng/growl';
+import {KeyFilterModule} from 'primeng/keyfilter';
 
 
 
@@ -27,7 +28,8 @@ import {GrowlModule} from 'primeng/growl';
         RadioButtonModule,
         ButtonModule,
         InputTextareaModule,
-        GrowlModule
+        GrowlModule,
+        KeyFilterModule
     ],
     exports: [],
     declarations: [
