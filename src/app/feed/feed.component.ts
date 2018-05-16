@@ -19,7 +19,7 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, SelectItem } from 'primeng/api';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
@@ -32,9 +32,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class FeedComponent implements OnInit {
   items: MenuItem[];
   email:string;
+  
 
-  constructor(private route: ActivatedRoute,
-    private router: Router, ) { }
+
+
+  constructor(private route: ActivatedRoute, private router: Router) { 
+   
+  }
 
   ngOnInit() {
 
