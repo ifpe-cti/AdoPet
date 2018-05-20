@@ -1,5 +1,3 @@
-<body>
-<br/> <br/>
 <div class="ui-g">
     <div class="ui-g-4"></div>
     <div class="ui-g-5">
@@ -25,18 +23,24 @@
         <p-radioButton label="Masculino" value="masculino" [(ngModel)]="animal.sexo"></p-radioButton> <br/>
         </p>
         <p>
+        Porte: <br/>
+        <p-radioButton label="Pequeno" value="pequeno" [(ngModel)]="animal.porte"></p-radioButton> <br/>
+        <p-radioButton label="Médio" value="médio" [(ngModel)]="animal.porte"></p-radioButton> <br/>
+        <p-radioButton label="Grande" value="grande" [(ngModel)]="animal.porte"></p-radioButton> <br/>
+        </p>
+        <p>
         Cor: <br/>
         <input type="text" pInputText [(ngModel)]="animal.cor"/> <br/>
         </p>
         <p>
-        Descrição: <br/>
+        Descrição:
+        <br/>
         <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="animal.descricao"></textarea>
         </p>
+        
         <div class="ui-g-4"></div>
-
         <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button-success ui-growl-container"></button>
  
     </div>
     <div class="ui-g-4"></div>
 </div>
-</body>

@@ -16,8 +16,6 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {GrowlModule} from 'primeng/growl';
 import {KeyFilterModule} from 'primeng/keyfilter';
 
-
-
 @NgModule({
     imports: [
         CommonModule,
@@ -29,7 +27,7 @@ import {KeyFilterModule} from 'primeng/keyfilter';
         ButtonModule,
         InputTextareaModule,
         GrowlModule,
-        KeyFilterModule
+        KeyFilterModule,
     ],
     exports: [],
     declarations: [

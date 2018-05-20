@@ -31,6 +31,8 @@ import { BancoDeDadosComponent } from './banco-de-dados/banco-de-dados.component
 import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
 import { FeedComponent } from './feed/feed.component';
 import { FeedModule } from './feed/feed.module';
+import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.component';
+
 
 
 @NgModule({
@@ -39,8 +41,7 @@ import { FeedModule } from './feed/feed.module';
     TelaInicialComponent,
     BancoDeDadosComponent,
     FeedComponent,
-    
-
+    ListarAnimaisComponent
   ],
   imports: [
     TabMenuModule,
@@ -55,8 +56,6 @@ import { FeedModule } from './feed/feed.module';
     AngularFirestoreModule.enablePersistence(),
     FeedModule,
     ContextMenuModule,
-    
-
   ],
   providers: [UsuarioService, AngularFirestore],
   bootstrap: [AppComponent]

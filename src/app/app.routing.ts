@@ -1,11 +1,11 @@
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FeedComponent } from './feed/feed.component';
+import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.component';
 
 const APP_ROUTES: Routes = [
     {path: '', component: TelaInicialComponent},
-    {path: 'feed', component: FeedComponent},
+    {path: 'feed', component: ListarAnimaisComponent},
       
 ];
 
