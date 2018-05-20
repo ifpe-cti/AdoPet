@@ -6,6 +6,7 @@ import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.co
 import { MeusAnimaisComponent } from './meus-animais/meus-animais.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { FeedComponent } from './feed.component';
+import { ListarAnimaisComponent } from './listar-animais/listar-animais.component';
 
 //PRIMENG
 import {MenuItem} from 'primeng/api'; 
@@ -15,6 +16,7 @@ const feedRoutes = [
         {path: 'perfil', component: PerfilComponent},
         {path: 'meus-animais', component: MeusAnimaisComponent},
         {path: 'adicionar-animal', component: AdicionarAnimalComponent},
+        {path: 'listar-animais', component: ListarAnimaisComponent}
     ]}
 ];
 

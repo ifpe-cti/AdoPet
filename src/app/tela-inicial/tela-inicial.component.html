@@ -10,7 +10,7 @@
         <tr>    
             <th> Email </th>
         <td>
-            <input #campoEmail="ngModel" type="text" pInputText [(ngModel)]="usuario.email" name="emailEntrar" placeholder="Ex.: joaoemaria" required/>
+            <input #campoEmail="ngModel" type="text" pInputText [(ngModel)]="usuario.email" name="emailEntrar" required/>
             <div *ngIf="!campoEmail.valid && (campoEmail.dirty || campoEmail.touched)"  class="alert alert-danger">
                 Por favor, digite seu e-mail</div>
         </td>
@@ -46,7 +46,7 @@
                 <th> Email </th>
             </tr><tr>
             <td>
-                <input #campoEmailNovo="ngModel" type="text" pInputText [(ngModel)]="usuarioCadastro.email" name="email" placeholder="Ex.: joaoemaria@exemplo.com" required/>
+                <input #campoEmailNovo="ngModel" type="text" pInputText [(ngModel)]="usuarioCadastro.email" name="email" required/>
                 <div *ngIf="!campoEmailNovo.valid && (campoEmailNovo.dirty || campoEmailNovo.touched)"  class="alert alert-danger">
                     Por favor, digite seu e-mail</div>
             </td></tr><tr>
