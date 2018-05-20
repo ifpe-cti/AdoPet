@@ -50,8 +50,7 @@ export class FeedComponent implements OnInit {
       {label: 'Meus animais', icon: 'fas fa-book', routerLink: ["/feed/meus-animais"]},
       {label: 'Adicionar animal', icon: 'fas fa-plus-square', routerLink: ["/feed/adicionar-animal"]},
             
-        ];
-        
+        ];  
 
     
   }
