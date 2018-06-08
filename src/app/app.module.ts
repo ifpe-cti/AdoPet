@@ -13,21 +13,25 @@ import {PasswordModule} from 'primeng/password';
 import {ButtonModule} from 'primeng/button';
 import { DialogModule } from 'primeng/components/dialog/dialog';
 import {TabMenuModule} from 'primeng/tabmenu';
+import {ContextMenuModule} from 'primeng/contextmenu';
+
 
 
 //ROTAS
 import { routing } from './app.routing';
+
 //SERVIÇO
 import { UsuarioService } from './usuario.service';
+
 //COMPONENTES
 import { environment } from './../environments/environment.prod';
 import { AppComponent } from './app.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component'
-import { FeedComponent } from './feed/feed.component';
 import { BancoDeDadosComponent } from './banco-de-dados/banco-de-dados.component';
 import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
-import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.component';
-import { AnimaisComponent } from './animais/animais.component';
+import { FeedComponent } from './feed/feed.component';
+import { FeedModule } from './feed/feed.module';
+import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.component';
 
 
 
@@ -35,10 +39,9 @@ import { AnimaisComponent } from './animais/animais.component';
   declarations: [
     AppComponent,
     TelaInicialComponent,
-    FeedComponent,
     BancoDeDadosComponent,
-    AdicionarAnimalComponent,
-    AnimaisComponent,
+    FeedComponent,
+    ListarAnimaisComponent
   ],
   imports: [
     TabMenuModule,
@@ -51,7 +54,8 @@ import { AnimaisComponent } from './animais/animais.component';
     DialogModule,
     AngularFireModule.initializeApp(BancoFirebaseConfig),
     AngularFirestoreModule.enablePersistence(),
-
+    FeedModule,
+    ContextMenuModule,
   ],
   providers: [UsuarioService, AngularFirestore],
   bootstrap: [AppComponent]

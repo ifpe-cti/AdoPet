@@ -19,40 +19,17 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
 import { Component, OnInit } from '@angular/core';
-import { MenuItem, SelectItem } from 'primeng/api';
-import { Router, ActivatedRoute } from '@angular/router';
-
-
 
 @Component({
-  selector: 'app-feed',
-  templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.css']
+  selector: 'app-meus-animais',
+  templateUrl: './meus-animais.component.html',
+  styleUrls: ['./meus-animais.component.css']
 })
-export class FeedComponent implements OnInit {
-  items: MenuItem[];
-  email:string;
-  
+export class MeusAnimaisComponent implements OnInit {
 
-
-
-  constructor(private route: ActivatedRoute, private router: Router) { 
-   
-  }
+  constructor() { }
 
   ngOnInit() {
-
-    //this.email = sessionStorage.getItem("emailUsuario");
-    //usuario = this.usuarioServico.carregar(email);
-    this.items = [
-      {label: 'Home', icon: 'fas fa-home', routerLink: ["/feed/listar-animais"]},
-      {label: 'Meu perfil', icon: 'fas fa-user', routerLink: ["/feed/perfil"]},
-      {label: 'Meus animais', icon: 'fas fa-book', routerLink: ["/feed/meus-animais"]},
-      {label: 'Adicionar animal', icon: 'fas fa-plus-square', routerLink: ["/feed/adicionar-animal"]},
-            
-        ];  
-
-    
   }
 
 }
