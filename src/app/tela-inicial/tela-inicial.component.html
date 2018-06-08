@@ -1,0 +1,67 @@
+<body>
+<div class="ui-g">
+    <div class="login ui-g-12 ui-g-nopad">
+        <div class="ui-g-4">
+            logo
+        </div>
+        <div class="ui-inputgroup">
+        <form #formLogin="ngForm">
+        <table id="login">
+        <tr>    
+            <th> Email </th>
+        <td>
+            <input #campoEmail="ngModel" type="text" pInputText [(ngModel)]="usuario.email" name="emailEntrar" required/>
+            <div *ngIf="!campoEmail.valid && (campoEmail.dirty || campoEmail.touched)"  class="alert alert-danger">
+                Por favor, digite seu e-mail</div>
+        </td>
+        <th> Senha </th>
+        <td>
+            <input #campoSenha="ngModel" type="password" pInputText [(ngModel)]="usuario.senha" name="senhaEntrar"/>
+            <div *ngIf="!campoSenha.valid && (campoSenha.dirty || campoSenha.touched)"  class="alert alert-danger">
+                Por favor, digite sua senha</div>
+        </td>
+        <td>
+            <button pButton type="button" label="Entrar" (click)="entrar()" class="ui-button-success"></button>
+        </td>
+        </tr>
+        </table>
+        </form>
+        </div>
+    </div>
+        <div class="ui-g-5 cadastro"></div>
+           <div class="ui-inputgroup">
+            <form #formCadasrtro="ngForm">
+            <table id="cadastro">
+            <tr></tr>
+            <tr>  
+                <th><h3>Criar nova conta</h3></th>
+            </tr>
+            <tr>  
+                <th> Nome </th>
+            </tr><tr>
+            <td>
+                <input #campoNome="ngModel" type="text" pInputText [(ngModel)]="usuarioCadastro.nome" name="nome"/>
+            </td></tr>
+            <tr>
+                <th> Email </th>
+            </tr><tr>
+            <td>
+                <input #campoEmailNovo="ngModel" type="text" pInputText [(ngModel)]="usuarioCadastro.email" name="email" required/>
+                <div *ngIf="!campoEmailNovo.valid && (campoEmailNovo.dirty || campoEmailNovo.touched)"  class="alert alert-danger">
+                    Por favor, digite seu e-mail</div>
+            </td></tr><tr>
+            <th> Senha </th>
+            </tr><tr>
+            <td>
+                <input #campoSenhaNova="ngModel" type="password" pInputText [(ngModel)]="usuarioCadastro.senha" name="senha"/>
+                <div *ngIf="!campoSenhaNova.valid && (campoSenhaNova.dirty || campoSenhaNova.touched)"  class="alert alert-danger">
+                    Por favor, digite sua senha</div>
+            </td></tr><tr>
+            <td>
+                <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button"></button>
+            </td></tr>
+            </table>
+            </form>
+        </div>
+</div>
+</body>
