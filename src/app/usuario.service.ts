@@ -3,7 +3,7 @@
   import {UsuarioCadastro} from './model/UsuarioCadastro';
   import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
   import { AngularFireModule } from 'angularfire2';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs/Observable';
 
   @Injectable()
   export class UsuarioService {

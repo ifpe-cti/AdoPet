@@ -60,7 +60,7 @@ export class TelaInicialComponent implements OnInit {
       //this.showError();
     }*/
   }
-
+ 
   salvar(usuario: Usuario){
     this.usuarioService.salvar(this.usuarioCadastro);
     //this.usuarioService.verificarSeFoiSalvo(this.usuarioCadastro);

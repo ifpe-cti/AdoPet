@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Animal } from './model/Animal';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
@@ -11,9 +11,9 @@ export class AnimalService {
 
   constructor(private angularFirestore: AngularFirestore) {
    this.animalCollection = this.angularFirestore.collection<Animal>("animal");
-
   }
   animal: Animal;
+  
   getAnimal() : Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
