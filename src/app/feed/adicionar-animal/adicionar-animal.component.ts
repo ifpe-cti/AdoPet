@@ -37,7 +37,7 @@ export class AdicionarAnimalComponent implements OnInit {
 
   constructor(private animalService: AnimalService, private route: Router) { 
     this.animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: " ", porte: " ", descrição: " "};
-    this.msgs = [];
+    this.msgs = [];    
   }
 
   ngOnInit() {

@@ -15,6 +15,8 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {GrowlModule} from 'primeng/growl';
 import {KeyFilterModule} from 'primeng/keyfilter';
+import {TableModule} from 'primeng/table';
+
 
 @NgModule({
     imports: [
@@ -28,6 +30,7 @@ import {KeyFilterModule} from 'primeng/keyfilter';
         InputTextareaModule,
         GrowlModule,
         KeyFilterModule,
+        TableModule,
     ],
     exports: [],
     declarations: [

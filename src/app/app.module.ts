@@ -41,7 +41,7 @@ import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.com
     TelaInicialComponent,
     BancoDeDadosComponent,
     FeedComponent,
-    ListarAnimaisComponent
+    ListarAnimaisComponent,
   ],
   imports: [
     TabMenuModule,
@@ -57,7 +57,7 @@ import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.com
     FeedModule,
     ContextMenuModule,
   ],
-  providers: [UsuarioService, AngularFirestore],
+  providers: [UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
