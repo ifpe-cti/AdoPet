@@ -11,10 +11,10 @@ import {MenuItem} from 'primeng/api';
 import {InputTextModule} from 'primeng/inputtext';
 import {PasswordModule} from 'primeng/password';
 import {ButtonModule} from 'primeng/button';
-import { DialogModule } from 'primeng/components/dialog/dialog';
+import {DialogModule} from 'primeng/components/dialog/dialog';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {ContextMenuModule} from 'primeng/contextmenu';
-
+import {TableModule} from 'primeng/table';
 
 
 //ROTAS
@@ -56,6 +56,7 @@ import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.com
     AngularFirestoreModule.enablePersistence(),
     FeedModule,
     ContextMenuModule,
+    TableModule,
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]
