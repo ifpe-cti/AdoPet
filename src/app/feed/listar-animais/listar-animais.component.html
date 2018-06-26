@@ -1,24 +1,10 @@
 <div class="ui-g">
     <div class="ui-g-4"></div>
     <div class="ui-g-5">
-
-<p-table [columns]="cols" [value]="animais" selectionMode="single" [(selection)]="selecionar" dataKey="nome"
-    (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
-   <ng-template pTemplate="header" let-columns>
-        <tr>
-            <th *ngFor="let col of columns">
-                {{col.header}}
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr [pSelectableRow]="rowData">
-            <td *ngFor="let col of columns">
-                {{rowData[col.field]}}
-            </td>
-        </tr>
-    </ng-template>
-</p-table>
+      <p-dataTable [value]="listaDeAnimais" selectionMode="single" [contextMenu]="cm" [(selection)]="animalSelecionado">
+        <p-column field="username" header="Username"></p-column>
+        <p-column field="password" header="Senha"></p-column>
+      </p-dataTable>
 
     </div>
     <div class="ui-g-2"></div>

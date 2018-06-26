@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimalService } from './../../animal.service';
 import { Animal } from './../../model/Animal';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-listar-animais',
@@ -8,19 +9,26 @@ import { Animal } from './../../model/Animal';
   styleUrls: ['./listar-animais.component.css']
 })
 export class ListarAnimaisComponent implements OnInit {
-  cols: any[];
-  selecionar: Animal;
+  itens: MenuItem[];
+  animalSelecionado;
   animais: Animal[];
+  listaDeAnimais:any[] = [];
 
   constructor(private animalService: AnimalService) {}
   
   
   ngOnInit() {
-    this.animalService.getAnimal();
-    this.cols = [
-      {field: 'nome', header: 'Nome'}, 
-      {field: 'idade', header: 'Idade'}, 
+    this.listar();
+    this.itens = [
+      {label: 'Detalhe', icon: 'fa-close', command: (event) => this.detalhe(this.animalSelecionado)}
     ]
   }
-
+  listar(){
+    this.animalService.listar().subscribe(listaDeAnimais=>{
+      this.listaDeAnimais = listaDeAnimais;
+    });
+  }
+  detalhe(animal){
+      
+  }
 }

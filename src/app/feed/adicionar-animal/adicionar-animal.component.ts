@@ -23,6 +23,7 @@ import { Animal } from '../../model/Animal';
 import { AnimalService } from '../../animal.service';
 import { Router } from '@angular/router';
 import { Message } from 'primeng/components/common/api';
+import {TableModule} from 'primeng/table';
 
 
 @Component({
@@ -41,7 +42,7 @@ export class AdicionarAnimalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.animalService.getAnimal();
+    this.animalService.listar();
 
   }
   salvar(animal: Animal){
