@@ -4,10 +4,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFirestoreModule, AngularFirestore} from 'angularfire2/firestore';
+import { AngularFireAuth } from "angularfire2/auth";
 
-//PRIMENG
-import {AccordionModule} from 'primeng/accordion';    
-import {MenuItem} from 'primeng/api'; 
 import {InputTextModule} from 'primeng/inputtext';
 import {PasswordModule} from 'primeng/password';
 import {ButtonModule} from 'primeng/button';
@@ -23,8 +21,6 @@ import { routing } from './app.routing';
 //SERVIÇO
 import { UsuarioService } from './usuario.service';
 
-//COMPONENTES
-import { environment } from './../environments/environment.prod';
 import { AppComponent } from './app.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component'
 import { BancoDeDadosComponent } from './banco-de-dados/banco-de-dados.component';
@@ -56,6 +52,8 @@ import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal
     DialogModule,
     AngularFireModule.initializeApp(BancoFirebaseConfig),
     AngularFirestoreModule.enablePersistence(),
+    AngularFirestore,
+    AngularFireAuth,
     FeedModule,
     ContextMenuModule,
     DataViewModule,
