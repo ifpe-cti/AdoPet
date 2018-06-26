@@ -31,8 +31,8 @@ import { BancoDeDadosComponent } from './banco-de-dados/banco-de-dados.component
 import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
 import { FeedComponent } from './feed/feed.component';
 import { FeedModule } from './feed/feed.module';
-import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.component;
-import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal.component'';
+import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.component';
+import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal.component';
 
 
 
@@ -42,8 +42,8 @@ import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal
     TelaInicialComponent,
     BancoDeDadosComponent,
     FeedComponent,
-    ListarAnimaisComponen,
-    VisualizarAnimalComponentt,
+    ListarAnimaisComponent,
+    VisualizarAnimalComponent,
   ],
   imports: [
     TabMenuModule,
