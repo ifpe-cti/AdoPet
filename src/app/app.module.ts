@@ -50,8 +50,6 @@ import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.com
     DialogModule,
     AngularFireModule.initializeApp(BancoFirebaseConfig),
     AngularFirestoreModule.enablePersistence(),
-    AngularFirestore,
-    AngularFireAuth,
     FeedModule,
     ContextMenuModule,
     TableModule,
