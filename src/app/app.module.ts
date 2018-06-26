@@ -52,8 +52,6 @@ import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal
     DialogModule,
     AngularFireModule.initializeApp(BancoFirebaseConfig),
     AngularFirestoreModule.enablePersistence(),
-    AngularFirestore,
-    AngularFireAuth,
     FeedModule,
     ContextMenuModule,
     DataViewModule,
