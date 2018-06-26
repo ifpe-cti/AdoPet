@@ -14,7 +14,7 @@ export class AnimalService {
   }
   animal: Animal;
   
-  getAnimal() : Observable<any[]> {
+  listar() : Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
       this.animalCollection.snapshotChanges().subscribe(result => {
@@ -30,14 +30,14 @@ export class AnimalService {
     return meuObservable;
     }
   
-    salvar(animal: Animal){
+  salvar(animal: Animal){
       this.animalCollection.add(animal).then(
         resultado => {
               animal.id = resultado.id;
             });
     }
 
-    apagar(animal: Animal){
+  apagar(animal: Animal){
       this.animalCollection.doc("animal").delete().then(function(){
         console.log("Apagado com sucesso!");
       }).catch(function(error){

@@ -1,25 +1,52 @@
-<div class="ui-g">
-    <div class="ui-g-4"></div>
-    <div class="ui-g-5">
 
-<p-table [columns]="cols" [value]="animais" selectionMode="single" [(selection)]="selecionar" dataKey="nome"
-    (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
-   <ng-template pTemplate="header" let-columns>
-        <tr>
-            <th *ngFor="let col of columns">
-                {{col.header}}
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr [pSelectableRow]="rowData">
-            <td *ngFor="let col of columns">
-                {{rowData[col.field]}}
-            </td>
-        </tr>
-    </ng-template>
-</p-table>
-
-    </div>
     <div class="ui-g-2"></div>
-  </div>
+    <div class="ui-g-8">
+    <p-dataView #dv [value]="animais" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="brand"
+    [sortField]="sortField" [sortOrder]="sortOrder">
+    <p-header>
+      Animais disponíveis para adoção
+        <!-- FILTRO 
+          <div class="ui-helper-clearfix">
+              <div class="ui-g">
+               <div class="ui-g-12 ui-md-4">
+                    <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Filtro" (onChange)="onSortChange($event)" [autoWidth]="false" [style]="{'min-width':'15em'}"></p-dropdown>
+                </div> 
+                </div>
+                -->
+    </p-header>
+    <ng-template let-animal pTemplate="listItem">
+        <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+           <!-- PARA COLOCAR IMAGEM
+              <div class="ui-g-12 ui-md-3" style="text-align:center">
+                <img src="assets/showcase/images/demo/car/{{car.brand}}.png">
+            </div>  -->
+            <div class="ui-g-12 ui-md-8 animal-detalhe">
+                <div class="ui-g">
+                    <div class="ui-g-2 ui-sm-6">Nome: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{animal.nome}}</b></div>
+
+                    <div class="ui-g-2 ui-sm-6">Tipo de animal: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{animal.tipo}}</b></div>
+
+                    <div class="ui-g-2 ui-sm-6">Idade: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{animal.idade}}</b></div>
+
+                    <div class="ui-g-2 ui-sm-6">Sexo: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{animal.sexo}}</b></div>
+
+                    <div class="ui-g-2 ui-sm-6">Cor: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{animal.cor}}</b></div>
+
+                    <div class="ui-g-2 ui-sm-6">Porte: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{animal.porte}}</b></div>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-md-1 search-icon">
+                <button pButton type="button" icon="fas fa-search" (click)="detalhe($event, animal)"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dataView>
+</div>
+
+  
