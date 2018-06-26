@@ -1,11 +1,53 @@
-<div class="ui-g">
-    <div class="ui-g-4"></div>
-    <div class="ui-g-5">
-      <p-dataTable [value]="listaDeAnimais" selectionMode="single" [contextMenu]="cm" [(selection)]="animalSelecionado">
-        <p-column field="username" header="Username"></p-column>
-        <p-column field="password" header="Senha"></p-column>
-      </p-dataTable>
 
-    </div>
-    <div class="ui-g-2"></div>
-  </div>
+    LISTAR ANIMAIS
+    <p-dataView #dv [value]="animais" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="brand"
+    [sortField]="sortField" [sortOrder]="sortOrder">
+    <p-header>
+        <div class="ui-helper-clearfix">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-4">
+                    <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Filtro" (onChange)="onSortChange($event)" [autoWidth]="false" [style]="{'min-width':'15em'}"></p-dropdown>
+                </div>
+                </div>
+                <div class="ui-g-6 ui-md-4" style="text-align:right">
+                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </div>
+            </div>
+        </div>
+    </p-header>
+    <ng-template let-car pTemplate="listItem">
+        <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+           <!-- PARA COLOCAR IMAGEM
+              <div class="ui-g-12 ui-md-3" style="text-align:center">
+                <img src="assets/showcase/images/demo/car/{{car.brand}}.png">
+            </div>  -->
+            <div class="ui-g-12 ui-md-8 car-details">
+                <div class="ui-g">
+                    <div class="ui-g-2 ui-sm-6">Nome: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{animal.nome}}</b></div>
+
+                    <div class="ui-g-2 ui-sm-6">Tipo de animal: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{animal.tipo}}</b></div>
+
+                    <div class="ui-g-2 ui-sm-6">Idade: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{animal.idade}}</b></div>
+
+                    <div class="ui-g-2 ui-sm-6">Sexo: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{animal.sexo}}</b></div>
+
+                    <div class="ui-g-2 ui-sm-6">Cor: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{animal.cor}}</b></div>
+
+                    <div class="ui-g-2 ui-sm-6">Porte: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{animal.porte}}</b></div>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-md-1 search-icon">
+                <button pButton type="button" icon="pi pi-search" (click)="detalhe($event, animal)"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dataView>
+
+
+  

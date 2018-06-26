@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnimalService } from './../../animal.service';
 import { Animal } from './../../model/Animal';
 import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-animais',
@@ -14,21 +15,21 @@ export class ListarAnimaisComponent implements OnInit {
   animais: Animal[];
   listaDeAnimais:any[] = [];
 
-  constructor(private animalService: AnimalService) {}
+  constructor(private animalService: AnimalService, private rota:Router) {}
   
   
   ngOnInit() {
     this.listar();
-    this.itens = [
-      {label: 'Detalhe', icon: 'fa-close', command: (event) => this.detalhe(this.animalSelecionado)}
-    ]
+    
   }
   listar(){
     this.animalService.listar().subscribe(listaDeAnimais=>{
       this.listaDeAnimais = listaDeAnimais;
     });
   }
-  detalhe(animal){
-      
+  detalhes(animal){
+    this.rota.navigate(['/visualizar-animal',this.animalSelecionado.id]);
+
   }
+ 
 }
