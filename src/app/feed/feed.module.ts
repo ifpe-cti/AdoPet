@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { PerfilComponent } from './perfil/perfil.component';
 import { MeusAnimaisComponent } from './meus-animais/meus-animais.component';
 import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.component';
-import { FeedComponent } from './feed.component';
 
 import {InputTextModule} from 'primeng/inputtext';
 import {ListboxModule} from 'primeng/listbox';
@@ -16,6 +15,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {GrowlModule} from 'primeng/growl';
 import {KeyFilterModule} from 'primeng/keyfilter';
 import {TableModule} from 'primeng/table';
+import {DataViewModule} from 'primeng/dataview';
+
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {TableModule} from 'primeng/table';
         GrowlModule,
         KeyFilterModule,
         TableModule,
+        DataViewModule
     ],
     exports: [],
     declarations: [
