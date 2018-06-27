@@ -8,7 +8,7 @@ import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.co
 import {InputTextModule} from 'primeng/inputtext';
 import {ListboxModule} from 'primeng/listbox';
 import {RadioButtonModule} from 'primeng/radiobutton';
-import { AnimalService } from '../animal.service';
+import { AnimalService } from '../services/animal.service';
 import { FormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {InputTextareaModule} from 'primeng/inputtextarea';

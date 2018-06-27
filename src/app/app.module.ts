@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {AngularFireModule} from 'angularfire2';
-import {AngularFirestoreModule, AngularFirestore} from 'angularfire2/firestore';
-import { AngularFireAuth } from "angularfire2/auth";
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import { AngularFireAuthModule } from "angularfire2/auth";
 
 import {InputTextModule} from 'primeng/inputtext';
 import {PasswordModule} from 'primeng/password';
@@ -19,7 +19,9 @@ import {TableModule} from 'primeng/table';
 import { routing } from './app.routing';
 
 //SERVIÇO
-import { UsuarioService } from './usuario.service';
+import { UsuarioService } from './services/usuario.service';
+import { AuthService } from './services/auth.service';
+
 
 import { AppComponent } from './app.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component'
@@ -48,13 +50,16 @@ import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.com
     ButtonModule,
     routing,
     DialogModule,
-    AngularFireModule.initializeApp(BancoFirebaseConfig),
+    AngularFireModule.initializeApp(BancoFirebaseConfig, 'angular-auth-FirebaseApp'),
     AngularFirestoreModule.enablePersistence(),
+    //AngularFireDatabaseModule,
+    AngularFireAuthModule,
     FeedModule,
     ContextMenuModule,
     TableModule,
   ],
-  providers: [UsuarioService],
+  providers: [UsuarioService, AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

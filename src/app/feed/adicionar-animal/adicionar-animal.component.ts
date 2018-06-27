@@ -20,7 +20,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
 import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../model/Animal';
-import { AnimalService } from '../../animal.service';
+import { AnimalService } from '../../services/animal.service';
 import { Router } from '@angular/router';
 import { Message } from 'primeng/components/common/api';
 

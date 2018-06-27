@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Animal } from './model/Animal';
+import { Animal } from '../model/Animal';
 import { Observable } from 'rxjs/Observable';
 
 

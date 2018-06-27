@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimalService } from './../../animal.service';
+import { AnimalService } from '../../services/animal.service';
 import { Animal } from './../../model/Animal';
 
 @Component({
