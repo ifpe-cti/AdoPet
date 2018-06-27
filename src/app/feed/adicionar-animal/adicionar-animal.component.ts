@@ -51,7 +51,7 @@ export class AdicionarAnimalComponent implements OnInit {
       
     }else{
       this.animalService.salvar(this.animal);
-      this.route.navigate(['/feed']);
+      this.route.navigate(['feed/listar-animais']);
    }
   }
   showError() {
