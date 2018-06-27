@@ -1,9 +1,7 @@
-  import { Injectable } from '@angular/core';
-  import { Usuario } from './model/Usuario';
-  import {UsuarioCadastro} from './model/UsuarioCadastro';
-  import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-  import { AngularFireModule } from 'angularfire2';
+import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import { Usuario } from '../model/Usuario';
 
   @Injectable()
   export class UsuarioService {

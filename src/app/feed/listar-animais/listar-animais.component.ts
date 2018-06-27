@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimalService } from './../../animal.service';
 import { Animal } from './../../model/Animal';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
+import { AnimalService } from '../../services/animal.service';
 
 @Component({
   selector: 'app-listar-animais',
