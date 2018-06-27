@@ -1,7 +1,7 @@
 
     <div class="ui-g-2"></div>
     <div class="ui-g-8">
-    <p-dataView #dv [value]="animais" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="brand"
+    <p-dataView #dv [value]="listaDeAnimais" [rows]="20" paginatorPosition="both" filterBy="brand"
     [sortField]="sortField" [sortOrder]="sortOrder">
     <p-header>
       Animais disponíveis para adoção
@@ -22,27 +22,28 @@
             </div>  -->
             <div class="ui-g-12 ui-md-8 animal-detalhe">
                 <div class="ui-g">
-                    <div class="ui-g-2 ui-sm-6">Nome: </div>
+                    <div class="ui-g-3 ui-sm-6">Nome: </div>
                     <div class="ui-g-10 ui-sm-6"><b>{{animal.nome}}</b></div>
 
-                    <div class="ui-g-2 ui-sm-6">Tipo de animal: </div>
+                    <div class="ui-g-3 ui-sm-6">Tipo de animal: </div>
                     <div class="ui-g-10 ui-sm-6"><b>{{animal.tipo}}</b></div>
 
-                    <div class="ui-g-2 ui-sm-6">Idade: </div>
+                    <div class="ui-g-3 ui-sm-6">Idade: </div>
                     <div class="ui-g-10 ui-sm-6"><b>{{animal.idade}}</b></div>
 
-                    <div class="ui-g-2 ui-sm-6">Sexo: </div>
+                    <div class="ui-g-3 ui-sm-6">Sexo: </div>
                     <div class="ui-g-10 ui-sm-6"><b>{{animal.sexo}}</b></div>
 
-                    <div class="ui-g-2 ui-sm-6">Cor: </div>
+                    <div class="ui-g-3 ui-sm-6">Cor: </div>
                     <div class="ui-g-10 ui-sm-6"><b>{{animal.cor}}</b></div>
 
-                    <div class="ui-g-2 ui-sm-6">Porte: </div>
+                    <div class="ui-g-3 ui-sm-6">Porte: </div>
                     <div class="ui-g-10 ui-sm-6"><b>{{animal.porte}}</b></div>
                 </div>
             </div>
             <div class="ui-g-12 ui-md-1 search-icon">
-                <button pButton type="button" icon="fas fa-search" (click)="detalhe($event, animal)"></button>
+                <button pButton type="button" icon="fas fa-search" (click)="detalhe()" class="button"></button>
+
             </div>
         </div>
     </ng-template>

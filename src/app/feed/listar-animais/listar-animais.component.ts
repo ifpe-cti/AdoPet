@@ -27,9 +27,8 @@ export class ListarAnimaisComponent implements OnInit {
       this.listaDeAnimais = listaDeAnimais;
     });
   }
-  detalhes(animal){
-    this.rota.navigate(['/visualizar-animal',this.animalSelecionado.id]);
-
+  detalhe(){
+    alert("pegou");
   }
  
 }
