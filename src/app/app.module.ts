@@ -20,6 +20,7 @@ import {DataViewModule} from 'primeng/dataview';
 import { routing } from './app.routing';
 
 //SERVIÇO
+import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { UsuarioService } from './services/usuario.service';
 
@@ -60,7 +61,7 @@ import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal
     ContextMenuModule,
     DataViewModule,
   ],
-  providers: [UsuarioService, AuthService],
+  providers: [UsuarioService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
