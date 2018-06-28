@@ -30,6 +30,10 @@ export class AuthService {
 			new firebase.auth.GoogleAuthProvider()
 		)
 	}
+	signInRegular(email, password) {
+		const credential = firebase.auth.EmailAuthProvider.credential( email, password );
+	 return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password)
+	 }
 
 	isLoggedIn() {
 		if (this.userDetails == null ) {
