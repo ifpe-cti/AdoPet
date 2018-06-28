@@ -2,4 +2,7 @@
 <p-tabMenu [model]="items"></p-tabMenu>
 </div>
 <p></p>
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="" (click)="authService.logout()">Logout</a></li>
+  </ul>
 <router-outlet></router-outlet>
