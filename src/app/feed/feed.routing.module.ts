@@ -1,4 +1,4 @@
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
 //COMPONENTES
@@ -10,15 +10,18 @@ import { ListarAnimaisComponent } from './listar-animais/listar-animais.componen
 
 //PRIMENG
 import {MenuItem} from 'primeng/api'; 
+import { TelaInicialComponent } from '../tela-inicial/tela-inicial.component';
 
 const feedRoutes = [
+    {path: 'feed/logout', component: TelaInicialComponent},
     {path: 'feed', component: FeedComponent, children: [
         {path: 'perfil', component: PerfilComponent},
         {path: 'meus-animais', component: MeusAnimaisComponent},
         {path: 'adicionar-animal', component: AdicionarAnimalComponent},
-        {path: 'listar-animais', component: ListarAnimaisComponent}
+        {path: 'listar-animais', component: ListarAnimaisComponent},
     ]}
 ];
+
 
 @NgModule({
     imports: [RouterModule.forChild(feedRoutes)],

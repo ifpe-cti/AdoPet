@@ -5,8 +5,7 @@ import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.com
 
 const APP_ROUTES: Routes = [
     {path: '', component: TelaInicialComponent},
-    {path: 'feed', component: ListarAnimaisComponent},
-      
+    {path: 'feed', component: ListarAnimaisComponent},      
 ];
 
 
