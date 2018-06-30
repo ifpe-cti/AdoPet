@@ -24,6 +24,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../model/Usuario';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Message } from 'primeng/components/common/api';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -37,7 +38,8 @@ export class TelaInicialComponent implements OnInit {
   usuarios: Usuario[];
   user: Usuario;
 
-  constructor(private usuarioService: UsuarioService, private route: Router, private rotaAtiva: ActivatedRoute) {
+  constructor(private usuarioService: UsuarioService, private route: Router, 
+    private rotaAtiva: ActivatedRoute, private authService: AuthService) {
     this.user = this.rotaAtiva.snapshot.params['user'];
     this.usuario = {email:"", senha:""};
     this.usuarios = [];
@@ -49,6 +51,15 @@ export class TelaInicialComponent implements OnInit {
   ngOnInit() {
     this.usuarioService.getUsuarios();
   }
+
+  signInWithGoogle() {
+    this.authService.signInWithGoogle()
+    .then((res) => {
+        this.route.navigate(['/feed'])
+      })
+    .catch((err) => console.log(err));
+  }
+
   entrar(){
    /* let podePassar: boolean = false;
     podePassar = this.usuarioService.verificar(this.usuario);
