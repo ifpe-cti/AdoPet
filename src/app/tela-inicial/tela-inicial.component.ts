@@ -36,12 +36,16 @@ export class TelaInicialComponent implements OnInit {
   usuario: Usuario;
   msgs: Message[];
   usuarios: Usuario[];
-  user: Usuario;
+  user: Usuario = {
+    email: '',
+    senha: ''
+  }
 
   constructor(private usuarioService: UsuarioService, private route: Router, 
     private rotaAtiva: ActivatedRoute, private authService: AuthService) {
     this.user = this.rotaAtiva.snapshot.params['user'];
-    this.usuario = {email:"", senha:""};
+    this.usuario = {email:"", 
+                    senha:""};
     this.usuarios = [];
     this.msgs = [];
 		this.usuarioCadastro = {email:"", nome: "", senha:""};
@@ -55,12 +59,21 @@ export class TelaInicialComponent implements OnInit {
   signInWithGoogle() {
     this.authService.signInWithGoogle()
     .then((res) => {
-        this.route.navigate(['/feed'])
+        this.route.navigate(['/feed/listar-animais'])
       })
-    .catch((err) => console.log(err));
-  }
-
-  entrar(){
+      .catch((err) => console.log(err));
+    }
+    
+    signInWithEmail() {
+  
+      this.authService.signInRegular(this.user.email, this.user.senha)
+        .then((res) => {
+          console.log(res);
+          this.route.navigate(['/feed/listar-animais']);
+        })
+        .catch((err) => console.log('error: ' + err));
+    }
+    entrar(){
    /* let podePassar: boolean = false;
     podePassar = this.usuarioService.verificar(this.usuario);
     if(podePassar == true){
@@ -72,13 +85,14 @@ export class TelaInicialComponent implements OnInit {
     }*/
   }
  
-  salvar(usuario: Usuario){
+  salvar(){
     this.usuarioService.salvar(this.usuarioCadastro);
     //this.usuarioService.verificarSeFoiSalvo(this.usuarioCadastro);
     //sessionStorage.setItem("emailUsuario", this.usuario.email);
     
     this.route.navigate(['/feed/listar-animais']);
   }
+
 
   showError() {
 		this.msgs = [];
