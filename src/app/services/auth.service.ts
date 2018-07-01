@@ -11,6 +11,7 @@ export class AuthService {
 	private userDetails: firebase.User = null;
 	
 	constructor(private _firebaseAuth: AngularFireAuth, private router: Router) { 
+
 			this.user = _firebaseAuth.authState;
 			this.user.subscribe(
 				(user) => {
@@ -30,9 +31,9 @@ export class AuthService {
 			new firebase.auth.GoogleAuthProvider()
 		)
 	}
-	signInRegular(email, password) {
-		const credential = firebase.auth.EmailAuthProvider.credential( email, password );
-	 return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password)
+	signInRegular(email, senha) {
+		const credential = firebase.auth.EmailAuthProvider.credential( email, senha );
+	 return this._firebaseAuth.auth.signInWithEmailAndPassword(email, senha)
 	 }
 
 	isLoggedIn() {
