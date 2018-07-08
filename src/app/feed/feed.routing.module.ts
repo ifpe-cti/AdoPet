@@ -11,6 +11,7 @@ import { ListarAnimaisComponent } from './listar-animais/listar-animais.componen
 //PRIMENG
 import {MenuItem} from 'primeng/api'; 
 import { TelaInicialComponent } from '../tela-inicial/tela-inicial.component';
+import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal.component';
 
 const feedRoutes = [
     {path: 'feed/logout', component: TelaInicialComponent},
@@ -19,6 +20,7 @@ const feedRoutes = [
         {path: 'meus-animais', component: MeusAnimaisComponent},
         {path: 'adicionar-animal', component: AdicionarAnimalComponent},
         {path: 'listar-animais', component: ListarAnimaisComponent},
+        {path: 'visualizar-animal', component: VisualizarAnimalComponent },
     ]}
 ];
 

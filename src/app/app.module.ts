@@ -31,7 +31,6 @@ import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
 import { FeedComponent } from './feed/feed.component';
 import { FeedModule } from './feed/feed.module';
 import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.component';
-import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal.component';
 
 
 
@@ -42,7 +41,7 @@ import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal
     BancoDeDadosComponent,
     FeedComponent,
     ListarAnimaisComponent,
-    VisualizarAnimalComponent,
+
   ],
   imports: [
     TabMenuModule,
