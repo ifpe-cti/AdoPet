@@ -10,6 +10,7 @@ import { AnimalService } from '../../services/animal.service';
   styleUrls: ['./listar-animais.component.css']
 })
 export class ListarAnimaisComponent implements OnInit {
+  animal: Animal;
   itens: MenuItem[];
   animalSelecionado;
   animais: Animal[];
