@@ -16,6 +16,7 @@ import {KeyFilterModule} from 'primeng/keyfilter';
 import {TableModule} from 'primeng/table';
 import {DataViewModule} from 'primeng/dataview';
 import { AnimalService } from '../services/animal.service';
+import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal.component';
 
 
 
@@ -39,6 +40,7 @@ import { AnimalService } from '../services/animal.service';
     PerfilComponent,
     MeusAnimaisComponent,
     AdicionarAnimalComponent,
+    VisualizarAnimalComponent,
     
 ],
     providers: [AnimalService],
