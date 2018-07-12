@@ -37,6 +37,7 @@ export class TelaInicialComponent implements OnInit {
   msgs: Message[];
   usuarios: Usuario[];
   user: Usuario = {
+    $key: '',
     email: '',
     senha: ''
   }
@@ -44,11 +45,17 @@ export class TelaInicialComponent implements OnInit {
   constructor(private usuarioService: UsuarioService, private route: Router, 
     private rotaAtiva: ActivatedRoute, private authService: AuthService) {
     this.user = this.rotaAtiva.snapshot.params['user'];
-    this.usuario = {email:"", 
-                    senha:""};
+    this.usuario = {$key:"",
+                    email:"", 
+                    senha:"",
+                    id:""};
     this.usuarios = [];
     this.msgs = [];
-		this.usuarioCadastro = {email:"", nome: "", senha:""};
+    this.usuarioCadastro = {$key:"", 
+                            email:"", 
+                            nome: "", 
+                            senha:"", 
+                            id:""};
    }
    //colocar a logo
 
@@ -59,13 +66,12 @@ export class TelaInicialComponent implements OnInit {
   signInWithGoogle() {
     this.authService.signInWithGoogle()
     .then((res) => {
-        this.route.navigate(['/feed/listar-animais'])
+        this.route.navigate(['/feed/listar-animais']);
       })
       .catch((err) => console.log(err));
     }
     
-    signInWithEmail() {
-  
+    signInWithEmail() {  
       this.authService.signInRegular(this.user.email, this.user.senha)
         .then((res) => {
           console.log(res);
@@ -96,7 +102,8 @@ export class TelaInicialComponent implements OnInit {
 
   showError() {
 		this.msgs = [];
-		this.msgs.push({ severity: 'error', summary: 'Login inexistente', detail: 'Verifique o login e a senha ou cadastre-se!' });
+    this.msgs.push({ severity: 'error', summary: 'Login inexistente', 
+    detail: 'Verifique o login e a senha ou cadastre-se!' });
 	}
 
 }
