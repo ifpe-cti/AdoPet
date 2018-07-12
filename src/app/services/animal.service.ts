@@ -8,11 +8,12 @@ import { Observable } from 'rxjs/Observable';
 
 export class AnimalService {
   private animalCollection: AngularFirestoreCollection<Animal>;
+  animal$: Observable<Animal[]>;
 
   constructor(private angularFirestore: AngularFirestore) {
    this.animalCollection = this.angularFirestore.collection<Animal>("animal");
   }
-  animal: Animal;
+  
   
   listar() : Observable<any[]> {
     let resultados: any[] = [];
@@ -31,11 +32,20 @@ export class AnimalService {
     }
   
   salvar(animal: Animal){
-      this.animalCollection.add(animal).then(
-        resultado => {
-              animal.id = resultado.id;
-            });
+    this.animalCollection.add(animal).then(
+      resultado => {
+        animal.id = resultado.id;
+    });
     }
+
+  atualizarAnimal(animal: Animal) {
+    this.animalCollection.doc(animal.id).update({ /*colocar um boolean pra dizer se o usuario foi
+    "preenchido corretamente" */});
+    }
+      
+  deleteTodo(animal: Animal) {
+    this.animalCollection.doc(animal.id).delete();
+  }
 
   /*apagar(animal: Animal){
       this.animalCollection.doc("animal").delete().then(function(){
