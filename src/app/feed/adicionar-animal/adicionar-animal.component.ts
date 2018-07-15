@@ -1,3 +1,4 @@
+import { SelectItem } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../model/Animal';
 import { Router } from '@angular/router';
@@ -13,12 +14,37 @@ import { AnimalService } from '../../services/animal.service';
 })
 export class AdicionarAnimalComponent implements OnInit {
   animal: Animal;
-	msgs: Message[];
-
+  msgs: Message[];
+  tipoDeAnimal: SelectItem[];
+  idade: SelectItem[];
+  sexo: SelectItem[];
+  porte: SelectItem[];
 
   constructor(private animalService: AnimalService, private route: Router) { 
     this.animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: 0, porte: " ", descrição: " "};
-    this.msgs = [];    
+    this.msgs = [];  
+    this.tipoDeAnimal = [
+      {label: 'Selecione', value: null},
+      {label: 'Cachorro', value: 'Cachorro'},
+      {label: 'Gato', value: 'Gato'},
+    ];
+    this.idade = [
+      {label: 'Selecione', value: null},
+      {label: 'Filhote', value: 'Filhote'},
+      {label: 'Adulto', value: 'Adulto'},
+    ];
+    this.sexo = [
+      {label: 'Selecione', value: null},
+      {label: 'Feminino', value: 'Feminino'},
+      {label: 'Masculino', value: 'Masculino'},
+    ];
+    this.porte = [
+      {label: 'Selecione', value: null},
+      {label: 'Pequeno', value: 'Pequeno'},
+      {label: 'Médio', value: 'Médio'},
+      {label: 'Grande', value: 'Grande'},
+
+    ]
   }
 
   ngOnInit() {
