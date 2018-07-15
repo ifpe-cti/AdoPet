@@ -18,5 +18,8 @@ export class VisualizarAnimalComponent implements OnInit {
       }
     );
   }
+  adotar(){
+    alert("Adotado");
+  }
 
 }
