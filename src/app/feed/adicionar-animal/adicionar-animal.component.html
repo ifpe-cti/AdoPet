@@ -2,45 +2,40 @@
     <div class="ui-g-4"></div>
     <div class="ui-g-5">
         <p-growl [(value)]="msgs"></p-growl>  
-        <h3>Insira os dados do seu animal</h3>
+        <h4><p>Insira os dados do seu animal</p></h4>
         <p>
         Nome: <br/>
-        <input #campoNome="ngModel" type="text" pInputText [(ngModel)]="animal.nome"/> <br/>
+        <input #campoNome="ngModel" type="text" pInputText [(ngModel)]="animal.nome" size="40"/> <br/>
         </p>
         <p>
-        Seu animal é: <br/>
-        <p-radioButton label="Cachorro" value="Cachorro" [(ngModel)]="animal.tipo"></p-radioButton> <br/>
-        <p-radioButton label="Gato" value="Gato" [(ngModel)]="animal.tipo"></p-radioButton> <br/>
+        Tipo de Animal: <br/>
+        <p-dropdown [options]="tipoDeAnimal" [(ngModel)]="animal.tipo"></p-dropdown> <br/>
         </p>
         <p>
         Idade: <br/>
-        <p-radioButton label="Filhote" value="Filhote" [(ngModel)]="animal.idade"></p-radioButton> <br/>
-        <p-radioButton label="Adulto" value="Adulto" [(ngModel)]="animal.idade"></p-radioButton> <br/>
+        <p-dropdown [options]="idade" [(ngModel)]="animal.idade"></p-dropdown> <br/>
         </p>
         <p>
         Sexo: <br/>
-        <p-radioButton label="Feminino" value="Feminino" [(ngModel)]="animal.sexo"></p-radioButton> <br/>
-        <p-radioButton label="Masculino" value="Masculino" [(ngModel)]="animal.sexo"></p-radioButton> <br/>
+        <p-dropdown [options]="sexo" [(ngModel)]="animal.sexo"></p-dropdown> <br/>
         </p>
         <p>
         Porte: <br/>
-        <p-radioButton label="Pequeno" value="Pequeno" [(ngModel)]="animal.porte"></p-radioButton> <br/>
-        <p-radioButton label="Médio" value="Médio" [(ngModel)]="animal.porte"></p-radioButton> <br/>
-        <p-radioButton label="Grande" value="Grande" [(ngModel)]="animal.porte"></p-radioButton> <br/>
+        <p-dropdown [options]="porte" [(ngModel)]="animal.porte"></p-dropdown> <br/>
         </p>
         <p>
         Cor: <br/>
-        <input type="text" pInputText [(ngModel)]="animal.cor"/> <br/>
+        <input type="text" pInputText [(ngModel)]="animal.cor" size="40"/> <br/>
         </p>
         <p>
         Descrição:
         <br/>
-        <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="animal.descricao"></textarea>
+        <textarea [rows]="5" [cols]="40" pInputTextarea autoResize="autoResize" [(ngModel)]="animal.descricao" placeholder="Descreva o máximo que puder sobre seu animal"></textarea>
         </p>
         
         <div class="ui-g-4"></div>
         <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button-success ui-growl-container"></button>
- 
-    </div>
+    </div>    
+    
     <div class="ui-g-4"></div>
 </div>
