@@ -5,9 +5,9 @@ import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.com
 import { AuthGuard } from './services/auth-guard.service';
 
 const APP_ROUTES: Routes = [
-    {path: '', component: TelaInicialComponent},
+    { path: '', component: TelaInicialComponent },
 ];
 
 
 
-export const routing : ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
+export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

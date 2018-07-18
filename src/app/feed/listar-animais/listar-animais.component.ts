@@ -14,22 +14,22 @@ export class ListarAnimaisComponent implements OnInit {
   itens: MenuItem[];
   animalSelecionado;
   animais: Animal[];
-  listaDeAnimais:any[] = [];
+  listaDeAnimais: any[] = [];
 
-  constructor(private animalService: AnimalService, private route: Router) {}
-  
-  
+  constructor(private animalService: AnimalService, private route: Router) { }
+
+
   ngOnInit() {
     this.listar();
-    
+
   }
-  listar(){
-    this.animalService.listar().subscribe(listaDeAnimais=>{
+  listar() {
+    this.animalService.listar().subscribe(listaDeAnimais => {
       this.listaDeAnimais = listaDeAnimais;
     });
   }
-  detalhe(){
+  detalhe() {
     this.route.navigate(['feed/visualizar-animal']);
   }
- 
+
 }

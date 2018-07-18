@@ -1,46 +1,63 @@
 <div class="ui-g">
     <div class="ui-g-4"></div>
     <div class="ui-g-5">
-        <p-growl [(value)]="msgs"></p-growl>  
+        <p-growl [(value)]="msgs"></p-growl>
         <h3>Insira os dados do seu animal</h3>
         <p>
-        Nome: <br/>
-        <input #campoNome="ngModel" type="text" pInputText [(ngModel)]="animal.nome"/> <br/>
+            Nome:
+            <br/>
+            <input #campoNome="ngModel" type="text" pInputText [(ngModel)]="animal.nome" />
+            <br/>
         </p>
         <p>
-        Seu animal é: <br/>
-        <p-radioButton label="Cachorro" value="Cachorro" [(ngModel)]="animal.tipo"></p-radioButton> <br/>
-        <p-radioButton label="Gato" value="Gato" [(ngModel)]="animal.tipo"></p-radioButton> <br/>
+            Seu animal é:
+            <br/>
+            <p-radioButton label="Cachorro" value="Cachorro" [(ngModel)]="animal.tipo"></p-radioButton>
+            <br/>
+            <p-radioButton label="Gato" value="Gato" [(ngModel)]="animal.tipo"></p-radioButton>
+            <br/>
         </p>
         <p>
-        Idade: <br/>
-        <p-radioButton label="Filhote" value="Filhote" [(ngModel)]="animal.idade"></p-radioButton> <br/>
-        <p-radioButton label="Adulto" value="Adulto" [(ngModel)]="animal.idade"></p-radioButton> <br/>
+            Idade:
+            <br/>
+            <p-radioButton label="Filhote" value="Filhote" [(ngModel)]="animal.idade"></p-radioButton>
+            <br/>
+            <p-radioButton label="Adulto" value="Adulto" [(ngModel)]="animal.idade"></p-radioButton>
+            <br/>
         </p>
         <p>
-        Sexo: <br/>
-        <p-radioButton label="Feminino" value="Feminino" [(ngModel)]="animal.sexo"></p-radioButton> <br/>
-        <p-radioButton label="Masculino" value="Masculino" [(ngModel)]="animal.sexo"></p-radioButton> <br/>
+            Sexo:
+            <br/>
+            <p-radioButton label="Feminino" value="Feminino" [(ngModel)]="animal.sexo"></p-radioButton>
+            <br/>
+            <p-radioButton label="Masculino" value="Masculino" [(ngModel)]="animal.sexo"></p-radioButton>
+            <br/>
         </p>
         <p>
-        Porte: <br/>
-        <p-radioButton label="Pequeno" value="Pequeno" [(ngModel)]="animal.porte"></p-radioButton> <br/>
-        <p-radioButton label="Médio" value="Médio" [(ngModel)]="animal.porte"></p-radioButton> <br/>
-        <p-radioButton label="Grande" value="Grande" [(ngModel)]="animal.porte"></p-radioButton> <br/>
+            Porte:
+            <br/>
+            <p-radioButton label="Pequeno" value="Pequeno" [(ngModel)]="animal.porte"></p-radioButton>
+            <br/>
+            <p-radioButton label="Médio" value="Médio" [(ngModel)]="animal.porte"></p-radioButton>
+            <br/>
+            <p-radioButton label="Grande" value="Grande" [(ngModel)]="animal.porte"></p-radioButton>
+            <br/>
         </p>
         <p>
-        Cor: <br/>
-        <input type="text" pInputText [(ngModel)]="animal.cor"/> <br/>
+            Cor:
+            <br/>
+            <input type="text" pInputText [(ngModel)]="animal.cor" />
+            <br/>
         </p>
         <p>
-        Descrição:
-        <br/>
-        <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="animal.descricao"></textarea>
+            Descrição:
+            <br/>
+            <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="animal.descricao"></textarea>
         </p>
-        
+
         <div class="ui-g-4"></div>
         <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button-success ui-growl-container"></button>
- 
+
     </div>
     <div class="ui-g-4"></div>
 </div>

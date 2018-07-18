@@ -9,21 +9,20 @@ import { Observable } from 'rxjs/Observable';
 export class AuthService {
 	private user: Observable<firebase.User>;
 	private userDetails: firebase.User = null;
-	
-	constructor(private _firebaseAuth: AngularFireAuth, private router: Router) { 
 
-			this.user = _firebaseAuth.authState;
-			this.user.subscribe(
-				(user) => {
-					if (user) {
-						this.userDetails = user;
-						console.log(this.userDetails);
-					}
-					else {
-						this.userDetails = null;
-					}
+	constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
+
+		this.user = _firebaseAuth.authState;
+		this.user.subscribe(
+			(user) => {
+				if (user) {
+					this.userDetails = user;
+					console.log(this.userDetails);
+				} else {
+					this.userDetails = null;
 				}
-			);
+			}
+		);
 	}
 
 	signInWithGoogle() {
@@ -32,19 +31,19 @@ export class AuthService {
 		)
 	}
 	signInRegular(email, senha) {
-		const credential = firebase.auth.EmailAuthProvider.credential( email, senha );
-	 return this._firebaseAuth.auth.signInWithEmailAndPassword(email, senha)
-	 }
+		const credential = firebase.auth.EmailAuthProvider.credential(email, senha);
+		return this._firebaseAuth.auth.signInWithEmailAndPassword(email, senha)
+	}
 
 	isLoggedIn() {
-		if (this.userDetails == null ) {
-				return false;
-			} else {
-				return true;
-			}
+		if (this.userDetails == null) {
+			return false;
+		} else {
+			return true;
 		}
+	}
 	logout() {
-			this._firebaseAuth.auth.signOut()
+		this._firebaseAuth.auth.signOut()
 			.then((res) => this.router.navigate(['/']));
 	}
 }
