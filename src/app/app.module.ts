@@ -2,18 +2,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {AngularFireModule} from 'angularfire2';
-import {AngularFirestoreModule} from 'angularfire2/firestore';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from "angularfire2/auth";
 
-import {InputTextModule} from 'primeng/inputtext';
-import {PasswordModule} from 'primeng/password';
-import {ButtonModule} from 'primeng/button';
-import {DialogModule} from 'primeng/components/dialog/dialog';
-import {TabMenuModule} from 'primeng/tabmenu';
-import {ContextMenuModule} from 'primeng/contextmenu';
-import {DataViewModule} from 'primeng/dataview';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/components/dialog/dialog';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { DataViewModule } from 'primeng/dataview';
 
 
 //ROTAS
@@ -31,7 +31,6 @@ import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
 import { FeedComponent } from './feed/feed.component';
 import { FeedModule } from './feed/feed.module';
 import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.component';
-import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal.component';
 
 
 
@@ -42,7 +41,7 @@ import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal
     BancoDeDadosComponent,
     FeedComponent,
     ListarAnimaisComponent,
-    VisualizarAnimalComponent,
+
   ],
   imports: [
     TabMenuModule,

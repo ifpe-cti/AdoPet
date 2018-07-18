@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisualizarAnimalComponent implements OnInit {
 
-  constructor() { }
+  id: string;
+  constructor(private route : ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe(
+      (params: any) => {
+        this.id = params ['id'];
+      }
+    );
   }
 
 }

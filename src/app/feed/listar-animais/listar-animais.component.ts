@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from './../../model/Animal';
 import { MenuItem } from 'primeng/api';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
 
 @Component({
@@ -10,25 +10,26 @@ import { AnimalService } from '../../services/animal.service';
   styleUrls: ['./listar-animais.component.css']
 })
 export class ListarAnimaisComponent implements OnInit {
+  animal: Animal;
   itens: MenuItem[];
   animalSelecionado;
   animais: Animal[];
-  listaDeAnimais:any[] = [];
+  listaDeAnimais: any[] = [];
 
-  constructor(private animalService: AnimalService, private rota:Router) {}
-  
-  
+  constructor(private animalService: AnimalService, private route: Router) { }
+
+
   ngOnInit() {
     this.listar();
-    
+
   }
-  listar(){
-    this.animalService.listar().subscribe(listaDeAnimais=>{
+  listar() {
+    this.animalService.listar().subscribe(listaDeAnimais => {
       this.listaDeAnimais = listaDeAnimais;
     });
   }
-  detalhe(){
-    alert("pegou");
+  detalhe() {
+    this.route.navigate(['feed/visualizar-animal']);
   }
- 
+
 }

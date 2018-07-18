@@ -8,13 +8,14 @@ import { Observable } from 'rxjs/Observable';
 
 export class AnimalService {
   private animalCollection: AngularFirestoreCollection<Animal>;
+  animal$: Observable<Animal[]>;
 
   constructor(private angularFirestore: AngularFirestore) {
-   this.animalCollection = this.angularFirestore.collection<Animal>("animal");
+    this.animalCollection = this.angularFirestore.collection<Animal>("animal");
   }
-  animal: Animal;
-  
-  listar() : Observable<any[]> {
+
+
+  listar(): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
       this.animalCollection.snapshotChanges().subscribe(result => {
@@ -26,22 +27,32 @@ export class AnimalService {
         });
         observer.next(resultados);
         observer.complete();
-      }); });
+      });
+    });
     return meuObservable;
-    }
-  
-  salvar(animal: Animal){
-      this.animalCollection.add(animal).then(
-        resultado => {
-              animal.id = resultado.id;
-            });
-    }
+  }
 
-  apagar(animal: Animal){
+  salvar(animal: Animal) {
+    this.animalCollection.add(animal).then(
+      resultado => {
+        animal.id = resultado.id;
+      });
+  }
+
+  atualizarAnimal(animal: Animal) {
+    this.animalCollection.doc(animal.id).update({ /*colocar um boolean pra dizer se o usuario foi
+    "preenchido corretamente" */});
+  }
+
+  deleteTodo(animal: Animal) {
+    this.animalCollection.doc(animal.id).delete();
+  }
+
+  /*apagar(animal: Animal){
       this.animalCollection.doc("animal").delete().then(function(){
         console.log("Apagado com sucesso!");
       }).catch(function(error){
         error.console("Tente novamente!");
       });
-    }
+    }*/
 }
