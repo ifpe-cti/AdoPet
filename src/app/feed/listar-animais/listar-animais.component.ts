@@ -16,7 +16,8 @@ export class ListarAnimaisComponent implements OnInit {
   animais: Animal[];
   listaDeAnimais: any[] = [];
 
-  constructor(private animalService: AnimalService, private route: Router) { }
+  constructor(private animalService: AnimalService, private route: Router) {
+   }
 
 
   ngOnInit() {
@@ -28,8 +29,5 @@ export class ListarAnimaisComponent implements OnInit {
       this.listaDeAnimais = listaDeAnimais;
     });
   }
-  detalhe() {
-    this.route.navigate(['feed/visualizar-animal']);
-  }
-
+  
 }

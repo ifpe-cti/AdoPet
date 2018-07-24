@@ -21,7 +21,7 @@ const feedRoutes = [
             { path: 'meus-animais', component: MeusAnimaisComponent },
             { path: 'adicionar-animal', component: AdicionarAnimalComponent },
             { path: 'listar-animais', component: ListarAnimaisComponent },
-            { path: 'visualizar-animal', component: VisualizarAnimalComponent },
+            { path: 'visualizar-animal/:id', component: VisualizarAnimalComponent },
         ]
     }
 ];
