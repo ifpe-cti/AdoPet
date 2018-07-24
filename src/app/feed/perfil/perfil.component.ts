@@ -1,6 +1,7 @@
 import { Usuario } from './../../model/Usuario';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
+import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -9,10 +10,15 @@ import { UsuarioService } from '../../services/usuario.service';
 })
 export class PerfilComponent implements OnInit {
   usuario: Usuario;
-  
-  constructor(private usuarioService: UsuarioService) { }
+  id: string;
+  constructor(private route : ActivatedRoute, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
+    this.route.params.subscribe(
+      (params: any) => {
+        this.id = params ['id'];
+      }
+    );
   }
 
   salvar(){

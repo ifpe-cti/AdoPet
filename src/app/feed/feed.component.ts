@@ -12,16 +12,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class FeedComponent implements OnInit {
   items: MenuItem[];
   email:string;
-  
-
-
-
-  constructor(private route: ActivatedRoute, private router: Router) { 
-   
-  }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-
     //this.email = sessionStorage.getItem("emailUsuario");
     //usuario = this.usuarioServico.carregar(email);
     this.items = [

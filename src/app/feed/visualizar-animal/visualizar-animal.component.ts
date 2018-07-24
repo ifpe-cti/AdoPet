@@ -1,3 +1,4 @@
+import { AnimalService } from './../../services/animal.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class VisualizarAnimalComponent implements OnInit {
 
   id: string;
-  constructor(private route : ActivatedRoute) { 
+  constructor(private route : ActivatedRoute, private animalService: AnimalService) { 
     }
 
   ngOnInit() {
@@ -19,6 +20,7 @@ export class VisualizarAnimalComponent implements OnInit {
       }
     );
   }
+
   adotar(){
     alert("Adotado");
   }

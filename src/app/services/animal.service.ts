@@ -31,6 +31,10 @@ export class AnimalService {
     });
     return meuObservable;
   }
+  
+  listarId(id: string){
+
+  }
 
   salvar(animal: Animal) {
     this.animalCollection.add(animal).then(
@@ -44,15 +48,9 @@ export class AnimalService {
     "preenchido corretamente" */});
   }
 
-  deleteTodo(animal: Animal) {
+  delete(animal: Animal) {
     this.animalCollection.doc(animal.id).delete();
   }
 
-  /*apagar(animal: Animal){
-      this.animalCollection.doc("animal").delete().then(function(){
-        console.log("Apagado com sucesso!");
-      }).catch(function(error){
-        error.console("Tente novamente!");
-      });
-    }*/
+
 }
