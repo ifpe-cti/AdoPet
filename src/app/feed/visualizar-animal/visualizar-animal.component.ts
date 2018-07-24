@@ -9,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class VisualizarAnimalComponent implements OnInit {
 
   id: string;
-  constructor(private route : ActivatedRoute) { }
+  constructor(private route : ActivatedRoute) { 
+    }
 
   ngOnInit() {
     this.route.params.subscribe(
