@@ -18,6 +18,8 @@ import { DataViewModule } from 'primeng/dataview';
 import { AnimalService } from '../services/animal.service';
 import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal.component';
 import {DropdownModule} from 'primeng/dropdown';
+import {CardModule} from 'primeng/card';
+
 
 
 
@@ -36,6 +38,7 @@ import {DropdownModule} from 'primeng/dropdown';
         TableModule,
         DataViewModule,
         DropdownModule,
+        CardModule,
     ],
     exports: [],
     declarations: [
