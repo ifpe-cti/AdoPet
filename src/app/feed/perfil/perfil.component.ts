@@ -14,6 +14,7 @@ export class PerfilComponent implements OnInit {
   constructor(private route : ActivatedRoute, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
+    this.usuarioService.getUsuarios();
     this.route.params.subscribe(
       (params: any) => {
         this.id = params ['id'];
@@ -22,6 +23,6 @@ export class PerfilComponent implements OnInit {
   }
 
   salvar(){
-
+    this.usuarioService.salvar(this.usuario);
   }
 }

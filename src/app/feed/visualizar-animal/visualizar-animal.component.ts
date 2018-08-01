@@ -1,6 +1,7 @@
 import { AnimalService } from './../../services/animal.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Animal } from '../../model/Animal';
 
 @Component({
   selector: 'app-visualizar-animal',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./visualizar-animal.component.css']
 })
 export class VisualizarAnimalComponent implements OnInit {
-
+  animal:Animal;
   id: string;
   constructor(private route : ActivatedRoute, private animalService: AnimalService) { 
     }

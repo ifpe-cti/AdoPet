@@ -17,7 +17,7 @@ const feedRoutes = [
     { path: 'feed/logout', component: TelaInicialComponent },
     {
         path: 'feed', component: FeedComponent, children: [
-            { path: 'perfil', component: PerfilComponent },
+            { path: 'meu-perfil', component: PerfilComponent },
             { path: 'meus-animais', component: MeusAnimaisComponent },
             { path: 'adicionar-animal', component: AdicionarAnimalComponent },
             { path: 'listar-animais', component: ListarAnimaisComponent },
