@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../model/Animal';
 import { Router } from '@angular/router';
 import { Message } from 'primeng/components/common/api';
-import {TableModule} from 'primeng/table';
 import { AnimalService } from '../../services/animal.service';
 
 
@@ -51,8 +50,8 @@ export class AdicionarAnimalComponent implements OnInit {
     this.animalService.listar();
 
   }
-  salvar(animal: Animal){
-    if(this.animal.nome == " " && this.animal.tipo == " " && this.animal.sexo == " " && this.animal.cor == " " && this.animal.idade == 0 && this.animal.descrição == " "){
+  salvar(){
+    if(this.animal.nome == " " || this.animal.tipo == " " || this.animal.sexo == " " || this.animal.cor == " " || this.animal.idade == 0 || this.animal.descrição == " "){
       this.showError();
       
     }else{
