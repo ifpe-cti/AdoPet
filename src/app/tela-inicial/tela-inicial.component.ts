@@ -25,6 +25,7 @@ import { Usuario } from '../model/Usuario';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Message } from 'primeng/components/common/api';
 import { AuthService } from '../services/auth.service';
+import { FormGroup, FormControl, Validators } from '../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -32,6 +33,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./tela-inicial.component.css'],
 })
 export class TelaInicialComponent implements OnInit {
+  cadastroForm: FormGroup;
   usuarioCadastro: UsuarioCadastro;
   usuario: Usuario;
   msgs: Message[];
@@ -60,12 +62,27 @@ export class TelaInicialComponent implements OnInit {
       senha: "",
       id: ""
     };
+    this.cadastroForm = new FormGroup({
+      email: new FormControl('',[
+        Validators.required,
+        Validators.pattern("[^ @]*@[^ @]*"),
+      ]),
+      senha: new FormControl('', [
+          Validators.required,
+          Validators.minLength(6)
+        ]),
+      nome: new FormControl('', [
+          Validators.required
+        ]),
+    });
   }
   //colocar a logo
 
   ngOnInit() {
     this.usuarioService.getUsuarios();
   }
+
+  
 
   signInWithGoogle() {
     this.authService.signInWithGoogle()
@@ -76,7 +93,7 @@ export class TelaInicialComponent implements OnInit {
   }
 
   signInWithEmail() {
-    this.authService.signInRegular(this.user.email, this.user.senha)
+    this.authService.signInRegular(FormData)
       .then((res) => {
         console.log(res);
         this.route.navigate(['/feed/listar-animais']);
