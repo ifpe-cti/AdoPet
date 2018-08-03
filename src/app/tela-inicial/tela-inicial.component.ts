@@ -67,6 +67,13 @@ export class TelaInicialComponent implements OnInit {
         Validators.required,
         Validators.pattern("[^ @]*@[^ @]*"),
       ]),
+      senha: new FormControl('', [
+          Validators.required,
+          Validators.minLength(6)
+        ]),
+      nome: new FormControl('', [
+          Validators.required
+        ]),
     });
   }
   //colocar a logo
