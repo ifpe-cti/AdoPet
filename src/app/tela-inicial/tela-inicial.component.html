@@ -5,6 +5,7 @@
                 <img width="300" alt="AdoPet Logo" src="C:\Users\Rosana\AdoPet\src\assets\logoAdoPet.png">
             </div>
             <div class="ui-inputgroup">
+                    <span class="error" *ngIf="erro" [@fallIn]='state'>{{ erro }}</span>
                 <form #formLogin="ngForm">
                     <table id="login">
                         <tr>
@@ -52,7 +53,7 @@
                     <tr>
                         <td>
                             <input #campoEmailNovo="ngModel" type="text" pInputText [(ngModel)]="usuarioCadastro.email" name="email" required/>
-                            <div *ngIf="!campoEmailNovo.valid && (campoEmailNovo.dirty || campoEmailNovo.touched)" class="alert alert-danger">
+                            <div *ngIf="!campoEmailNovo.valid && (campoEmailNovo.dirty || campoEmailNovo.touched)" class="alert alert-danger ui-message ui-messages-error">
                                 Por favor, digite seu e-mail</div>
                         </td>
                     </tr>
@@ -62,13 +63,13 @@
                     <tr>
                         <td>
                             <input #campoSenhaNova="ngModel" type="password" pInputText [(ngModel)]="usuarioCadastro.senha" name="senha" />
-                            <div *ngIf="!campoSenhaNova.valid && (campoSenhaNova.dirty || campoSenhaNova.touched)" class="alert alert-danger">
+                            <div *ngIf="!campoSenhaNova.valid && (campoSenhaNova.dirty || campoSenhaNova.touched)" class="alert alert-danger ui-message ui-messages-error">
                                 Por favor, digite sua senha</div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button"></button>
+                            <button pButton type="button" label="Salvar" (click)="signInWithEmail()" class="button ui-button"></button>
                         </td>
                     </tr>
                     <tr>
