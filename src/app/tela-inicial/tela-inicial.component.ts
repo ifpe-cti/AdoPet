@@ -108,27 +108,6 @@ export class TelaInicialComponent implements OnInit {
       })
       .catch((err) => console.log('error: ' + err));
   }
-  entrar() {
-    /* let podePassar: boolean = false;
-     podePassar = this.usuarioService.verificar(this.usuario);
-     if(podePassar == true){
-       console.log("entrooouu");
-       this.route.navigate(["feed"]);
-     }else{
-       console.log("pegou mas não pode entrar");
-       //this.showError();
-     }*/
-  }
-
-  // salvar() {
-  // this.usuarioService.salvar(this.usuarioCadastro);
-  //this.usuarioService.verificarSeFoiSalvo(this.usuarioCadastro);
-  //sessionStorage.setItem("emailUsuario", this.usuario.email);
-
-  //  this.route.navigate(['/feed/listar-animais']);
-  // }
-
-
   showError() {
     this.msgs = [];
     this.msgs.push({
