@@ -32,7 +32,17 @@ export class AnimalService {
     return meuObservable;
   }
   
-  listarId(id: string){
+  listarId(animalId){
+    return new Observable(observer => {
+    let doc = this.animalCollection.doc(animalId);
+    doc.snapshotChanges().subscribe(result => {
+      let id = result.payload.id;
+      let data = result.payload.data()
+      let document = { id: id, ...data };
+      observer.next(document);
+      observer.complete();
+    });
+  });
 
   }
 

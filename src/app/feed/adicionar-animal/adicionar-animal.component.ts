@@ -20,7 +20,7 @@ export class AdicionarAnimalComponent implements OnInit {
   porte: SelectItem[];
 
   constructor(private animalService: AnimalService, private route: Router) { 
-    this.animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: 0, porte: " ", descrição: " "};
+    this.animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " "};
     this.msgs = [];  
     this.tipoDeAnimal = [
       {label: 'Selecione', value: null},
@@ -51,9 +51,8 @@ export class AdicionarAnimalComponent implements OnInit {
 
   }
   salvar(){
-    if(this.animal.nome == " " || this.animal.tipo == " " || this.animal.sexo == " " || this.animal.cor == " " || this.animal.idade == 0 || this.animal.descrição == " "){
-      this.showError();
-      
+    if(this.animal.nome == "" || this.animal.tipo == "" || this.animal.sexo == "" || this.animal.cor == "" || this.animal.idade == "" || this.animal.descrição == ""){
+      this.showError();      
     }else{
       this.animalService.salvar(this.animal);
       this.route.navigate(['feed/listar-animais']);

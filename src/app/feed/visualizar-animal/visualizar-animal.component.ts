@@ -9,9 +9,9 @@ import { Animal } from '../../model/Animal';
   styleUrls: ['./visualizar-animal.component.css']
 })
 export class VisualizarAnimalComponent implements OnInit {
-  animal:Animal;
+  animal;
   id: string;
-  constructor(private route : ActivatedRoute, private animalService: AnimalService) { 
+  constructor(private route : ActivatedRoute, private animalService: AnimalService) {
     }
 
   ngOnInit() {
@@ -20,6 +20,11 @@ export class VisualizarAnimalComponent implements OnInit {
         this.id = params ['id'];
       }
     );
+    this.animal = this.animalService.listarId(this.id).subscribe(
+      resultadoObserverble => {
+        this.animal = resultadoObserverble;
+      }
+    ) 
   }
   adotar(){
     alert("Adotado");
