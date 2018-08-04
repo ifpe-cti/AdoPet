@@ -83,7 +83,7 @@ export class TelaInicialComponent implements OnInit {
   }
   onSubmit(formData) {
     if (formData.valid) {
-      this.authService.signInRegular(formData).then(resultado => {
+      this.authService.registerRegular(formData).then(resultado => {
         this.route.navigate(['/feed/listar-animais']);
       }).catch(erro => {
         //this.erro = erro;
@@ -100,35 +100,14 @@ export class TelaInicialComponent implements OnInit {
       .catch((err) => console.log(err));
   }
 
-  signInWithEmail() {
-    this.authService.signInRegular(FormData)
+  registerWithEmail() {
+    this.authService.registerRegular(FormData)
       .then((res) => {
         console.log(res);
         this.route.navigate(['/feed/listar-animais']);
       })
       .catch((err) => console.log('error: ' + err));
   }
-  entrar() {
-    /* let podePassar: boolean = false;
-     podePassar = this.usuarioService.verificar(this.usuario);
-     if(podePassar == true){
-       console.log("entrooouu");
-       this.route.navigate(["feed"]);
-     }else{
-       console.log("pegou mas não pode entrar");
-       //this.showError();
-     }*/
-  }
-
- // salvar() {
-   // this.usuarioService.salvar(this.usuarioCadastro);
-    //this.usuarioService.verificarSeFoiSalvo(this.usuarioCadastro);
-    //sessionStorage.setItem("emailUsuario", this.usuario.email);
-
-  //  this.route.navigate(['/feed/listar-animais']);
- // }
-
-
   showError() {
     this.msgs = [];
     this.msgs.push({
