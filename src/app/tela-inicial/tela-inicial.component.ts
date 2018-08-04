@@ -63,17 +63,17 @@ export class TelaInicialComponent implements OnInit {
       id: ""
     };
     this.cadastroForm = new FormGroup({
-      email: new FormControl('',[
+      email: new FormControl('', [
         Validators.required,
         Validators.pattern("[^ @]*@[^ @]*"),
       ]),
       senha: new FormControl('', [
-          Validators.required,
-          Validators.minLength(6)
-        ]),
+        Validators.required,
+        Validators.minLength(6)
+      ]),
       nome: new FormControl('', [
-          Validators.required
-        ]),
+        Validators.required
+      ]),
     });
   }
   //colocar a logo
@@ -81,8 +81,16 @@ export class TelaInicialComponent implements OnInit {
   ngOnInit() {
     this.usuarioService.getUsuarios();
   }
-
-  
+  onSubmit(formData) {
+    if (formData.valid) {
+      this.authService.signInRegular(formData).then(resultado => {
+        this.route.navigate(['/feed/listar-animais']);
+      }).catch(erro => {
+        //this.erro = erro;
+        console.log("erro");
+      });
+    }
+  }
 
   signInWithGoogle() {
     this.authService.signInWithGoogle()
@@ -112,13 +120,13 @@ export class TelaInicialComponent implements OnInit {
      }*/
   }
 
-  salvar() {
-    this.usuarioService.salvar(this.usuarioCadastro);
+ // salvar() {
+   // this.usuarioService.salvar(this.usuarioCadastro);
     //this.usuarioService.verificarSeFoiSalvo(this.usuarioCadastro);
     //sessionStorage.setItem("emailUsuario", this.usuario.email);
 
-    this.route.navigate(['/feed/listar-animais']);
-  }
+  //  this.route.navigate(['/feed/listar-animais']);
+ // }
 
 
   showError() {
