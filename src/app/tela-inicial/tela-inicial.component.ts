@@ -83,7 +83,7 @@ export class TelaInicialComponent implements OnInit {
   }
   onSubmit(formData) {
     if (formData.valid) {
-      this.authService.signInRegular(formData).then(resultado => {
+      this.authService.registerRegular(formData).then(resultado => {
         this.route.navigate(['/feed/listar-animais']);
       }).catch(erro => {
         //this.erro = erro;
@@ -100,8 +100,8 @@ export class TelaInicialComponent implements OnInit {
       .catch((err) => console.log(err));
   }
 
-  signInWithEmail() {
-    this.authService.signInRegular(FormData)
+  registerWithEmail() {
+    this.authService.registerRegular(FormData)
       .then((res) => {
         console.log(res);
         this.route.navigate(['/feed/listar-animais']);

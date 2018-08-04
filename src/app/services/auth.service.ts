@@ -37,9 +37,13 @@ export class AuthService {
 			return this._firebaseAuth.auth.signInWithEmailAndPassword(email, senha)
 		}*/
 
-	signInRegular(formData): Promise<any> {
+		signInRegular(){
+			
+		}
+
+	registerRegular(formData): Promise<any> {
 		let angularFireAuth = this._firebaseAuth;
-		let angularFireStore = this.angularfire;
+	//	let angularFireStore = this.angularfire;
 		return new Promise(function (resolve, reject) {
 			if (formData.valid) {
 				angularFireAuth.auth.createUserWithEmailAndPassword(
