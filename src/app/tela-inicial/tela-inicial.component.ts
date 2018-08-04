@@ -120,13 +120,13 @@ export class TelaInicialComponent implements OnInit {
      }*/
   }
 
- // salvar() {
-   // this.usuarioService.salvar(this.usuarioCadastro);
-    //this.usuarioService.verificarSeFoiSalvo(this.usuarioCadastro);
-    //sessionStorage.setItem("emailUsuario", this.usuario.email);
+  // salvar() {
+  // this.usuarioService.salvar(this.usuarioCadastro);
+  //this.usuarioService.verificarSeFoiSalvo(this.usuarioCadastro);
+  //sessionStorage.setItem("emailUsuario", this.usuario.email);
 
   //  this.route.navigate(['/feed/listar-animais']);
- // }
+  // }
 
 
   showError() {
