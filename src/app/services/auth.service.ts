@@ -32,18 +32,15 @@ export class AuthService {
 			new firebase.auth.GoogleAuthProvider()
 		)
 	}
-	/*	signInRegular(email, senha) {
-			const credential = firebase.auth.EmailAuthProvider.credential(email, senha);
-			return this._firebaseAuth.auth.signInWithEmailAndPassword(email, senha)
-		}*/
 
-		signInRegular(){
-			
-		}
+
+	signInRegular() {
+
+	}
 
 	registerRegular(formData): Promise<any> {
 		let angularFireAuth = this._firebaseAuth;
-	//	let angularFireStore = this.angularfire;
+		//	let angularFireStore = this.angularfire;
 		return new Promise(function (resolve, reject) {
 			if (formData.valid) {
 				angularFireAuth.auth.createUserWithEmailAndPassword(
