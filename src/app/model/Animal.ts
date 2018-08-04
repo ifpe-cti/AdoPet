@@ -4,7 +4,7 @@ export interface Animal{
     tipo: string;
     sexo: string;
     cor: string;
-    idade: number;
+    idade: string;
     porte: string;
     descrição: string;
 
