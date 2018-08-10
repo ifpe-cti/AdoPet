@@ -97,7 +97,7 @@ export class TelaInicialComponent implements OnInit {
       } else {
         console.log("Usuario " + usuario.nome + " logado.");
 
-        // this.authService.usuarioLogado = usuario; 
+        this.authService.isLoggedIn = usuario; 
         
         this.route.navigate(['/feed/listar-animais']);
       }
