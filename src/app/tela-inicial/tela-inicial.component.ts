@@ -90,20 +90,20 @@ export class TelaInicialComponent implements OnInit {
       .catch((err) => console.log(err));
     }
     
-    SingInWithEmail(email: String, senha: String) {
+    singInWithEmail(email: String, senha: String) {
     this.authService.signInRegular(email, senha).subscribe(usuario => {
       if (usuario == null) {
         alert("Usuário não cadastrado no banco.")
       } else {
         console.log("Usuario " + usuario.nome + " logado.");
 
-        // this.authService.usuarioLogado = usuario; 
+        this.authService.isLoggedIn = usuario; 
         
         this.route.navigate(['/feed/listar-animais']);
       }
     });
   }
-  
+  //aaaaaaaabbbbbbbbbbbb
   registerWithEmail() {
     if (this.usuarioCadastro.nome == null || this.usuarioCadastro.email == null ||
       this.usuarioCadastro.senha == null) {
