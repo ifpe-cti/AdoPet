@@ -3,17 +3,19 @@ import { Router } from "@angular/router";
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
-import { AngularFirestore } from '../../../node_modules/angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '../../../node_modules/angularfire2/firestore';
 import { UsuarioCadastro } from '../model/UsuarioCadastro';
+import { Usuario } from '../model/Usuario';
 
 
 @Injectable()
 export class AuthService {
 	private user: Observable<firebase.User>;
+	private usuarioCollection: AngularFirestoreCollection<Usuario>;
 	private userDetails: firebase.User = null;
 
 	constructor(private _firebaseAuth: AngularFireAuth, private angularfire: AngularFirestore, private router: Router) {
-
+		this.usuarioCollection = this.angularfire.collection("usuario");
 		this.user = _firebaseAuth.authState;
 		this.user.subscribe(
 			(user) => {
@@ -34,11 +36,29 @@ export class AuthService {
 	}
 
 
-	signInRegular() {
+	signInRegular(email: String, senha: String): Observable<any> {
+		let usuario = new Observable<any>(observer => {
+			let collectionFiltrada = this.angularfire.collection<UsuarioCadastro>('usuario', ref =>
+				ref.where('email', '==', email)
+					.where('senha', '==', senha));
+			let resultados = collectionFiltrada.snapshotChanges().subscribe(result => {
+				let document;
+				result.map(documents => {
+					let id = documents.payload.doc.id;
+					let data = documents.payload.doc.data();
+					document = { id: id, ...data };
+				});
+				observer.next(document);
+				observer.complete();
+			});
+		});
 
+		return usuario;
 	}
 
-	registerRegular(formData): Promise<any> {
+
+
+	/*registerRegular(formData): Promise<any> {
 		let angularFireAuth = this._firebaseAuth;
 		//	let angularFireStore = this.angularfire;
 		return new Promise(function (resolve, reject) {
@@ -66,7 +86,7 @@ export class AuthService {
 				reject(new Error("Dados do formulário com erros de validação"))
 			}
 		});
-	}
+	}*/
 
 	isLoggedIn() {
 		if (this.userDetails == null) {
