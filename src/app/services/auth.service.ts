@@ -13,10 +13,18 @@ export class AuthService {
 	private user: Observable<firebase.User>;
 	private usuarioCollection: AngularFirestoreCollection<Usuario>;
 	private userDetails: firebase.User = null;
+	private usuarioCadastro: { $key: string; email: string; nome: string; senha: string; id: string; };
 
 	constructor(private _firebaseAuth: AngularFireAuth, private angularfire: AngularFirestore, private router: Router) {
 		this.usuarioCollection = this.angularfire.collection("usuario");
 		this.user = _firebaseAuth.authState;
+		this.usuarioCadastro = {
+			$key: "",
+			email: "",
+			nome: "",
+			senha: "",
+			id: ""
+		};
 		this.user.subscribe(
 			(user) => {
 				if (user) {
@@ -34,7 +42,6 @@ export class AuthService {
 			new firebase.auth.GoogleAuthProvider()
 		)
 	}
-
 
 	signInRegular(email: String, senha: String): Observable<any> {
 		let usuario = new Observable<any>(observer => {
@@ -55,6 +62,32 @@ export class AuthService {
 
 		return usuario;
 	}
+
+	deleteUser(usuario: Usuario): Promise<void> {
+		return this.usuarioCollection.doc(usuario.id).delete();
+	}
+
+	isLoggedIn() {
+		if (this.userDetails == null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	logout() {
+		this._firebaseAuth.auth.signOut()
+			.then((res) => this.router.navigate(['/']));
+	}
+
+	registerRegular(usuarioCadastro: UsuarioCadastro) {
+
+		this.usuarioCollection.add(usuarioCadastro).then(
+			resultado => {
+				usuarioCadastro.id = resultado.id;
+			});
+
+	}
+
 
 
 
@@ -88,15 +121,4 @@ export class AuthService {
 		});
 	}*/
 
-	isLoggedIn() {
-		if (this.userDetails == null) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-	logout() {
-		this._firebaseAuth.auth.signOut()
-			.then((res) => this.router.navigate(['/']));
-	}
 }

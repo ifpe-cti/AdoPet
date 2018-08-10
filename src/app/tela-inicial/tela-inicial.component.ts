@@ -81,6 +81,46 @@ export class TelaInicialComponent implements OnInit {
   ngOnInit() {
     this.usuarioService.getUsuarios();
   }
+  
+  signInWithGoogle() {
+    this.authService.signInWithGoogle()
+      .then((res) => {
+        this.route.navigate(['/feed/listar-animais']);
+      })
+      .catch((err) => console.log(err));
+    }
+    
+    SingInWithEmail(email: String, senha: String) {
+    this.authService.signInRegular(email, senha).subscribe(usuario => {
+      if (usuario == null) {
+        alert("Usuário não cadastrado no banco.")
+      } else {
+        console.log("Usuario " + usuario.nome + " logado.");
+
+        // this.authService.usuarioLogado = usuario; 
+        
+        this.route.navigate(['/feed/listar-animais']);
+      }
+    });
+  }
+  
+  registerWithEmail() {
+    if (this.usuarioCadastro.nome == null || this.usuarioCadastro.email == null ||
+      this.usuarioCadastro.senha == null) {
+        //error
+      } else {
+        console.log("pegou")
+      this.route.navigate(['/feed/meu-perfil']);
+    }
+  }
+  showError() {
+    this.msgs = [];
+    this.msgs.push({
+      severity: 'error', summary: 'Login inexistente',
+      detail: 'Verifique o login e a senha ou cadastre-se!'
+    });
+  }
+
   /*onSubmit(formData) {
     if (formData.valid) {
       this.authService.registerRegular(formData).then(resultado => {
@@ -91,34 +131,4 @@ export class TelaInicialComponent implements OnInit {
       });
     }
   }*/
-
-  signInWithGoogle() {
-    this.authService.signInWithGoogle()
-      .then((res) => {
-        this.route.navigate(['/feed/listar-animais']);
-      })
-      .catch((err) => console.log(err));
-  }
-
-  SingInWithEmail(email: String, senha: String){
-      this.authService.signInRegular(email, senha).subscribe(usuario => {
-        if(usuario == null){
-          alert("Usuário não cadastrado no banco.")
-        } else{
-          console.log("Usuario "+ usuario.nome + " logado.");
-
-         // this.authService.usuarioLogado = usuario; 
-          
-          this.route.navigate(['/feed/listar-animais']); 
-        }
-      });
-    }
-  showError() {
-    this.msgs = [];
-    this.msgs.push({
-      severity: 'error', summary: 'Login inexistente',
-      detail: 'Verifique o login e a senha ou cadastre-se!'
-    });
-  }
-
 }
