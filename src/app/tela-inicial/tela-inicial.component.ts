@@ -103,7 +103,7 @@ export class TelaInicialComponent implements OnInit {
       }
     });
   }
-  
+  //aaaaaaaa
   registerWithEmail() {
     if (this.usuarioCadastro.nome == null || this.usuarioCadastro.email == null ||
       this.usuarioCadastro.senha == null) {
