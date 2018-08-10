@@ -81,7 +81,7 @@ export class TelaInicialComponent implements OnInit {
   ngOnInit() {
     this.usuarioService.getUsuarios();
   }
-  onSubmit(formData) {
+  /*onSubmit(formData) {
     if (formData.valid) {
       this.authService.registerRegular(formData).then(resultado => {
         this.route.navigate(['/feed/listar-animais']);
@@ -90,7 +90,7 @@ export class TelaInicialComponent implements OnInit {
         console.log("erro");
       });
     }
-  }
+  }*/
 
   signInWithGoogle() {
     this.authService.signInWithGoogle()
@@ -100,14 +100,19 @@ export class TelaInicialComponent implements OnInit {
       .catch((err) => console.log(err));
   }
 
-  registerWithEmail() {
-    this.authService.registerRegular(FormData)
-      .then((res) => {
-        console.log(res);
-        this.route.navigate(['/feed/listar-animais']);
-      })
-      .catch((err) => console.log('error: ' + err));
-  }
+  SingInWithEmail(email: String, senha: String){
+      this.authService.signInRegular(email, senha).subscribe(usuario => {
+        if(usuario == null){
+          alert("Usuário não cadastrado no banco.")
+        } else{
+          console.log("Usuario "+ usuario.nome + " logado.");
+
+         // this.authService.usuarioLogado = usuario; 
+          
+          this.route.navigate(['/feed/listar-animais']); 
+        }
+      });
+    }
   showError() {
     this.msgs = [];
     this.msgs.push({
