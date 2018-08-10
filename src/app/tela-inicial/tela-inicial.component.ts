@@ -90,7 +90,7 @@ export class TelaInicialComponent implements OnInit {
       .catch((err) => console.log(err));
     }
     
-    SingInWithEmail(email: String, senha: String) {
+    singInWithEmail(email: String, senha: String) {
     this.authService.signInRegular(email, senha).subscribe(usuario => {
       if (usuario == null) {
         alert("Usuário não cadastrado no banco.")
