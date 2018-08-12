@@ -81,32 +81,37 @@ export class TelaInicialComponent implements OnInit {
   ngOnInit() {
     this.usuarioService.getUsuarios();
   }
-  onSubmit(formData) {
-    if (formData.valid) {
-      this.authService.registerRegular(formData).then(resultado => {
-        this.route.navigate(['/feed/listar-animais']);
-      }).catch(erro => {
-        //this.erro = erro;
-        console.log("erro");
-      });
-    }
-  }
-
+  
   signInWithGoogle() {
     this.authService.signInWithGoogle()
       .then((res) => {
         this.route.navigate(['/feed/listar-animais']);
       })
       .catch((err) => console.log(err));
-  }
+    }
+    
+    singInWithEmail(email: String, senha: String) {
+    this.authService.signInRegular(email, senha).subscribe(usuario => {
+      if (usuario == null) {
+        alert("Usuário não cadastrado no banco.")
+      } else {
+        console.log("Usuario " + usuario.nome + " logado.");
 
-  registerWithEmail() {
-    this.authService.registerRegular(FormData)
-      .then((res) => {
-        console.log(res);
+        this.authService.isLoggedIn = usuario; 
+        
         this.route.navigate(['/feed/listar-animais']);
-      })
-      .catch((err) => console.log('error: ' + err));
+      }
+    });
+  }
+  //aaaaaaaabbbbbbbbbbbb
+  registerWithEmail() {
+    if (this.usuarioCadastro.nome == null || this.usuarioCadastro.email == null ||
+      this.usuarioCadastro.senha == null) {
+        //error
+      } else {
+        console.log("pegou")
+      this.route.navigate(['/feed/meu-perfil']);
+    }
   }
   showError() {
     this.msgs = [];
@@ -116,4 +121,14 @@ export class TelaInicialComponent implements OnInit {
     });
   }
 
+  /*onSubmit(formData) {
+    if (formData.valid) {
+      this.authService.registerRegular(formData).then(resultado => {
+        this.route.navigate(['/feed/listar-animais']);
+      }).catch(erro => {
+        //this.erro = erro;
+        console.log("erro");
+      });
+    }
+  }*/
 }
