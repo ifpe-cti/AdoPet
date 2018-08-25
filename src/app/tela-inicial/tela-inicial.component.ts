@@ -25,7 +25,10 @@ import { Usuario } from '../model/Usuario';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Message } from 'primeng/components/common/api';
 import { AuthService } from '../services/auth.service';
-import { FormGroup, FormControl, Validators } from '../../../node_modules/@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '../../../node_modules/@angular/forms';
+
+type UserFields = 'email' | 'senha';
+type FormErrors = { [u in UserFields]: string };
 
 @Component({
   selector: 'app-tela-inicial',
@@ -33,6 +36,7 @@ import { FormGroup, FormControl, Validators } from '../../../node_modules/@angul
   styleUrls: ['./tela-inicial.component.css'],
 })
 export class TelaInicialComponent implements OnInit {
+
   cadastroForm: FormGroup;
   usuarioCadastro: UsuarioCadastro;
   usuario: Usuario;
@@ -43,76 +47,61 @@ export class TelaInicialComponent implements OnInit {
     email: '',
     senha: ''
   }
+  newUser = true;
+  formErrors: FormErrors = {
+    'email': '',
+    'senha': '',
+  };
+  validationMessages = {
+    'email': {
+      'required': 'Email é obrigatório.',
+      'email': 'Email deve ser válido',
+    },
+    'senha': {
+      'required': 'Senha é obrigatória.',
+      'pattern': 'A senha deve conter letras e números.',
+      'minlength': 'O tamanho minimo para senha é de 6 caracteres.',
+      'maxlength': 'O tamanho máximo para senha é de 26 caracteres.',
+    },
+  };
 
   constructor(private usuarioService: UsuarioService, private route: Router,
-    private rotaAtiva: ActivatedRoute, private authService: AuthService) {
+    private rotaAtiva: ActivatedRoute, private authService: AuthService, private formBuilder: FormBuilder) {
     this.user = this.rotaAtiva.snapshot.params['user'];
-    this.usuario = {
-      $key: "",
-      email: "",
-      senha: "",
-      id: ""
-    };
+
+
     this.usuarios = [];
     this.msgs = [];
-    this.usuarioCadastro = {
-      $key: "",
-      email: "",
-      nome: "",
-      senha: "",
-      id: ""
-    };
-    this.cadastroForm = new FormGroup({
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern("[^ @]*@[^ @]*"),
-      ]),
-      senha: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6)
-      ]),
-      nome: new FormControl('', [
-        Validators.required
-      ]),
-    });
+
+
   }
   //colocar a logo
 
   ngOnInit() {
     this.usuarioService.getUsuarios();
   }
-  
+
+
+
+
   signInWithGoogle() {
     this.authService.signInWithGoogle()
       .then((res) => {
         this.route.navigate(['/feed/listar-animais']);
       })
       .catch((err) => console.log(err));
-    }
-    
-    singInWithEmail(email: String, senha: String) {
-    this.authService.signInRegular(email, senha).subscribe(usuario => {
-      if (usuario == null) {
-        alert("Usuário não cadastrado no banco.")
-      } else {
-        console.log("Usuario " + usuario.nome + " logado.");
+  }
 
-        this.authService.isLoggedIn = usuario; 
-        
-        this.route.navigate(['/feed/listar-animais']);
-      }
-    });
+  signInWithFacebook() {
+    this.authService.signInWithFacebook()
+    .then((res) => { 
+        this.route.navigate(['/feed/listar-animais'])
+      })
+    .catch((err) => console.log(err));
   }
-  //aaaaaaaabbbbbbbbbbbb
-  registerWithEmail() {
-    if (this.usuarioCadastro.nome == null || this.usuarioCadastro.email == null ||
-      this.usuarioCadastro.senha == null) {
-        //error
-      } else {
-        console.log("pegou")
-      this.route.navigate(['/feed/meu-perfil']);
-    }
-  }
+
+
+
   showError() {
     this.msgs = [];
     this.msgs.push({
@@ -121,14 +110,4 @@ export class TelaInicialComponent implements OnInit {
     });
   }
 
-  /*onSubmit(formData) {
-    if (formData.valid) {
-      this.authService.registerRegular(formData).then(resultado => {
-        this.route.navigate(['/feed/listar-animais']);
-      }).catch(erro => {
-        //this.erro = erro;
-        console.log("erro");
-      });
-    }
-  }*/
 }
