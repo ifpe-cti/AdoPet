@@ -1,12 +1,11 @@
 //ANGULAR
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from "angularfire2/auth";
-
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
@@ -32,6 +31,7 @@ import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
 import { FeedComponent } from './feed/feed.component';
 import { FeedModule } from './feed/feed.module';
 import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.component';
+import { NotifyService } from './services/notify.service';
 
 
 
@@ -42,8 +42,9 @@ import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.com
     BancoDeDadosComponent,
     FeedComponent,
     ListarAnimaisComponent,
-
+    
   ],
+  
   imports: [
     TabMenuModule,
     BrowserModule,
@@ -61,7 +62,7 @@ import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.com
     ContextMenuModule,
     DataViewModule,
   ],
-  providers: [UsuarioService, AuthService, AuthGuard],
+  providers: [UsuarioService, AuthService, AuthGuard, NotifyService, FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
