@@ -23,6 +23,7 @@ export class PerfilComponent implements OnInit {
   }
 
   salvar(){
-    this.usuarioService.salvar(this.usuario);
+    alert(this.usuario.$id);
+    //this.usuarioService.atualizarUsuario(this.usuario);
   }
 }

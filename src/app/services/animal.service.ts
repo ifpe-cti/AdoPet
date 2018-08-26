@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Animal } from '../model/Animal';
 import { Observable } from 'rxjs/Observable';
+import { Usuario } from '../model/Usuario';
 
 
 @Injectable()
@@ -9,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 export class AnimalService {
   private animalCollection: AngularFirestoreCollection<Animal>;
   animal$: Observable<Animal[]>;
+  usuario: Usuario;
 
   constructor(private angularFirestore: AngularFirestore) {
     this.animalCollection = this.angularFirestore.collection<Animal>("animal");
@@ -43,7 +45,6 @@ export class AnimalService {
       observer.complete();
     });
   });
-
   }
 
   salvar(animal: Animal) {
@@ -61,6 +62,4 @@ export class AnimalService {
   delete(animal: Animal) {
     this.animalCollection.doc(animal.id).delete();
   }
-
-
 }

@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { Message } from 'primeng/components/common/api';
 import { AnimalService } from '../../services/animal.service';
 
-
 @Component({
   selector: 'app-adicionar-animal',
   templateUrl: './adicionar-animal.component.html',
@@ -42,7 +41,6 @@ export class AdicionarAnimalComponent implements OnInit {
       {label: 'Pequeno', value: 'Pequeno'},
       {label: 'Médio', value: 'Médio'},
       {label: 'Grande', value: 'Grande'},
-
     ]
   }
 
