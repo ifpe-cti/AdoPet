@@ -7,5 +7,5 @@ export interface Animal{
     idade: string;
     porte: string;
     descrição: string;
-
+    idUsuario?: any;
 }

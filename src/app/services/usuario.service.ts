@@ -7,7 +7,7 @@ import { Usuario } from '../model/Usuario';
 export class UsuarioService {
 
   private usuarioCollection: AngularFirestoreCollection<Usuario>;
-  usuario$: Observable<Usuario[]>;
+  usuario: Observable<Usuario[]>;
 
   constructor(private angularFirestore: AngularFirestore) {
     this.usuarioCollection = this.angularFirestore.collection<Usuario>("usuario");
@@ -33,16 +33,17 @@ export class UsuarioService {
   salvar(usuario: Usuario) {
     this.usuarioCollection.add(usuario).then(
       resultado => {
-        usuario.id = resultado.id;
+        usuario.$id = resultado.id;
       });
   }
+  
   atualizarUsuario(usuario: Usuario) {
-    this.usuarioCollection.doc(usuario.id).update({ /*colocar um boolean pra dizer se o usuario foi
+    this.usuarioCollection.doc(usuario.$id).update({ /*colocar um boolean pra dizer se o usuario foi
     "preenchido corretamente" */});
   }
 
   deletarUsuario(usuario: Usuario) {
-    this.usuarioCollection.doc(usuario.id).delete();
+    this.usuarioCollection.doc(usuario.$id).delete();
   }
   
 }
