@@ -3,9 +3,12 @@ import { Router } from "@angular/router";
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
-import { AngularFirestore, AngularFirestoreCollection } from '../../../node_modules/angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '../../../node_modules/angularfire2/firestore';
 import { UsuarioCadastro } from '../model/UsuarioCadastro';
 import { Usuario } from '../model/Usuario';
+import { NotifyService } from './notify.service';
+import { switchMap } from '../../../node_modules/rxjs/operators';
+import { of } from '../../../node_modules/rxjs/observable/of';
 
 
 @Injectable()
@@ -13,60 +16,34 @@ export class AuthService {
 	private user: Observable<firebase.User>;
 	private usuarioCollection: AngularFirestoreCollection<Usuario>;
 	private userDetails: firebase.User = null;
-	private usuarioCadastro: { $key: string; email: string; nome: string; senha: string; id: string; };
 
-	constructor(private _firebaseAuth: AngularFireAuth, private angularfire: AngularFirestore, private router: Router) {
+	constructor(private firebaseAuth: AngularFireAuth, private angularfire: AngularFirestore,
+		private router: Router, private notify: NotifyService) {
 		this.usuarioCollection = this.angularfire.collection("usuario");
-		this.user = _firebaseAuth.authState;
-		this.usuarioCadastro = {
-			$key: "",
-			email: "",
-			nome: "",
-			senha: "",
-			id: ""
-		};
-		this.user.subscribe(
-			(user) => {
-				if (user) {
-					this.userDetails = user;
-					console.log(this.userDetails);
-				} else {
-					this.userDetails = null;
-				}
-			}
-		);
+
 	}
 
+
+
+
 	signInWithGoogle() {
-		return this._firebaseAuth.auth.signInWithPopup(
+		return this.firebaseAuth.auth.signInWithPopup(
 			new firebase.auth.GoogleAuthProvider()
 		)
 	}
 
-	signInRegular(email: String, senha: String): Observable<any> {
-		let usuario = new Observable<any>(observer => {
-			let collectionFiltrada = this.angularfire.collection<UsuarioCadastro>('usuario', ref =>
-				ref.where('email', '==', email)
-					.where('senha', '==', senha));
-			let resultados = collectionFiltrada.snapshotChanges().subscribe(result => {
-				let document;
-				result.map(documents => {
-					let id = documents.payload.doc.id;
-					let data = documents.payload.doc.data();
-					document = { id: id, ...data };
-				});
-				observer.next(document);
-				observer.complete();
-			});
-		});
-
-		return usuario;
+	
+	signInWithFacebook() {
+		return this.firebaseAuth.auth.signInWithPopup(
+			new firebase.auth.FacebookAuthProvider()
+		)
 	}
+	
 
-	deleteUser(usuario: Usuario): Promise<void> {
-		return this.usuarioCollection.doc(usuario.id).delete();
+	logout() {
+		this.firebaseAuth.auth.signOut()
+			.then((res) => this.router.navigate(['/']));
 	}
-
 	isLoggedIn() {
 		if (this.userDetails == null) {
 			return false;
@@ -74,51 +51,4 @@ export class AuthService {
 			return true;
 		}
 	}
-	logout() {
-		this._firebaseAuth.auth.signOut()
-			.then((res) => this.router.navigate(['/']));
-	}
-
-	registerRegular(usuarioCadastro: UsuarioCadastro) {
-
-		this.usuarioCollection.add(usuarioCadastro).then(
-			resultado => {
-				usuarioCadastro.id = resultado.id;
-			});
-
-	}
-
-
-
-
-	/*registerRegular(formData): Promise<any> {
-		let angularFireAuth = this._firebaseAuth;
-		//	let angularFireStore = this.angularfire;
-		return new Promise(function (resolve, reject) {
-			if (formData.valid) {
-				angularFireAuth.auth.createUserWithEmailAndPassword(
-					formData.value.email,
-					formData.value.senha
-				).then(
-					(success) => {
-						//let usuario: new UsuarioCadastro(formData.value.nome,formData.value.email, formData.user.senha, success.user.id);
-						//usuario.add();
-						resolve(success);
-						this.router.navigate(['/feed/listar-animais']);
-					}).catch(
-						(err) => {
-							if (err.code == "auth/weak-password") {
-								reject(new Error("Sua senha deve conter no mínimo 6 caracteres."));
-							} else if (err.code == "auth/invalid-email") {
-								reject(new Error("E-mail informado é inválido."));
-							} else if (err.code == "auth/email-already-in-use") {
-								reject(new Error("Esse e-mail já está cadastrado."));
-							}
-						})
-			} else {
-				reject(new Error("Dados do formulário com erros de validação"))
-			}
-		});
-	}*/
-
 }

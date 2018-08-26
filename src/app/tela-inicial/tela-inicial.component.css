@@ -1,8 +1,21 @@
 .login{
     padding: 50px 220px;
 }
+.h1{
+    font-family: "fantasy";
+    color: #FF82AB
+}
 .button{
     background-color: #FF82AB;
     border: #FF82AB;
+}
+.header{
+    background-color: bisque;
+}
+.div{
+    background-color: bisque;
+}
+.tr{
+    background-color: bisque;
 }
 
