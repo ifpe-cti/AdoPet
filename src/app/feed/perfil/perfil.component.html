@@ -2,13 +2,19 @@
     <div class="ui-g-4"></div>
     <div class="ui-g-5">
         <h4><p>Meu perfil</p></h4>
-        Nome:         
-        <br/>
-        Email:  <!--<input type="text" pInputText [(ngModel)]="usuario.email"/>-->
-        <br/>
-        Senha: 
-        <br/> 
-        <div class="ui-g-4"></div>
+        <p>
+            Nome:         
+            <input type="text" size="40"pInputText [(ngModel)]="usuario.email"/>
+        </p>
+        <p>
+            Email:  
+            <input type="text" size="40"pInputText [(ngModel)]="usuario.email"/>
+        </p>
+        <p>
+            Senha: 
+            <input type="text" size="40"pInputText [(ngModel)]="usuario.email"/>
+        </p>
+        <div class="ui-g-8"></div>
         <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button-success ui-growl-container"></button>
       </div>
     <div class="ui-g-2"></div>

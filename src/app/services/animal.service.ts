@@ -1,3 +1,4 @@
+import { UsuarioService } from './usuario.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Animal } from '../model/Animal';
@@ -11,8 +12,9 @@ export class AnimalService {
   private animalCollection: AngularFirestoreCollection<Animal>;
   animal$: Observable<Animal[]>;
   usuario: Usuario;
+  animal: Animal;
 
-  constructor(private angularFirestore: AngularFirestore) {
+  constructor(private angularFirestore: AngularFirestore, private usuarioService: UsuarioService) {
     this.animalCollection = this.angularFirestore.collection<Animal>("animal");
   }
 
@@ -46,16 +48,22 @@ export class AnimalService {
     });
   });
   }
+  listarIdUsuario(){
+    if(this.animal.idUsuario == this.usuarioService.getUsuarioId){
+      return this.animal;
+    }
+  }
 
   salvar(animal: Animal) {
     this.animalCollection.add(animal).then(
       resultado => {
         animal.id = resultado.id;
+        animal.idUsuario = this.usuarioService.getUsuarioId;
       });
   }
 
-  atualizarAnimal(animal: Animal) {
-    this.animalCollection.doc(animal.id).update({ /*colocar um boolean pra dizer se o usuario foi
+  atualizarAnimal(id: string) {
+    this.animalCollection.doc(id).update({ /*colocar um boolean pra dizer se o usuario foi
     "preenchido corretamente" */});
   }
 
