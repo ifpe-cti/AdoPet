@@ -19,6 +19,8 @@ import { AnimalService } from '../services/animal.service';
 import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal.component';
 import {DropdownModule} from 'primeng/dropdown';
 import {CardModule} from 'primeng/card';
+import { DialogModule } from 'primeng/components/dialog/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -39,6 +41,8 @@ import {CardModule} from 'primeng/card';
         DataViewModule,
         DropdownModule,
         CardModule,
+        DialogModule,
+        BrowserAnimationsModule,
     ],
     exports: [],
     declarations: [
