@@ -1,7 +1,7 @@
 .container {
              width: 100vw;
              height: 25vh;
-             background: rgb(201, 169, 139);
+             background: rgb(224, 208, 192);
              display: flex;
              flex-direction: row;
         justify-content: center;
@@ -10,7 +10,7 @@
     .rodape {
         width: 100vw;
         height: 15vh;
-        background: rgb(201, 169, 139);
+        background:rgb(224, 208, 192);
         display: flex;
         flex-direction: row;
    justify-content: center;
@@ -27,13 +27,10 @@
 .login{
     padding: 50px 220px;
 }
-.h1{
-    font-family: "fantasy";
-    color: #FF82AB
-}
+
 .botao{
-    background-color: #FF82AB;
-    border: #FF82AB;
+    background-color: #EBCFC4;
+    border: #EBCFC4;
 }
 .header{
     background-color: bisque;
