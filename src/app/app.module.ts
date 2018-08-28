@@ -13,6 +13,8 @@ import { DialogModule } from 'primeng/components/dialog/dialog';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { DataViewModule } from 'primeng/dataview';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+
 
 
 
@@ -61,6 +63,7 @@ import { NotifyService } from './services/notify.service';
     FeedModule,
     ContextMenuModule,
     DataViewModule,
+    ScrollPanelModule
   ],
   providers: [UsuarioService, AuthService, AuthGuard, NotifyService, FormBuilder],
   bootstrap: [AppComponent]
