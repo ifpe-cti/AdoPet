@@ -8,4 +8,5 @@ export interface Animal{
     porte: string;
     descrição: string;
     idUsuario?: any;
+    adotado: boolean;
 }
