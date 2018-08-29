@@ -40,27 +40,21 @@ export class MeusAnimaisComponent implements OnInit {
     this.displayDialog = true;
 }
   salvar(){
-    let id = this.animalSelecionado.id;
     if(this.novoAnimal)
-      this.animalService.atualizarAnimal(id);
-   
-
+      this.animalService.atualizarAnimal(this.animalSelecionado.id);    
     this.animal = null;
     this.displayDialog = false;
-  }
-  
-  apagar() {
+  }  
+  apagar() {  
     this.animalService.delete(this.animalSelecionado);
     this.animal = null;
     this.displayDialog = false;
 }
-
 onRowSelect(event) {
     this.novoAnimal = false;
     this.animal = this.cloneAnimal(event.data);
     this.displayDialog = true;
 }
-
 cloneAnimal(a: Animal): Animal {
     let animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " "};
     for (let prop in a) {

@@ -20,7 +20,12 @@
                   {{rowData[col.field]}}
               </td>
           </tr>
-      </ng-template>         
+      </ng-template> 
+      <ng-template pTemplate="summary" let-rowData>
+            <div style="text-align:left">
+                <button type="button" pButton icon="fa fa-plus" class="button" [routerLink] = "['/feed/adicionar-animal']" label="Adicionar" ></button>
+            </div>
+        </ng-template>         
     </p-table>
 
     <p-dialog header="Detalhe" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="300">
@@ -68,8 +73,8 @@
         </div>
         <p-footer>
             <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                <button type="button" pButton icon="fa fa-check" (click)="salvar()" label="Salvar"></button>
-                <button type="button" pButton icon="fa fa-close" (click)="apagar()" label="Apagar"></button>
+                <button type="button" pButton icon="fa fa-check" (click)="salvar()" label="Salvar" class="button ui-button-success"></button>
+                <button type="button" pButton icon="fa fa-close" (click)="apagar()" label="Apagar" class="button"></button>
             </div>
         </p-footer>
     </p-dialog>  
