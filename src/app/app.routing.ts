@@ -6,7 +6,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { FeedComponent } from './feed/feed.component';
 
 const APP_ROUTES: Routes = [
-    { path: '', component: TelaInicialComponent },
+    { path: '', component: TelaInicialComponent, canActivate:[AuthGuard] },
 ];
 
 

@@ -1,6 +1,7 @@
 import { AnimalService } from './../../services/animal.service';
 import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../model/Animal';
+import { Usuario } from '../../model/Usuario';
 
 @Component({
   selector: 'app-meus-animais',
@@ -10,11 +11,11 @@ import { Animal } from '../../model/Animal';
 export class MeusAnimaisComponent implements OnInit {
   displayDialog: boolean;
   animal: Animal;
-  novoAnimal: boolean;
   animais: Animal[];
   cols: any[];
   animalSelecionado: Animal;
   listaDeAnimais: any[] = [];
+  usuario: Usuario;
 
   constructor(private animalService: AnimalService) { }
 
@@ -29,37 +30,43 @@ export class MeusAnimaisComponent implements OnInit {
     ]
   }
   listar() {
-    this.animalService.listar().subscribe(listaDeAnimais => {
+    this.animalService.listarPorIdUsuario(this.usuario).subscribe(listaDeAnimais => {
       this.listaDeAnimais = listaDeAnimais;
     });
   }
 
-  showDialogToAdd() {
-    this.novoAnimal = true;
-    this.animal;
-    this.displayDialog = true;
-}
-  salvar(){
-    if(this.novoAnimal)
-      this.animalService.atualizarAnimal(this.animalSelecionado.id);    
-    this.animal = null;
-    this.displayDialog = false;
+ 
+  atualizar(){
+    if(this.animal.id != undefined)
+      this.animalService.atualizarAnimal(this.animal).then(resultado =>{
+      this.listar();
+      this.animal = null;
+      this.displayDialog = false;
+      });    
+    
   }  
   apagar() {  
-    this.animalService.delete(this.animalSelecionado);
-    this.animal = null;
-    this.displayDialog = false;
+    this.animalService.delete(this.animalSelecionado).then(resultado=>{
+      this.listar();
+      this.animal = null;
+      this.displayDialog = false;
+    });     
 }
 onRowSelect(event) {
-    this.novoAnimal = false;
+    
     this.animal = this.cloneAnimal(event.data);
     this.displayDialog = true;
 }
 cloneAnimal(a: Animal): Animal {
-    let animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " "};
+
+    let animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " ", adotado: false};
     for (let prop in a) {
         animal[prop] = a[prop];
     }
+
+    if(a.id != undefined)
+      animal["id"] = a.id;
+
     return animal;
 }
 

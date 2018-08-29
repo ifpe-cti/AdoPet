@@ -19,7 +19,7 @@ export class AdicionarAnimalComponent implements OnInit {
   porte: SelectItem[];
 
   constructor(private animalService: AnimalService, private route: Router) { 
-    this.animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " "};
+    this.animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " ", adotado: false};
     this.msgs = [];  
     this.tipoDeAnimal = [
       {label: 'Selecione', value: null},
@@ -33,8 +33,8 @@ export class AdicionarAnimalComponent implements OnInit {
     ];
     this.sexo = [
       {label: 'Selecione', value: null},
-      {label: 'Feminino', value: 'Feminino'},
-      {label: 'Masculino', value: 'Masculino'},
+      {label: 'Fêmea', value: 'Femea'},
+      {label: 'Macho', value: 'Macho'},
     ];
     this.porte = [
       {label: 'Selecione', value: null},
@@ -45,7 +45,7 @@ export class AdicionarAnimalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.animalService.listar();
+    //this.animalService.listarTodos();
 
   }
   salvar(){

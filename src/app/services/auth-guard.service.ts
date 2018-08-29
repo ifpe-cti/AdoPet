@@ -12,10 +12,15 @@ export class AuthGuard implements CanActivate {
     }
     
     canActivate() {
+        console.log("peegou");
+        console.log(this.authService.isLoggedIn())
+        return true;
+        /*console.log(this.authService.isLoggedIn())
         if (this.authService.isLoggedIn()) {
             return true;
+            
         }
         this.route.navigate(['/']);
-        return false;
+        return false;*/
     }
 }

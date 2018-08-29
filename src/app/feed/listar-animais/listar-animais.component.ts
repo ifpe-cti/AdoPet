@@ -25,7 +25,7 @@ export class ListarAnimaisComponent implements OnInit {
 
   }
   listar() {
-    this.animalService.listar().subscribe(listaDeAnimais => {
+    this.animalService.listarTodos().subscribe(listaDeAnimais => {
       this.listaDeAnimais = listaDeAnimais;
     });
   }

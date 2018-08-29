@@ -17,11 +17,27 @@ export class AnimalService {
   constructor(private angularFirestore: AngularFirestore, private usuarioService: UsuarioService) {
     this.animalCollection = this.angularFirestore.collection<Animal>("animal");
   }
-
-
-  listar(): Observable<any[]> {
+  listarTodos(): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
+      this.animalCollection.snapshotChanges().subscribe(result => {
+        result.map(documents => {
+          let id = documents.payload.doc.id;
+          let data = documents.payload.doc.data();
+          let document = { id: id, ...data };
+          resultados.push(document);
+        });
+        observer.next(resultados);
+        observer.complete();
+      });
+    });
+    return meuObservable;
+  }
+
+  listarPorIdUsuario(usuario:Usuario): Observable<any[]> {
+    let resultados: any[] = [];
+    let meuObservable = new Observable<any[]>(observer => {
+      this.animalCollection = this.angularFirestore.collection<Animal>("animal", ref=>ref.where("usuarioId", "==", usuario.$id));
       this.animalCollection.snapshotChanges().subscribe(result => {
         result.map(documents => {
           let id = documents.payload.doc.id;
@@ -62,12 +78,11 @@ export class AnimalService {
       });
   }
 
-  atualizarAnimal(id: string) {
-    this.animalCollection.doc(id).update({ /*colocar um boolean pra dizer se o usuario foi
-    "preenchido corretamente" */});
+  atualizarAnimal(animal: Animal) {
+    return this.animalCollection.doc(animal.id).update(animal);
   }
 
   delete(animal: Animal) {
-    this.animalCollection.doc(animal.id).delete();
+    return this.animalCollection.doc(animal.id).delete();
   }
 }
