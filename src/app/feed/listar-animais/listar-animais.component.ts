@@ -11,13 +11,10 @@ import { AnimalService } from '../../services/animal.service';
 })
 export class ListarAnimaisComponent implements OnInit {
   animal: Animal;
-  itens: MenuItem[];
-  animalSelecionado;
   animais: Animal[];
   listaDeAnimais: any[] = [];
 
-  constructor(private animalService: AnimalService, private route: Router) {
-   }
+  constructor(private animalService: AnimalService, private route: Router) {}
 
 
   ngOnInit() {
@@ -25,7 +22,7 @@ export class ListarAnimaisComponent implements OnInit {
 
   }
   listar() {
-    this.animalService.listarTodos().subscribe(listaDeAnimais => {
+    this.animalService.listarTodos(this.animal).subscribe(listaDeAnimais => {
       this.listaDeAnimais = listaDeAnimais;
     });
   }
