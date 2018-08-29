@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AnimalService } from './../../services/animal.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,7 @@ import { Animal } from '../../model/Animal';
 export class VisualizarAnimalComponent implements OnInit {
   animal;
   id: string;
-  constructor(private route : ActivatedRoute, private animalService: AnimalService) {
+  constructor(private route : ActivatedRoute, private animalService: AnimalService, private rota: Router) {
     }
 
   ngOnInit() {
@@ -27,7 +28,8 @@ export class VisualizarAnimalComponent implements OnInit {
     ) 
   }
   adotar(){
-    alert("Adotado");
+    this.animal.adotado = true;
+    this.rota.navigate(['feed/listar-animais']);
   }
 
 }

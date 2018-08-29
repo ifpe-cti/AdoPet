@@ -52,20 +52,17 @@ export class MeusAnimaisComponent implements OnInit {
       this.displayDialog = false;
     });     
 }
-onRowSelect(event) {
-    
+onRowSelect(event) {    
     this.animal = this.cloneAnimal(event.data);
     this.displayDialog = true;
 }
-cloneAnimal(a: Animal): Animal {
-
-    let animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " ", adotado: false};
+cloneAnimal(animal: Animal): Animal {
+    let a = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " ", adotado: false};
     for (let prop in a) {
         animal[prop] = a[prop];
     }
-
-    if(a.id != undefined)
-      animal["id"] = a.id;
+    if(animal.id != undefined)
+      animal["id"] = animal.id;
 
     return animal;
 }
