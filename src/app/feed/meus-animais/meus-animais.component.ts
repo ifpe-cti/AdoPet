@@ -33,9 +33,7 @@ export class MeusAnimaisComponent implements OnInit {
     this.animalService.listarPorIdUsuario(this.usuario).subscribe(listaDeAnimais => {
       this.listaDeAnimais = listaDeAnimais;
     });
-  }
-
- 
+  } 
   atualizar(){
     if(this.animal.id != undefined)
       this.animalService.atualizarAnimal(this.animal).then(resultado =>{
