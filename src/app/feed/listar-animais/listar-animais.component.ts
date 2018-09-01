@@ -22,7 +22,7 @@ export class ListarAnimaisComponent implements OnInit {
 
   }
   listar() {
-    this.animalService.listarTodos(this.animal).subscribe(listaDeAnimais => {
+    this.animalService.listarTodos().subscribe(listaDeAnimais => {
       this.listaDeAnimais = listaDeAnimais;
     });
   }

@@ -18,10 +18,9 @@ export class AnimalService {
     this.animalCollection = this.angularFirestore.collection<Animal>("animal");
   }
 //retorna os animais que não foram adotados
-  listarTodos(animal: Animal): Observable<any[]> {
+  listarTodos(): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
-//      this.animalCollection = this.angularFirestore.collection<Animal>("animal", ref=>ref.where('animal.adotado', '==', false));
       this.animalCollection.snapshotChanges().subscribe(result => {
         result.map(documents => {
           let id = documents.payload.doc.id;
@@ -66,12 +65,6 @@ export class AnimalService {
     });
   });
   }
-  listarIdUsuario(){
-    if(this.animal.idUsuario == this.usuarioService.getUsuarioId){
-      return this.animal;
-    }
-  }
-
   salvar(animal: Animal) {
     this.animalCollection.add(animal).then(
       resultado => {
