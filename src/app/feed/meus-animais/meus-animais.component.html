@@ -62,15 +62,24 @@
                     <input pInputText id="porte" [(ngModel)]="animal.porte" />
                 </div>
             </div>
+             
             <div class="ui-g-12">
-                <div class="ui-g-4">
-                    <label for="Cor">Cor</label>
-                </div>
-                <div class="ui-g-8">
-                    <input pInputText id="cor" [(ngModel)]="animal.cor" />
-                </div>
-            </div>            
-        </div>
+                    <div class="ui-g-4">
+                        <label for="Cor">Cor</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="cor" [(ngModel)]="animal.cor" />
+                    </div>
+                </div>          
+            <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="Descrição">Descrição</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="descricao" [(ngModel)]="animal.descricao" />
+                    </div>
+                </div>          
+            </div>
         <p-footer>
             <div class="ui-dialog-buttonpane ui-helper-clearfix">
                 <button type="button" pButton icon="fa fa-check" (click)="atualizar()" label="Salvar" class="button ui-button-success"></button>
