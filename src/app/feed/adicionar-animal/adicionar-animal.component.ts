@@ -19,7 +19,7 @@ export class AdicionarAnimalComponent implements OnInit {
   porte: SelectItem[];
 
   constructor(private animalService: AnimalService, private route: Router) { 
-    this.animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " ", adotado: false};
+    this.animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " "};
     this.msgs = [];  
     this.tipoDeAnimal = [
       {label: 'Selecione', value: null},

@@ -38,15 +38,15 @@ export class MeusAnimaisComponent implements OnInit {
  
   atualizar(){
     if(this.animal.id != undefined)
-      this.animalService.atualizarAnimal(this.animal).then(resultado =>{
-      this.listar();
-      this.animal = null;
-      this.displayDialog = false;
+      this.animalService.atualizarAnimal(this.animal).then(() => {
+        this.listar();
+        this.animal = null;
+        this.displayDialog = false;
       });    
     
   }  
   apagar() {  
-    this.animalService.delete(this.animalSelecionado).then(resultado=>{
+    this.animalService.delete(this.animalSelecionado).then(() => {
       this.listar();
       this.animal = null;
       this.displayDialog = false;

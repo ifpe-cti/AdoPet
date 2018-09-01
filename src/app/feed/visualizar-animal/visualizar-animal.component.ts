@@ -28,8 +28,8 @@ export class VisualizarAnimalComponent implements OnInit {
     ) 
   }
   adotar(){
-    this.animal.adotado = true;
-    this.rota.navigate(['feed/listar-animais']);
+    console.log("adotado");
+    //this.rota.navigate(['feed/listar-animais']);
   }
 
 }
