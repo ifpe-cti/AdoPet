@@ -1,9 +1,7 @@
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.component';
 import { AuthGuard } from './services/auth-guard.service';
-import { FeedComponent } from './feed/feed.component';
 
 const APP_ROUTES: Routes = [
     { path: '', component: TelaInicialComponent, canActivate:[AuthGuard] },
