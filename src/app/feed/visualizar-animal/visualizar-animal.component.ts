@@ -2,7 +2,8 @@ import { Router } from '@angular/router';
 import { AnimalService } from './../../services/animal.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Animal } from '../../model/Animal';
+import { Message } from 'primeng/components/common/api';
+
 
 @Component({
   selector: 'app-visualizar-animal',
@@ -12,7 +13,9 @@ import { Animal } from '../../model/Animal';
 export class VisualizarAnimalComponent implements OnInit {
   animal;
   id: string;
-  constructor(private route : ActivatedRoute, private animalService: AnimalService, private rota: Router) {
+  msgs: Message[] = [];
+
+  constructor(private route : ActivatedRoute, private animalService: AnimalService) {
     }
 
   ngOnInit() {
@@ -28,8 +31,15 @@ export class VisualizarAnimalComponent implements OnInit {
     ) 
   }
   adotar(){
-    console.log("adotado");
+    this.showSuccess();
+
     //this.rota.navigate(['feed/listar-animais']);
   }
+  showSuccess() {
+    console.log("adotado");
+
+    this.msgs = [];
+    this.msgs.push({severity:'success', summary:'Parabéns!', detail:'Seu pedido de adoção foi enviado com sucesso.'});
+}
 
 }
