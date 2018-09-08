@@ -15,9 +15,6 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { DataViewModule } from 'primeng/dataview';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 
-
-
-
 //ROTAS
 import { routing } from './app.routing';
 
