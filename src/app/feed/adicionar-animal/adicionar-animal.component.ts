@@ -57,8 +57,8 @@ export class AdicionarAnimalComponent implements OnInit {
    }
   }
   showError() {
-  this.msgs = [];
-  this.msgs.push({severity:'error', summary:'Erro', detail:'Preencha os dados corretamente'});
+    this.msgs = [];
+    this.msgs.push({severity:'error', summary:'Erro', detail:'Preencha os dados corretamente'});
   }
 
 }

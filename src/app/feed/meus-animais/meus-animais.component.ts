@@ -11,7 +11,6 @@ import { Usuario } from '../../model/Usuario';
 export class MeusAnimaisComponent implements OnInit {
   displayDialog: boolean;
   animal: Animal;
-  animais: Animal[];
   cols: any[];
   animalSelecionado: Animal;
   listaDeAnimais: any[] = [];
@@ -23,8 +22,9 @@ export class MeusAnimaisComponent implements OnInit {
     this.listar();
     this.cols = [
       { field: 'nome', header: 'Nome' },
-      { field: 'idade', header: 'Idade' },
       { field: 'tipo', header: 'Tipo' },
+      { field: 'idade', header: 'Idade' },
+      { field: 'sexo', header: 'Sexo' },      
       { field: 'porte', header: 'Porte' },
       { field: 'cor', header: 'Cor' }
     ]
@@ -34,35 +34,34 @@ export class MeusAnimaisComponent implements OnInit {
       this.listaDeAnimais = listaDeAnimais;
     });
   }
-
- 
-  atualizar(){
-    if(this.animal.id != undefined)
+  atualizar() {
+    if (this.animal.id != undefined)
       this.animalService.atualizarAnimal(this.animal).then(() => {
         this.listar();
         this.animal = null;
         this.displayDialog = false;
-      });    
-    
-  }  
-  apagar() {  
+      });
+  }
+  apagar() {
     this.animalService.delete(this.animalSelecionado).then(() => {
       this.listar();
       this.animal = null;
       this.displayDialog = false;
-    });     
-}
-  onRowSelect(event) {    
+    });
+  }
+  onRowSelect(event) {
+    console.log(event.data)
     this.animal = this.cloneAnimal(event.data);
     this.displayDialog = true;
-}
+  }
   cloneAnimal(animal: Animal): Animal {
-    let a = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " "};
+    let a = { nome: " ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " " };
     for (let prop in a) {
-        animal[prop] = a[prop];
+       a[prop] = animal[prop];
     }
-    if(animal.id != undefined)
-      animal["id"] = animal.id;
-    return animal;
+    
+    a["id"] = animal.id;
+    
+      return a;
   }
 }

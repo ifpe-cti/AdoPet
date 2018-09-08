@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PerfilComponent } from './perfil/perfil.component';
 import { MeusAnimaisComponent } from './meus-animais/meus-animais.component';
 import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.component';
+import { PedidosAdocaoComponent } from './pedidos-adocao/pedidos-adocao.component';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { ListboxModule } from 'primeng/listbox';
@@ -17,8 +18,8 @@ import { TableModule } from 'primeng/table';
 import { DataViewModule } from 'primeng/dataview';
 import { AnimalService } from '../services/animal.service';
 import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal.component';
-import {DropdownModule} from 'primeng/dropdown';
-import {CardModule} from 'primeng/card';
+import { DropdownModule } from 'primeng/dropdown';
+import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/components/dialog/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -50,6 +51,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MeusAnimaisComponent,
         AdicionarAnimalComponent,
         VisualizarAnimalComponent,
+        PedidosAdocaoComponent,
+
 
     ],
     providers: [AnimalService],
