@@ -40,18 +40,31 @@
             </div>
             <div class="ui-g-12">
                 <div class="ui-g-4">
+                    <label for="tipo">Tipo</label>
+                </div>
+                <div class="ui-g-8">
+                    <p-radioButton label="Cachorro" value="Cachorro" [(ngModel)]="animal.tipo"></p-radioButton>
+                    <br/>
+                    <p-radioButton label="Gato" value="Gato" [(ngModel)]="animal.tipo"></p-radioButton>                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
                     <label for="idade">Idade</label>
                 </div>
                 <div class="ui-g-8">
-                    <input pInputText id="idade" [(ngModel)]="animal.idade" />
+                    <p-radioButton label="Filhote" value="Filhote" [(ngModel)]="animal.idade"></p-radioButton>
+                    <br/>
+                    <p-radioButton label="Adulto" value="Adulto" [(ngModel)]="animal.idade"></p-radioButton>
                 </div>
             </div>
             <div class="ui-g-12">
                 <div class="ui-g-4">
-                    <label for="tipo">Tipo</label>
+                    <label for="tipo">Sexo</label>
                 </div>
                 <div class="ui-g-8">
-                    <input pInputText id="tipo" [(ngModel)]="animal.tipo" />
+                <p-radioButton label="Femea" value="Fêmea" [(ngModel)]="animal.sexo"></p-radioButton>
+                <br/>
+                <p-radioButton label="Macho" value="Macho" [(ngModel)]="animal.sexo"></p-radioButton>
                 </div>
             </div>
             <div class="ui-g-12">
@@ -59,8 +72,11 @@
                     <label for="porte">Porte</label>
                 </div>
                 <div class="ui-g-8">
-                    <input pInputText id="porte" [(ngModel)]="animal.porte" />
-                </div>
+                    <p-radioButton label="Pequeno" value="Pequeno" [(ngModel)]="animal.porte"></p-radioButton>
+                    <br/>
+                    <p-radioButton label="Médio" value="Médio" [(ngModel)]="animal.porte"></p-radioButton>
+                    <br/>
+                    <p-radioButton label="Grande" value="Grande" [(ngModel)]="animal.porte"></p-radioButton>                </div>
             </div>
              
             <div class="ui-g-12">
