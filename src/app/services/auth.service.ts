@@ -3,9 +3,7 @@ import { Router } from "@angular/router";
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
-import { AngularFirestore, AngularFirestoreCollection } from '../../../node_modules/angularfire2/firestore';
-import { Usuario } from '../model/Usuario';
-import { NotifyService } from './notify.service';
+import { AngularFirestore } from '../../../node_modules/angularfire2/firestore';
 
 
 @Injectable()

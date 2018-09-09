@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { AnimalService } from './../../services/animal.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
