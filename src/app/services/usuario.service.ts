@@ -3,7 +3,6 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs/Observable';
 import { Usuario } from '../model/Usuario';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AuthGuard } from './auth-guard.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
@@ -19,7 +18,7 @@ export class UsuarioService {
       this.authState = auth
     });
   }
-  
+
   getUsuarios(): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
@@ -36,7 +35,7 @@ export class UsuarioService {
     });
     return meuObservable;
   }
-  listarUsuario(usuarioId){
+  listarUsuario(usuarioId) {
     return new Observable(observer => {
       let doc = this.usuarioCollection.doc(usuarioId);
       doc.snapshotChanges().subscribe(result => {
@@ -53,37 +52,11 @@ export class UsuarioService {
   }
   get getUsuario(): any {
     return this.authenticated ? this.authState : null;
-}
+  }
   get getUsuarioId(): string {
     return this.authenticated ? this.authState.uid : '';
-  }
-  salvar(usuario: Usuario) {
-    this.usuarioCollection.add(usuario).then(
-      resultado => {
-        usuario.$id = resultado.id;
-      });
-  }
-  
-  atualizarUsuario(usuario: Usuario) {
-    this.usuarioCollection.doc(usuario.$id).update({ /*colocar um boolean pra dizer se o usuario foi
-    "preenchido corretamente" */});
-  }
-
-  deletarUsuario(usuario: Usuario) {
-    this.usuarioCollection.doc(usuario.$id).delete();
   }
   get currentUserId(): string {
     return this.authenticated ? this.authState.uid : '';
   }
-  private updateUserData(): void {
-      let path = `users/${this.currentUserId}`; 
-      let data = {
-                    email: this.authState.email,
-                    name: this.authState.displayName
-                  }
-  
-      this.db.object(path).update(data)
-      .catch(error => console.log(error));
-  
-    }
 }
