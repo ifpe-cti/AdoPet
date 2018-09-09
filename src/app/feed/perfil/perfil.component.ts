@@ -1,5 +1,3 @@
-import { AuthGuard } from './../../services/auth-guard.service';
-import { Usuario } from './../../model/Usuario';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { ActivatedRoute } from '../../../../node_modules/@angular/router';
@@ -12,7 +10,7 @@ import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 export class PerfilComponent implements OnInit {
   usuario: any;
   id: string;
-  constructor(private route : ActivatedRoute, private usuarioService: UsuarioService) { 
+  constructor(private usuarioService: UsuarioService) { 
 
   }
 
