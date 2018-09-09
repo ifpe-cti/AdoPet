@@ -1,9 +1,29 @@
 <div class="ui-g">
-  <div class="ui-g-4"></div>
+  <div class="ui-g-3"></div>
   <p-growl [(value)]="msgs"></p-growl>
   <div class="ui-g-5">
     
-    tabela de meus animais
+      <h4><p>Pedidos de adoção</p></h4>
+      <p-table [columns]="cols" [value]="listaDePedidos">
+          <ng-template pTemplate="header" let-columns>
+              <tr>
+                  <th *ngFor="let col of columns">
+                      {{col.header}}
+                  </th>
+                  <th style="width:4em"></th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr>
+                  <td *ngFor="let col of columns">
+                      {{rowData[col.field]}}
+                  </td>
+                  <td>
+                    <button pButton icon="fas fa-check" class="ui-button-success" (click)="aceitar(rowData)"></button>  
+                  </td>                 
+              </tr>
+          </ng-template>
+      </p-table>
 
     </div>
   <div class="ui-g-2"></div>
