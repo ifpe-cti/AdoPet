@@ -22,8 +22,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/components/dialog/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 
 @NgModule({
@@ -44,6 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         CardModule,
         DialogModule,
         BrowserAnimationsModule,
+        SplitButtonModule,
+        ToggleButtonModule,
     ],
     exports: [],
     declarations: [

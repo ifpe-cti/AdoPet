@@ -1,3 +1,4 @@
+import { PedidosAdocaoService } from './services/pedidos-adocao.service';
 //ANGULAR
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -62,7 +63,7 @@ import { NotifyService } from './services/notify.service';
     DataViewModule,
     ScrollPanelModule
   ],
-  providers: [UsuarioService, AuthService, AuthGuard, NotifyService, FormBuilder],
+  providers: [UsuarioService, AuthService, AuthGuard, NotifyService, FormBuilder, PedidosAdocaoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
