@@ -55,7 +55,7 @@ export class MeusAnimaisComponent implements OnInit {
     this.displayDialog = true;
   }
   cloneAnimal(animal: Animal): Animal {
-    let a = { nome: " ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " " };
+    let a = { nome: " ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descricao: " " };
     for (let prop in a) {
        a[prop] = animal[prop];
     }

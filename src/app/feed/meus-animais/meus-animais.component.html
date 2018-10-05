@@ -91,8 +91,7 @@
                         <label for="Descrição">Descrição</label>
                     </div>
                     <div class="ui-g-8">
-                        <input pInputText id="descricao" [(ngModel)]="animal.descricao" />
-                    </div>
+                        <textarea [rows]="3" [cols]="10" id="descricao" pInputTextarea autoResize="autoResize" [(ngModel)]="animal.descricao"></textarea>                    </div>
                 </div>          
             </div>
         <p-footer>

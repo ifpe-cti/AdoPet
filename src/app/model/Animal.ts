@@ -6,7 +6,7 @@ export interface Animal{
     cor: string;
     idade: string;
     porte: string;
-    descrição: string;
+    descricao: string;
     idUsuario?: string;
     idUsuarioPedidoAdocao?: string;
 }

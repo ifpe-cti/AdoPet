@@ -19,7 +19,7 @@ export class AdicionarAnimalComponent implements OnInit {
   porte: SelectItem[];
 
   constructor(private animalService: AnimalService, private route: Router) { 
-    this.animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descrição: " "};
+    this.animal = {nome:" ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descricao: " "};
     this.msgs = [];  
     this.tipoDeAnimal = [
       {label: 'Selecione', value: null},
@@ -49,7 +49,7 @@ export class AdicionarAnimalComponent implements OnInit {
 
   }
   salvar(){
-    if(this.animal.nome == "" || this.animal.tipo == "" || this.animal.sexo == "" || this.animal.cor == "" || this.animal.idade == "" || this.animal.descrição == ""){
+    if(this.animal.nome == "" || this.animal.tipo == "" || this.animal.sexo == "" || this.animal.cor == "" || this.animal.idade == "" || this.animal.descricao == ""){
       this.showError();      
     }else{
       this.animalService.salvar(this.animal);
