@@ -19,8 +19,9 @@
                       {{rowData[col.field]}}
                   </td>
                   <td>
-                    <button pButton icon="fas fa-check" class="ui-button-success" (click)="aceitar(rowData)"></button>  
-                  </td>                 
+                    <button pButton icon="fas fa-check" class="ui-button-success" (click)="aceitar()"></button>
+                    <button pButton icon="fas fa-times" class="ui-button-danger" (click)="apagar()"></button>  
+                </td>                 
               </tr>
           </ng-template>
       </p-table>

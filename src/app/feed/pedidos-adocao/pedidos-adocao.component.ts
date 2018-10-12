@@ -28,5 +28,12 @@ export class PedidosAdocaoComponent implements OnInit {
       this.listaDePedidos = listaDePedidos;
     });
   }
+  aceitar(){
+    alert("ok");
+  }
+  apagar(){
+   // this.pedidosService.apagar(animal);
+   alert("n ta pegando");
+  }
 
 }

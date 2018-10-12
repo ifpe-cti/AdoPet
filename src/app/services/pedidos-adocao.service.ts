@@ -9,7 +9,7 @@ export class PedidosAdocaoService {
   private pedidosCollection: AngularFirestoreCollection<Animal>;
 
   constructor(private angularFirestore: AngularFirestore, private usuarioService: UsuarioService) {
-    this.pedidosCollection = this.angularFirestore.collection<Animal>("animal");
+    this.pedidosCollection = this.angularFirestore.collection<Animal>("pedidos-adocao");
    }
 
    listar(): Observable<any[]> {
@@ -37,5 +37,7 @@ export class PedidosAdocaoService {
       }
     )
   }
-  
+  apagar(animal: Animal){
+    return this.pedidosCollection.doc(animal.id).delete();
+  }   
 }
