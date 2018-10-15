@@ -10,17 +10,24 @@ import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 export class PerfilComponent implements OnInit {
   usuario: any;
   id: string;
-  constructor(private usuarioService: UsuarioService) { 
+  listaDeUsuarios: {};
+  constructor(private usuarioService: UsuarioService) {
 
   }
 
   ngOnInit() {
-   this.usuario = this.usuarioService.listarUsuario(this.usuarioService.getUsuarioId);
-    
+    this.listar();
+
+    //this.usuario = this.usuarioService.listarUsuario(this.usuarioService.getUsuarioId);
+
+  }
+  listar() {
+    this.usuarioService.getUsuario();
   }
 
-  salvar(){
+
+  salvar() {
     console.log(this.usuarioService.getUsuarioId);
-   // this.usuarioService.atualizarUsuario(this.auguard.getUsuario);
+    // this.usuarioService.atualizarUsuario(this.auguard.getUsuario);
   }
 }

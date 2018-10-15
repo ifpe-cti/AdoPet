@@ -1,21 +1,29 @@
 <div class="ui-g">
     <div class="ui-g-4"></div>
     <div class="ui-g-5">
-        <h4><p>Meu perfil</p></h4>
-        <p>
-            Nome:         
-            <input type="text" size="40"pInputText [(ngModel)]="usuario.email"/>
-        </p>
-        <p>
-            Email:  
-            <input type="text" size="40"pInputText [(ngModel)]="usuario.email"/>
-        </p>
-        <p>
-            Senha: 
-            <input type="text" size="40"pInputText [(ngModel)]="usuario.email"/>
-        </p>
-        <div class="ui-g-8"></div>
-        <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button-success ui-growl-container"></button>
-      </div>
-    <div class="ui-g-2"></div>
-  </div>
+        <h4>
+            <p>Meu perfil</p>
+        </h4>
+        <ng-template let-animal pTemplate="listItem">
+            <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+                <p>
+                    Nome:
+                    <input type="text" size="40" pInputText [(ngModel)]="usuario.email" />
+                    <b>{{usuario.nome}}</b>
+                </p>
+                <p>
+                    Email:
+                    <input type="text" size="40" pInputText [(ngModel)]="usuario.email" />
+                    <b>{{usuario.email}}</b>
+                </p>
+                <p>
+                    Senha:
+                    <input type="text" size="40" pInputText [(ngModel)]="usuario.email" />
+                    <b>{{usuario.senha}}</b>
+                </p>
+                <div class="ui-g-8"></div>
+                <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button-success ui-growl-container"></button>
+            </div>
+        </ng-template>
+    </div>
+</div>
