@@ -15,8 +15,6 @@ export class FeedComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    //this.email = sessionStorage.getItem("emailUsuario");
-    //usuario = this.usuarioServico.carregar(email);
     this.items = [
       {label: 'Home', icon: 'fas fa-home', routerLink: ["/feed/listar-animais"]},
       {label: 'Meu perfil', icon: 'fas fa-user', routerLink: ["/feed/meu-perfil"]},
