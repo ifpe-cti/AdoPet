@@ -39,6 +39,8 @@ export class TelaInicialComponent implements OnInit {
   signInWithGoogle() {
     this.authService.signInWithGoogle()
       .then(() => {
+
+        localStorage.setItem("idUsuario", this.usuarioService.getUsuarioId);
         this.route.navigate(['/feed/listar-animais']);
       })
       .catch((err) => console.log(err));

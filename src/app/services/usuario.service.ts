@@ -47,6 +47,17 @@ export class UsuarioService {
       });
     });
   }
+  salvar(usuario: Usuario) {
+    this.usuarioCollection.add(usuario)
+  }
+
+  atualizarAnimal(usuario: Usuario) {
+    return this.usuarioCollection.doc(usuario.$id).update(usuario);
+  }
+
+  delete(usuario: Usuario) {
+    return this.usuarioCollection.doc(usuario.$id).delete();
+  }
   get authenticated(): boolean {
     return this.authState !== null;
   }
