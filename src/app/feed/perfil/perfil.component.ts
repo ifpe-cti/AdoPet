@@ -17,7 +17,8 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit() {
     this.listar();
-    //oi
+    let myItem = localStorage.getItem("idUsuario");
+
 
     //this.usuario = this.usuarioService.listarUsuario(this.usuarioService.getUsuarioId);
 
