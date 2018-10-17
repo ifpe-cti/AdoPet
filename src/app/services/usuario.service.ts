@@ -51,7 +51,7 @@ export class UsuarioService {
     this.usuarioCollection.add(usuario)
   }
 
-  atualizarAnimal(usuario: Usuario) {
+  atualizar(usuario: Usuario) {
     return this.usuarioCollection.doc(usuario.$id).update(usuario);
   }
 
@@ -68,6 +68,6 @@ export class UsuarioService {
     return this.authenticated ? this.authState.uid : '';
   }
   get currentUserId(): string {
-    return this.authenticated ? this.authState.uid : '';
+    return this.authenticated ? this.authState.uid : ''; 
   }
 }

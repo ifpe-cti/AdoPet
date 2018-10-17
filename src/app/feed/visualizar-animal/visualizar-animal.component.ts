@@ -11,7 +11,7 @@ import { PedidosAdocaoService } from '../../services/pedidos-adocao.service';
   styleUrls: ['./visualizar-animal.component.css']
 })
 export class VisualizarAnimalComponent implements OnInit {
-  animal;
+  animal: any;
   id: string;
   msgs: Message[] = [];
 
