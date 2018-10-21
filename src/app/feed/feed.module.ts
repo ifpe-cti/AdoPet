@@ -24,12 +24,15 @@ import { DialogModule } from 'primeng/components/dialog/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { StorageServiceModule } from 'angular-webstorage-service';
+
 
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
+        StorageServiceModule,
         FeedRoutingModule,
         InputTextModule,
         ListboxModule,
