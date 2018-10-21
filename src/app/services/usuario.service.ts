@@ -62,7 +62,7 @@ export class UsuarioService {
     return this.authState !== null;
   }
   get getUsuario(): any {
-    return this.authenticated ? this.authState : null;
+    return localStorage.getItem("key")
   }
   get getUsuarioId(): string {
     return this.authenticated ? this.authState.uid : '';
