@@ -23,7 +23,7 @@ export class PerfilComponent implements OnInit {
 
   }
   listar() {
-    this.usuarioService.listarUsuario;
+    this.usuarioService.listarUsuario(this.usuarioCadastro);
   }
 
 

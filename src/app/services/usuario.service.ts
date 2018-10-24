@@ -35,6 +35,7 @@ export class UsuarioService {
     });
     return meuObservable;
   }
+  
   listarUsuario(usuarioId) {
     return new Observable(observer => {
       let doc = this.usuarioCollection.doc(usuarioId);
