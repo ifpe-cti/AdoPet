@@ -22,6 +22,7 @@ export class TelaInicialComponent implements OnInit {
   usuarios: Usuario[];
   user: Usuario = {
     $id: '',
+    nome: ' ',
     email: '',
     senha: ''
   }

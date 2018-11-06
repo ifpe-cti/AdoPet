@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
-import { UsuarioCadastro } from '../../model/UsuarioCadastro';
+import { Usuario } from '../../model/Usuario';
 
 @Component({
   selector: 'app-perfil',
@@ -8,11 +8,11 @@ import { UsuarioCadastro } from '../../model/UsuarioCadastro';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
-  usuarioCadastro: UsuarioCadastro
+  usuario: Usuario
   id: string;
   listaDeUsuarios: {};
   constructor(private usuarioService: UsuarioService) {
-    this.usuarioCadastro = { nome:" ", email: " ", senha: " ", $id:null}
+    this.usuario = { nome:" ", email: " ", senha: " ", $id:" "}
 
   }
 
@@ -23,7 +23,8 @@ export class PerfilComponent implements OnInit {
 
   }
   listar() {
-    this.usuarioService.listarUsuario(this.usuarioCadastro);
+    this.usuarioService.listarUsuario(this.usuario);
+    console.log("entrou")
   }
 
 
