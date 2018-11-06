@@ -23,7 +23,7 @@ export class PerfilComponent implements OnInit {
 
   }
   listar() {
-    this.usuarioService.listarUsuario(this.usuario);
+    this.usuarioService.listarUsuario(this.usuario.$id);
     console.log("entrou")
   }
 
