@@ -35,17 +35,23 @@ export class UsuarioService {
     });
     return meuObservable;
   }
-  listarUsuario(usuarioId) {
-    return new Observable(observer => {
-      let doc = this.usuarioCollection.doc(usuarioId);
-      doc.snapshotChanges().subscribe(result => {
-        let id = result.payload.id;
-        let data = result.payload.data()
-        let document = { id: id, ...data };
-        observer.next(document);
+
+  listarUsuario(usuario: Usuario): Observable<any[]> {
+    let resultados: any[] = [];
+    let meuObservable = new Observable<any[]>(observer => {
+      this.usuarioCollection = this.angularFirestore.collection<Usuario>("usuario", ref => ref.where('usuarioId', '==', usuario.$id));
+      this.usuarioCollection.snapshotChanges().subscribe(result => {
+        result.map(documents => {
+          let id = documents.payload.doc.id;
+          let data = documents.payload.doc.data();
+          let document = { id: id, ...data };
+          resultados.push(document);
+        });
+        observer.next(resultados);
         observer.complete();
       });
     });
+    return meuObservable;
   }
   salvar(usuario: Usuario) {
     this.usuarioCollection.add(usuario)
@@ -68,6 +74,6 @@ export class UsuarioService {
     return this.authenticated ? this.authState.uid : '';
   }
   get currentUserId(): string {
-    return this.authenticated ? this.authState.uid : ''; 
+    return this.authenticated ? this.authState.uid : '';
   }
 }
