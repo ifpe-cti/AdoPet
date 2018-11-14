@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { Usuario } from '../../model/Usuario';
 
 @Component({
   selector: 'app-perfil',
@@ -8,23 +8,23 @@ import { ActivatedRoute } from '../../../../node_modules/@angular/router';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
-  usuario: any;
+  usuario: Usuario
   id: string;
   listaDeUsuarios: {};
   constructor(private usuarioService: UsuarioService) {
+    this.usuario = { nome:" ", email: " ", senha: " ", $id:" "}
 
   }
 
   ngOnInit() {
-    this.listar();
-    let myItem = localStorage.getItem("idUsuario");
-
-
+    //this.listar();
+    let myItem = localStorage.getItem(this.usuarioService.getUsuarioId);
     //this.usuario = this.usuarioService.listarUsuario(this.usuarioService.getUsuarioId);
 
   }
   listar() {
-    this.usuarioService.getUsuario();
+    this.usuarioService.listarUsuario(this.usuario.$id);
+    console.log("entrou")
   }
 
 

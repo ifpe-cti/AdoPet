@@ -2,13 +2,13 @@
     <div class="ui-g-4"></div>
     <div class="ui-g-5">
         <h4>
-            <p>Meu perfil</p>
+            <p>Altere os seus dados: </p>
         </h4>
-        <ng-template let-animal pTemplate="listItem">
+        <div>
             <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
                 <p>
                     Nome:
-                    <input type="text" size="40" pInputText [(ngModel)]="usuario.email" />
+                    <input type="text" size="40" pInputText [(ngModel)]="usuario.nome" />
                     <b>{{usuario.nome}}</b>
                 </p>
                 <p>
@@ -18,12 +18,12 @@
                 </p>
                 <p>
                     Senha:
-                    <input type="text" size="40" pInputText [(ngModel)]="usuario.email" />
+                    <input type="text" size="40" pInputText [(ngModel)]="usuario.senha" />
                     <b>{{usuario.senha}}</b>
                 </p>
                 <div class="ui-g-8"></div>
-                <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button-success ui-growl-container"></button>
+                <button pButton type="button" label="Alterar" (click)="salvar()" class="button ui-button-success ui-growl-container"></button>
             </div>
-        </ng-template>
+        </div>
     </div>
 </div>

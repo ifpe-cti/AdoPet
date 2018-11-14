@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^5.2.11",
     "@angular/platform-browser-dynamic": "^5.2.11",
     "@angular/router": "^5.2.11",
+    "angular-webstorage-service": "^1.0.2",
     "angularfire2": "^5.0.0-rc.5-next",
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.6",
