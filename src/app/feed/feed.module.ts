@@ -24,7 +24,7 @@ import { DialogModule } from 'primeng/components/dialog/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ToggleButtonModule } from 'primeng/togglebutton';
-import { StorageServiceModule } from 'angular-webstorage-service';
+//import { StorageServiceModule } from '@angular-webstorage-service';
 
 
 
@@ -32,7 +32,7 @@ import { StorageServiceModule } from 'angular-webstorage-service';
     imports: [
         CommonModule,
         FormsModule,
-        StorageServiceModule,
+       // StorageServiceModule,
         FeedRoutingModule,
         InputTextModule,
         ListboxModule,
