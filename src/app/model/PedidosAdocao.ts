@@ -1,4 +1,4 @@
-export class PedidoAdocao{
+export class PedidosAdocao{
     idAnimal;
     idUsuarioPedido;
 
