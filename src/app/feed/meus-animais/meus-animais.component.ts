@@ -30,7 +30,7 @@ export class MeusAnimaisComponent implements OnInit {
     ]
   }
   listar() {
-    this.animalService.listarPorIdUsuario(this.usuario).subscribe(listaDeAnimais => {
+    this.animalService.listarPorIdUsuario(this.usuario.$id).subscribe(listaDeAnimais => {
       this.listaDeAnimais = listaDeAnimais;
     });
   }
