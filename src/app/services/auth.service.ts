@@ -47,4 +47,6 @@ export class AuthService {
 			.then(() => this.router.navigate(['/']));
 	}
 
+
+
 }

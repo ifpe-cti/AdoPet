@@ -16,6 +16,10 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { DataViewModule } from 'primeng/dataview';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 
+
+
+import { StorageServiceModule} from 'angular-webstorage-service';
+
 //ROTAS
 import { routing } from './app.routing';
 
@@ -63,7 +67,12 @@ import { NotifyService } from './services/notify.service';
     DataViewModule,
     ScrollPanelModule
   ],
-  providers: [UsuarioService, AuthService, AuthGuard, NotifyService, FormBuilder, PedidosAdocaoService],
+  providers: [UsuarioService, AuthService, AuthGuard, NotifyService, FormBuilder, PedidosAdocaoService,
+   { provide: 'LOCALSTORAGE', useFactory: getLocalStorage}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+	export function getLocalStorage() {
+    return (typeof window !== "undefined") ? window.localStorage : null;;
+}
