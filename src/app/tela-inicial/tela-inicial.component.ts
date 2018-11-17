@@ -6,6 +6,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Message } from 'primeng/components/common/api';
 import { AuthService } from '../services/auth.service';
 import { FormGroup } from '../../../node_modules/@angular/forms';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 
 @Component({
@@ -13,6 +15,8 @@ import { FormGroup } from '../../../node_modules/@angular/forms';
   templateUrl: './tela-inicial.component.html',
   styleUrls: ['./tela-inicial.component.css'],
 })
+
+
 export class TelaInicialComponent implements OnInit {
 
   cadastroForm: FormGroup;
@@ -27,31 +31,35 @@ export class TelaInicialComponent implements OnInit {
     senha: ''
   }
 
+
   constructor(private usuarioService: UsuarioService, private route: Router,
-    private rotaAtiva: ActivatedRoute, private authService: AuthService) {
+    private rotaAtiva: ActivatedRoute, private authService: AuthService,
+    private localStorage: LocalStorage) {
     this.user = this.rotaAtiva.snapshot.params['user'];
     this.usuarios = [];
     this.msgs = [];
   }
 
   ngOnInit() {
-    this.usuarioService.getUsuarios();
+    //this.usuarioService.getUsuarios();
+    if (isPlatformBrowser(this.platformId)) {
+            // localStorage will be available: we can use it.
+        }
+        if (isPlatformServer(this.platformId)) {
+            // localStorage will be null.
+        }
+    }
   }
   signInWithGoogle() {
     this.authService.signInWithGoogle()
       .then(() => {
-
         localStorage.setItem("idUsuario", this.usuarioService.getUsuarioId);
         this.route.navigate(['/feed/listar-animais']);
       })
       .catch((err) => console.log(err));
   }
-  showError() {
-    this.msgs = [];
-    this.msgs.push({
-      severity: 'error', summary: 'Login inexistente',
-      detail: 'Verifique o login e a senha ou cadastre-se!'
-    });
-  }
 
-}
+  }
+  
+
+
