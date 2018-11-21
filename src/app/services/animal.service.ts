@@ -35,10 +35,10 @@ export class AnimalService {
     return meuObservable;
   }
 //retorna os animais de um usuário específico
-  listarPorIdUsuario(usuario:Usuario): Observable<any[]> {
+  listarPorIdUsuario(idUsuario: string): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
-    this.animalCollection = this.angularFirestore.collection<Animal>("animal", ref=>ref.where('usuarioId', '==', usuario.$id));
+    this.animalCollection = this.angularFirestore.collection<Animal>("animal", ref=>ref.where('idUsuario', '==', localStorage.getItem(idUsuario)));
       this.animalCollection.snapshotChanges().subscribe(result => {
         result.map(documents => {
           let id = documents.payload.doc.id;
