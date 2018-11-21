@@ -24,9 +24,8 @@ export class AuthService {
 				}
 			}
 		);
-
-
 	}
+
 	signInWithGoogle() {
 		return this.firebaseAuth.auth.signInWithPopup(
 			new firebase.auth.GoogleAuthProvider()
@@ -41,12 +40,8 @@ export class AuthService {
 		}
 	}
 
-
 	logout() {
 		this.firebaseAuth.auth.signOut()
 			.then(() => this.router.navigate(['/']));
 	}
-
-
-
 }
