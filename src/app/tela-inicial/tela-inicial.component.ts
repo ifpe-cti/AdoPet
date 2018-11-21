@@ -16,7 +16,6 @@ import { isPlatformBrowser, isPlatformServer } from '@angular/common';
   styleUrls: ['./tela-inicial.component.css'],
 })
 
-
 export class TelaInicialComponent implements OnInit {
 
   cadastroForm: FormGroup;
@@ -31,10 +30,8 @@ export class TelaInicialComponent implements OnInit {
     senha: ''
   }
 
-
   constructor(private usuarioService: UsuarioService, private route: Router,
-    private rotaAtiva: ActivatedRoute, private authService: AuthService,
-    private localStorage: LocalStorage) {
+    private rotaAtiva: ActivatedRoute, private authService: AuthService) {
     this.user = this.rotaAtiva.snapshot.params['user'];
     this.usuarios = [];
     this.msgs = [];
@@ -42,24 +39,22 @@ export class TelaInicialComponent implements OnInit {
 
   ngOnInit() {
     //this.usuarioService.getUsuarios();
-    if (isPlatformBrowser(this.platformId)) {
+   // if (isPlatformBrowser(this.platformId)) {
             // localStorage will be available: we can use it.
-        }
-        if (isPlatformServer(this.platformId)) {
+       // }
+       // if (isPlatformServer(this.platformId)) {
             // localStorage will be null.
-        }
+      //  }
     }
-  }
+
   signInWithGoogle() {
     this.authService.signInWithGoogle()
       .then(() => {
-        localStorage.setItem("idUsuario", this.usuarioService.getUsuarioId);
         this.route.navigate(['/feed/listar-animais']);
       })
       .catch((err) => console.log(err));
   }
-
-  }
+}
   
 
 

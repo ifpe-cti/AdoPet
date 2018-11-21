@@ -18,7 +18,6 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
 
 
 
-import { StorageServiceModule} from 'angular-webstorage-service';
 
 //ROTAS
 import { routing } from './app.routing';
