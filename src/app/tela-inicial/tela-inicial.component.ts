@@ -6,9 +6,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Message } from 'primeng/components/common/api';
 import { AuthService } from '../services/auth.service';
 import { FormGroup } from '../../../node_modules/@angular/forms';
-import { PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-
 
 @Component({
   selector: 'app-tela-inicial',
@@ -38,14 +35,8 @@ export class TelaInicialComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.usuarioService.getUsuarios();
-   // if (isPlatformBrowser(this.platformId)) {
-            // localStorage will be available: we can use it.
-       // }
-       // if (isPlatformServer(this.platformId)) {
-            // localStorage will be null.
-      //  }
-    }
+
+  }
 
   signInWithGoogle() {
     this.authService.signInWithGoogle()
@@ -55,6 +46,6 @@ export class TelaInicialComponent implements OnInit {
       .catch((err) => console.log(err));
   }
 }
-  
+
 
 
