@@ -27,7 +27,7 @@ export class TelaInicialComponent implements OnInit {
     senha: ''
   }
 
-  constructor(private usuarioService: UsuarioService, private route: Router,
+  constructor(private route: Router,
     private rotaAtiva: ActivatedRoute, private authService: AuthService) {
     this.user = this.rotaAtiva.snapshot.params['user'];
     this.usuarios = [];
@@ -41,6 +41,8 @@ export class TelaInicialComponent implements OnInit {
   signInWithGoogle() {
     this.authService.signInWithGoogle()
       .then(() => {
+        sessionStorage.put('email', this.user.email)
+        console.log(sessionStorage.getItem('email'))
         this.route.navigate(['/feed/listar-animais']);
       })
       .catch((err) => console.log(err));
