@@ -14,7 +14,7 @@ import { DialogModule } from 'primeng/components/dialog/dialog';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { DataViewModule } from 'primeng/dataview';
-import {ScrollPanelModule} from 'primeng/scrollpanel';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 
 
@@ -45,9 +45,9 @@ import { NotifyService } from './services/notify.service';
     BancoDeDadosComponent,
     FeedComponent,
     ListarAnimaisComponent,
-    
+
   ],
-  
+
   imports: [
     TabMenuModule,
     BrowserModule,
@@ -67,11 +67,11 @@ import { NotifyService } from './services/notify.service';
     ScrollPanelModule
   ],
   providers: [UsuarioService, AuthService, AuthGuard, NotifyService, FormBuilder, PedidosAdocaoService,
-   { provide: 'LOCALSTORAGE', useFactory: getLocalStorage}],
+    { provide: 'LOCALSTORAGE', useFactory: getLocalStorage }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-	export function getLocalStorage() {
-    return (typeof window !== "undefined") ? window.localStorage : null;;
+export function getLocalStorage() {
+  return (typeof window !== "undefined") ? window.localStorage : null;;
 }
