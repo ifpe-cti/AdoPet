@@ -16,8 +16,6 @@ export class AuthService {
 			(user) => {
 				if (user) {
 					this.userDetails = user;
-					//sessionStorage.setItem('email', this.userDetails.email)
-					//console.log(sessionStorage.getItem('email'))					
 					console.log(this.userDetails);
 				} else {
 					this.userDetails = null;
@@ -30,6 +28,11 @@ export class AuthService {
 		return this.firebaseAuth.auth.signInWithPopup(
 			new firebase.auth.GoogleAuthProvider()
 		)
+	}
+
+	userLoggedIn() {
+		let userLogado;
+		return userLogado = this.userDetails.email;
 	}
 
 	isLoggedIn() {
