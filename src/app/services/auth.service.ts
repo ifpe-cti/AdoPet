@@ -11,8 +11,9 @@ export class AuthService {
 	constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
 		this.user = firebaseAuth.authState;
 		this.user.subscribe(
-			(user) => {
-				if (user) {				
+			(user) => {		
+				if (user) {
+					this.userDetails = user;
 					console.log(this.userDetails);
 				} else {
 					this.userDetails = null;
@@ -24,9 +25,11 @@ export class AuthService {
 		return userLogado = this.userDetails.email;
 	}
 	signInWithGoogle() {
-		return this.firebaseAuth.auth.signInWithPopup(
-			new firebase.auth.GoogleAuthProvider()
-		)
+		return this.firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+	}
+	userLoggedIn() {
+		let userLogado;
+		return userLogado = this.userDetails.email;
 	}
 	isLoggedIn() {
 		if (this.userDetails == null) {
