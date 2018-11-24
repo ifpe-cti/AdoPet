@@ -1,7 +1,7 @@
+import { PedidosAdocao } from './../../model/PedidosAdocao';
 import { PedidosAdocaoService } from './../../services/pedidos-adocao.service';
 import { Component, OnInit } from '@angular/core';
-import { Animal } from '../../model/Animal';
-import { MenuItem } from 'primeng/api';
+
 
 @Component({
   selector: 'app-pedidos-adocao',
@@ -11,7 +11,7 @@ import { MenuItem } from 'primeng/api';
 export class PedidosAdocaoComponent implements OnInit {
   listaDePedidos: any[] = [];
   cols: any[];
-  animalSelecionado: Animal;
+  pedido: PedidosAdocao;
 
   constructor(private pedidosService: PedidosAdocaoService) { }
 
@@ -22,18 +22,17 @@ export class PedidosAdocaoComponent implements OnInit {
       { field: 'idUsuarioPedido', header: 'Usuário' }
     ]
   }
-
   listar(){
     this.pedidosService.listar().subscribe(listaDePedidos =>{
       this.listaDePedidos = listaDePedidos;
     });
   }
   aceitar(){
+    //aceitou o pedido, faz o que?
     alert("ok");
   }
-  apagar(){
-   // this.pedidosService.apagar(animal);
-   alert("n ta pegando");
+  rejeitar(){
+    this.pedidosService.remover(this.pedido)
   }
 
 }

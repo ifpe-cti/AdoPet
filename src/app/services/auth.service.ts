@@ -14,24 +14,22 @@ export class AuthService {
 		this.user = firebaseAuth.authState;
 		this.user.subscribe(
 			(user) => {
-				if (user) {
-					this.userDetails = user;
-					//sessionStorage.setItem('email', this.userDetails.email)
-					//console.log(sessionStorage.getItem('email'))					
+				if (user) {				
 					console.log(this.userDetails);
 				} else {
 					this.userDetails = null;
 				}
-			}
-		);
+			});
 	}
-
+	userLoggedIn() {
+		let userLogado;
+		return userLogado = this.userDetails.email;
+	}
 	signInWithGoogle() {
 		return this.firebaseAuth.auth.signInWithPopup(
 			new firebase.auth.GoogleAuthProvider()
 		)
 	}
-
 	isLoggedIn() {
 		if (this.userDetails == null) {
 			return false;
@@ -39,7 +37,6 @@ export class AuthService {
 			return true;
 		}
 	}
-
 	logout() {
 		this.firebaseAuth.auth.signOut()
 			.then(() => this.router.navigate(['/']));

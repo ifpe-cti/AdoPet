@@ -1,4 +1,5 @@
 export class PedidosAdocao{
+    id?;
     idAnimal;
     idUsuarioPedido;
 
@@ -6,12 +7,13 @@ export class PedidosAdocao{
 
     toObject(){
         return {
+            id: this.id,
             idAnimal: this.idAnimal,
             idUsuarioPedido: this.idUsuarioPedido
         };
     }
     validar(){
-        if(this.idAnimal == "" && this.idUsuarioPedido == ""){
+        if(this.id == "" && this.idAnimal == "" && this.idUsuarioPedido == ""){
             return false;
         }
         return true;

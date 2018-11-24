@@ -1,3 +1,5 @@
+import { PedidosAdocao } from './../../model/PedidosAdocao';
+import { PedidosAdocaoService } from './../../services/pedidos-adocao.service';
 import { AnimalService } from './../../services/animal.service';
 import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../model/Animal';
@@ -12,11 +14,11 @@ export class MeusAnimaisComponent implements OnInit {
   displayDialog: boolean;
   animal: Animal;
   cols: any[];
-  animalSelecionado: Animal;
   listaDeAnimais: any[] = [];
   usuario: Usuario;
+  pedido: PedidosAdocao;
 
-  constructor(private animalService: AnimalService) { }
+  constructor(private animalService: AnimalService, private pedidosAdocaoService: PedidosAdocaoService) { }
 
   ngOnInit() {
     this.listar();
@@ -30,9 +32,16 @@ export class MeusAnimaisComponent implements OnInit {
     ]
   }
   listar() {
-    this.animalService.listarPorIdUsuario(this.usuario.$id).subscribe(listaDeAnimais => {
+    this.animalService.listarTodos().subscribe(listaDeAnimais => {
       this.listaDeAnimais = listaDeAnimais;
     });
+  }
+  aceitarPedido(){
+    alert("adotado");
+  }
+  rejeitarPedido(){
+    alert("rejeitado")
+    this.pedidosAdocaoService.remover(this.pedido)
   }
   atualizar() {
     if (this.animal.id != undefined)
@@ -43,7 +52,7 @@ export class MeusAnimaisComponent implements OnInit {
       });
   }
   apagar() {
-    this.animalService.delete(this.animalSelecionado).then(() => {
+    this.animalService.delete(this.animal).then(() => {
       this.listar();
       this.animal = null;
       this.displayDialog = false;

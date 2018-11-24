@@ -16,13 +16,10 @@ export class ListarAnimaisComponent implements OnInit {
   animais: Animal[];
   listaDeAnimais: any[] = [];
 
-  constructor(private animalService: AnimalService, private route: Router) {
-      }
-
+  constructor(private animalService: AnimalService) { }
 
   ngOnInit() {
     this.listar();
-
   }
   listar() {
     this.animalService.listarTodos().subscribe(listaDeAnimais => {

@@ -27,27 +27,18 @@ export class TelaInicialComponent implements OnInit {
     senha: ''
   }
 
-  constructor(private route: Router,
-    private rotaAtiva: ActivatedRoute, private authService: AuthService) {
+  constructor(private route: Router, private rotaAtiva: ActivatedRoute, private authService: AuthService) {
     this.user = this.rotaAtiva.snapshot.params['user'];
     this.usuarios = [];
     this.msgs = [];
   }
-
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   signInWithGoogle() {
     this.authService.signInWithGoogle()
       .then(() => {
-        sessionStorage.put('email', this.user.email)
-        console.log(sessionStorage.getItem('email'))
         this.route.navigate(['/feed/listar-animais']);
       })
       .catch((err) => console.log(err));
   }
 }
-
-
-
