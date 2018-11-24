@@ -1,6 +1,6 @@
 <div class="ui-g">
-  <div class="ui-g-3"></div>
-  <div class="ui-g-5">
+  <div class="ui-g-2"></div>
+  <div class="ui-g-8">
 
     <p-table [columns]="cols" [value]="listaDeAnimais" selectionMode="single" [(selection)]="animalSelecionado" (onRowSelect)="onRowSelect($event)" [rows]="15">
       <ng-template pTemplate="caption">
@@ -12,6 +12,8 @@
                   {{col.header}}
                   <p-sortIcon [field]="col.field"></p-sortIcon>
               </th>
+              <th style="width:e5m">Pedidos de adoção</th>
+
           </tr>
       </ng-template> 
       <ng-template pTemplate="body" let-rowData let-columns="columns">
@@ -19,16 +21,20 @@
               <td *ngFor="let col of columns">
                   {{rowData[col.field]}}
               </td>
+              <td >
+                    <button pButton icon="fas fa-check" class="ui-button-success" (click)="aceitarPedido()"></button>
+                    <button pButton icon="fas fa-times" class="ui-button-danger" (click)="rejeitarPedido()"></button>  
+                </td>
           </tr>
       </ng-template> 
       <ng-template pTemplate="summary" let-rowData>
             <div style="text-align:left">
-                <button type="button" pButton icon="fa fa-plus" class="button" [routerLink] = "['/feed/adicionar-animal']" label="Adicionar" ></button>
+                <button type="button" pButton icon="fa fa-plus" class="button" [routerLink] = "['/feed/adicionar-animal']" label="Adicionar animal" ></button>
             </div>
         </ng-template>         
     </p-table>
 
-    <p-dialog header="Detalhe" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="300">
+    <p-dialog header="Detalhe" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="350">
         <div class="ui-g ui-fluid" *ngIf="animal">
             <div class="ui-g-12">
                 <div class="ui-g-4">

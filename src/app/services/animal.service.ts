@@ -4,10 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Animal } from '../model/Animal';
 import { Observable } from 'rxjs/Observable';
 import { Usuario } from '../model/Usuario';
-
-
 @Injectable()
-
 export class AnimalService {
   private animalCollection: AngularFirestoreCollection<Animal>;
   animal$: Observable<Animal[]>;
@@ -72,11 +69,9 @@ export class AnimalService {
         animal.idUsuario = this.usuarioService.getUsuarioId;
       });
   }
-
   atualizarAnimal(animal: Animal) {
     return this.animalCollection.doc(animal.id).update(animal);
   }
-
   delete(animal: Animal) {
     return this.animalCollection.doc(animal.id).delete();
   }

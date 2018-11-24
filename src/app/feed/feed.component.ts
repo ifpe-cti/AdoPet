@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem, SelectItem } from 'primeng/api';
-import { Router, ActivatedRoute } from '@angular/router';
-
-
+import { MenuItem } from 'primeng/api';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -12,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class FeedComponent implements OnInit {
   items: MenuItem[];
   email:string;
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.items = [
@@ -22,9 +20,6 @@ export class FeedComponent implements OnInit {
       {label: 'Adicionar animal', icon: 'fas fa-plus-square', routerLink: ["/feed/adicionar-animal"]},
       {label: 'Pedidos de adoção', icon: 'fas fa-list-ul', routerLink: ["/feed/pedidos-adocao"]},
       {label: 'Logout', icon: 'fa fa-sign-out', routerLink: ["logout"]},            
-        ];  
-
-    
+      ];      
   }
-
 }

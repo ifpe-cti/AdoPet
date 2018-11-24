@@ -1,5 +1,3 @@
-import { UsuarioCadastro } from './../model/UsuarioCadastro';
-import { UsuarioService } from '../services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../model/Usuario';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -14,9 +12,7 @@ import { FormGroup } from '../../../node_modules/@angular/forms';
 })
 
 export class TelaInicialComponent implements OnInit {
-
   cadastroForm: FormGroup;
-  usuarioCadastro: UsuarioCadastro;
   usuario: Usuario;
   msgs: Message[];
   usuarios: Usuario[];
@@ -27,16 +23,12 @@ export class TelaInicialComponent implements OnInit {
     senha: ''
   }
 
-  constructor(private route: Router,
-    private rotaAtiva: ActivatedRoute, private authService: AuthService) {
+  constructor(private route: Router, private rotaAtiva: ActivatedRoute, private authService: AuthService) {
     this.user = this.rotaAtiva.snapshot.params['user'];
     this.usuarios = [];
     this.msgs = [];
   }
-
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   signInWithGoogle() {
     this.authService.signInWithGoogle()
@@ -46,6 +38,3 @@ export class TelaInicialComponent implements OnInit {
       .catch((err) => console.log(err));
   }
 }
-
-
-
