@@ -11,15 +11,10 @@ export class PerfilComponent implements OnInit {
   usuario: Usuario
   id: string;
   
-  constructor(private usuarioService: UsuarioService) {
-
-
-  }
+  constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit() {
     //this.listar();
-
-
   }
   listar() {
     this.usuarioService.listarUsuario(localStorage.getItem("idUsuario")).subscribe(usuarioCarregado => {
@@ -30,20 +25,16 @@ export class PerfilComponent implements OnInit {
     //this.usuarioService.listarUsuario(this.usuario.$id);
     // console.log("entrou")
   }
-
-
   salvar() {
     console.log(this.usuarioService.getUsuarioId);
     // this.usuarioService.atualizarUsuario(this.auguard.getUsuario);
   }
-
   cloneUsuaio(usuario: Usuario): Usuario {
     let user = { nome: " ", email: " " , senha: ""};
     for (let prop in user) {
       user[prop] = usuario[prop];
     }
     user["id"] = usuario.$id;
-
     return user;
   }
 }

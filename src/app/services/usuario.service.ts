@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { Usuario } from '../model/Usuario';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
-
 @Injectable()
 export class UsuarioService {
 
@@ -35,7 +34,6 @@ export class UsuarioService {
     });
     return meuObservable;
   }
-
   listarUsuario(idUsuario): Observable<any> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any>(observer => {
@@ -53,15 +51,12 @@ export class UsuarioService {
     });
     return meuObservable;
   }
-
   salvar(usuario: Usuario) {
     this.usuarioCollection.add(usuario)
   }
-
   atualizar(usuario: Usuario) {
     return this.usuarioCollection.doc(usuario.$id).update(usuario);
   }
-
   delete(usuario: Usuario) {
     return this.usuarioCollection.doc(usuario.$id).delete();
   }

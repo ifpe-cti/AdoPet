@@ -3,7 +3,6 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { UsuarioService } from './usuario.service';
 import { Observable } from 'rxjs/Observable';
 import { PedidosAdocao } from '../model/PedidosAdocao';
-
 @Injectable()
 export class PedidosAdocaoService {
   private pedidosCollection: AngularFirestoreCollection<PedidosAdocao>;

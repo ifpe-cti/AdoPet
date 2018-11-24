@@ -1,14 +1,10 @@
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
-
-
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private route: Router, private authService: AuthService) {
-
-    }
+    constructor(private route: Router, private authService: AuthService) {}
 
     canActivate() {
         console.log("peegou");
@@ -16,12 +12,9 @@ export class AuthGuard implements CanActivate {
         return true;
         /*console.log(this.authService.isLoggedIn())
         if (this.authService.isLoggedIn()) {
-            return true;
-            
+            return true;            
         }
         this.route.navigate(['/']);
         return false;*/
-    }
-
-    
+    } 
 }

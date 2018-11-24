@@ -67,10 +67,8 @@ export class MeusAnimaisComponent implements OnInit {
     let a = { nome: " ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descricao: " " };
     for (let prop in a) {
        a[prop] = animal[prop];
-    }
-    
-    a["id"] = animal.id;
-    
+    }    
+    a["id"] = animal.id;    
       return a;
   }
 }

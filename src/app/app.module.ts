@@ -1,4 +1,3 @@
-import { PedidosAdocaoService } from './services/pedidos-adocao.service';
 //ANGULAR
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,28 +14,22 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { DataViewModule } from 'primeng/dataview';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
-
-
-
-
 //ROTAS
 import { routing } from './app.routing';
-
 //SERVIÇO
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { UsuarioService } from './services/usuario.service';
-
+import { NotifyService } from './services/notify.service';
+import { PedidosAdocaoService } from './services/pedidos-adocao.service';
+//COMPONENTES
+import { FeedModule } from './feed/feed.module';
 import { AppComponent } from './app.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component'
 import { BancoDeDadosComponent } from './banco-de-dados/banco-de-dados.component';
 import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
 import { FeedComponent } from './feed/feed.component';
-import { FeedModule } from './feed/feed.module';
 import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.component';
-import { NotifyService } from './services/notify.service';
-
-
 
 @NgModule({
   declarations: [
@@ -45,9 +38,7 @@ import { NotifyService } from './services/notify.service';
     BancoDeDadosComponent,
     FeedComponent,
     ListarAnimaisComponent,
-
   ],
-
   imports: [
     TabMenuModule,
     BrowserModule,
@@ -73,5 +64,5 @@ import { NotifyService } from './services/notify.service';
 export class AppModule { }
 
 export function getLocalStorage() {
-  return (typeof window !== "undefined") ? window.localStorage : null;;
+  return (typeof window !== "undefined") ? window.localStorage : null;
 }

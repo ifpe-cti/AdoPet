@@ -1,5 +1,3 @@
-import { UsuarioCadastro } from './../model/UsuarioCadastro';
-import { UsuarioService } from '../services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../model/Usuario';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -14,9 +12,7 @@ import { FormGroup } from '../../../node_modules/@angular/forms';
 })
 
 export class TelaInicialComponent implements OnInit {
-
   cadastroForm: FormGroup;
-  usuarioCadastro: UsuarioCadastro;
   usuario: Usuario;
   msgs: Message[];
   usuarios: Usuario[];

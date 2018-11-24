@@ -5,7 +5,6 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { MeusAnimaisComponent } from './meus-animais/meus-animais.component';
 import { AdicionarAnimalComponent } from './adicionar-animal/adicionar-animal.component';
 import { PedidosAdocaoComponent } from './pedidos-adocao/pedidos-adocao.component';
-
 import { InputTextModule } from 'primeng/inputtext';
 import { ListboxModule } from 'primeng/listbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
@@ -25,8 +24,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 //import { StorageServiceModule } from '@angular-webstorage-service';
-
-
 
 @NgModule({
     imports: [
@@ -57,8 +54,6 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
         AdicionarAnimalComponent,
         VisualizarAnimalComponent,
         PedidosAdocaoComponent,
-
-
     ],
     providers: [AnimalService],
 })

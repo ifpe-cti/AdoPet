@@ -2,7 +2,6 @@ import { PedidosAdocao } from './../../model/PedidosAdocao';
 import { PedidosAdocaoService } from './../../services/pedidos-adocao.service';
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-pedidos-adocao',
   templateUrl: './pedidos-adocao.component.html',
@@ -34,5 +33,4 @@ export class PedidosAdocaoComponent implements OnInit {
   rejeitar(){
     this.pedidosService.remover(this.pedido)
   }
-
 }

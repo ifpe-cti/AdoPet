@@ -43,22 +43,18 @@ export class AdicionarAnimalComponent implements OnInit {
       {label: 'Grande', value: 'Grande'},
     ]
   }
+  ngOnInit() {}
 
-  ngOnInit() {
-    //this.animalService.listarTodos();
-
-  }
   salvar(){
     if(this.animal.nome == "" || this.animal.tipo == "" || this.animal.sexo == "" || this.animal.cor == "" || this.animal.idade == "" || this.animal.descricao == ""){
       this.showError();      
     }else{
       this.animalService.salvar(this.animal);
       this.route.navigate(['feed/listar-animais']);
-   }
+    }
   }
   showError() {
     this.msgs = [];
-    this.msgs.push({severity:'error', summary:'Erro', detail:'Preencha os dados corretamente'});
+    this.msgs.push({severity:'error', summary:'Erro', detail:'Preencha os dados corretamente.'});
   }
-
 }
