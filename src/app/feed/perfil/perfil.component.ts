@@ -17,11 +17,12 @@ export class PerfilComponent implements OnInit {
     //this.listar();
   }
   listar() {
-    this.usuarioService.listarUsuario(localStorage.getItem("idUsuario")).subscribe(usuarioCarregado => {
+   /* this.usuarioService.listarUsuario(localStorage.getItem("idUsuario")).subscribe(usuarioCarregado => {
       console.log(usuarioCarregado);
       this.usuario = usuarioCarregado;
-      console.log("entrou")
+      console.log("entrou")      
     });
+    */
     //this.usuarioService.listarUsuario(this.usuario.$id);
     // console.log("entrou")
   }
