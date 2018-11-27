@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 export class AuthService {
 	private user: Observable<firebase.User>;
 	private userDetails: firebase.User = null;
-	private userLogado: String = null;
+	protected idUserLogado: String = null;
 
 	constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
 		this.user = firebaseAuth.authState;
@@ -16,8 +16,8 @@ export class AuthService {
 			(user) => {		
 				if (user) {
 					this.userDetails = user;
-					this.userLogado = this.userDetails.email;
-					console.log(this.userLogado);
+					this.idUserLogado = this.userDetails.uid;
+					console.log(this.idUserLogado);
 				} else {
 					this.userDetails = null;
 				}

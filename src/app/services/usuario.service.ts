@@ -4,14 +4,16 @@ import { Observable } from 'rxjs/Observable';
 import { Usuario } from '../model/Usuario';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { AuthService } from './auth.service';
 @Injectable()
 export class UsuarioService {
 
   private usuarioCollection: AngularFirestoreCollection<Usuario>;
   usuario: Observable<Usuario[]>;
   authState: any = null;
+  
 
-  constructor(private angularFirestore: AngularFirestore, private afAuth: AngularFireAuth, private db: AngularFireDatabase) {
+  constructor(private angularFirestore: AngularFirestore, private afAuth: AngularFireAuth, private authS: AuthService) {
     this.usuarioCollection = this.angularFirestore.collection<Usuario>("usuario");
     this.afAuth.authState.subscribe((auth) => {
       this.authState = auth
