@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Animal } from '../model/Animal';
 import { Observable } from 'rxjs/Observable';
 import { Usuario } from '../model/Usuario';
+import { AuthService } from './auth.service';
 @Injectable()
 export class AnimalService {
   private animalCollection: AngularFirestoreCollection<Animal>;
@@ -11,7 +12,7 @@ export class AnimalService {
   usuario: Usuario;
   animal: Animal;
 
-  constructor(private angularFirestore: AngularFirestore, private usuarioService: UsuarioService) {
+  constructor(private angularFirestore: AngularFirestore, private authService:AuthService, private usuarioService: UsuarioService) {
     this.animalCollection = this.angularFirestore.collection<Animal>("animal");
   }
 //retorna os animais que não foram adotados
@@ -32,10 +33,10 @@ export class AnimalService {
     return meuObservable;
   }
 //retorna os animais de um usuário específico
-  listarPorIdUsuario(idUsuario: string): Observable<any[]> {
+  listarPorIdUsuario(idUsuario: String): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
-    this.animalCollection = this.angularFirestore.collection<Animal>("animal", ref=>ref.where('idUsuario', '==', localStorage.getItem(idUsuario)));
+    this.animalCollection = this.angularFirestore.collection<Animal>("animal", ref=>ref.where('idUsuario', '==', idUsuario));
       this.animalCollection.snapshotChanges().subscribe(result => {
         result.map(documents => {
           let id = documents.payload.doc.id;
@@ -63,10 +64,11 @@ export class AnimalService {
   });
   }
   salvar(animal: Animal) {
+    animal.idUsuario = this.authService.getUsuarioLogado();
     this.animalCollection.add(animal).then(
       resultado => {
         animal.id = resultado.id;
-        animal.idUsuario = this.usuarioService.getUsuarioId;
+        
       });
   }
   atualizarAnimal(animal: Animal) {

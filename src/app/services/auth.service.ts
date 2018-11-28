@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 export class AuthService {
 	private user: Observable<firebase.User>;
 	private userDetails: firebase.User = null;
-	protected idUserLogado: String = null;
+	private idUserLogado: String = null;
 
 	constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
 		this.user = firebaseAuth.authState;
@@ -23,6 +23,11 @@ export class AuthService {
 				}
 			});
 	}
+
+	getUsuarioLogado(){
+		return this.idUserLogado;
+	}
+
 	signInWithGoogle() {
 		return this.firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
 	}

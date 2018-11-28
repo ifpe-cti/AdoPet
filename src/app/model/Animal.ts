@@ -7,6 +7,5 @@ export class Animal{
     idade: string;
     porte: string;
     descricao: string;
-    idUsuario?: string;
-    idUsuarioPedidoAdocao?: string;
+    idUsuario?: String;
 }
