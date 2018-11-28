@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { PedidosAdocao } from './../../model/PedidosAdocao';
 import { PedidosAdocaoService } from './../../services/pedidos-adocao.service';
 import { AnimalService } from './../../services/animal.service';
@@ -18,7 +19,9 @@ export class MeusAnimaisComponent implements OnInit {
   usuario: Usuario;
   pedido: PedidosAdocao;
 
-  constructor(private animalService: AnimalService, private pedidosAdocaoService: PedidosAdocaoService) { }
+  constructor(private animalService: AnimalService,
+    private pedidosAdocaoService: PedidosAdocaoService,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.listar();
@@ -26,22 +29,15 @@ export class MeusAnimaisComponent implements OnInit {
       { field: 'nome', header: 'Nome' },
       { field: 'tipo', header: 'Tipo' },
       { field: 'idade', header: 'Idade' },
-      { field: 'sexo', header: 'Sexo' },      
+      { field: 'sexo', header: 'Sexo' },
       { field: 'porte', header: 'Porte' },
       { field: 'cor', header: 'Cor' }
     ]
   }
   listar() {
-    this.animalService.listarTodos().subscribe(listaDeAnimais => {
+    this.animalService.listarPorIdUsuario(this.authService.getUsuarioLogado()).subscribe(listaDeAnimais => {
       this.listaDeAnimais = listaDeAnimais;
     });
-  }
-  aceitarPedido(){
-    alert("adotado");
-  }
-  rejeitarPedido(){
-    alert("rejeitado")
-    this.pedidosAdocaoService.remover(this.pedido)
   }
   atualizar() {
     if (this.animal.id != undefined)
@@ -66,9 +62,9 @@ export class MeusAnimaisComponent implements OnInit {
   cloneAnimal(animal: Animal): Animal {
     let a = { nome: " ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descricao: " " };
     for (let prop in a) {
-       a[prop] = animal[prop];
-    }    
-    a["id"] = animal.id;    
-      return a;
+      a[prop] = animal[prop];
+    }
+    a["id"] = animal.id;
+    return a;
   }
 }

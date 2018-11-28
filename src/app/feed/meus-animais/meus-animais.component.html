@@ -1,113 +1,121 @@
 <div class="ui-g">
-  <div class="ui-g-2"></div>
-  <div class="ui-g-8">
+    <div class="ui-g-2"></div>
+    <div class="ui-g-8">
 
-    <p-table [columns]="cols" [value]="listaDeAnimais" selectionMode="single" [(selection)]="animalSelecionado" (onRowSelect)="onRowSelect($event)" [rows]="15">
-      <ng-template pTemplate="caption">
-          Meus animais
-      </ng-template>
-      <ng-template pTemplate="header" let-columns>
-          <tr>
-              <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-                  {{col.header}}
-                  <p-sortIcon [field]="col.field"></p-sortIcon>
-              </th>
-              <th style="width:e5m">Pedidos de adoção</th>
+        <p-table [columns]="cols" [value]="listaDeAnimais" selectionMode="single" [(selection)]="animalSelecionado"
+            (onRowSelect)="onRowSelect($event)" [rows]="15">
+            <ng-template pTemplate="caption">
+                Meus animais
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                    </th>
+                    <th style="width:e5m">Status de adoção</th>
+                    <th style="width:e5m">Pedidos de adoção</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]}}
+                    </td>
+                            <td>
+                                var
+                            </td>
+                    <td> <!--[routerLink] = "['/feed/pedido-adocao', animal.id]"-->
+                        <button pButton icon="fas fa-search" class="ui-button-secondary" [routerLink] = "['/feed/pedidos-adocao']"></button>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary" let-rowData>
+                <div style="text-align:left">
+                    <button type="button" pButton icon="fa fa-plus" class="button" [routerLink]="['/feed/adicionar-animal']"
+                        label="Adicionar animal"></button>
+                </div>
+            </ng-template>
+        </p-table>
 
-          </tr>
-      </ng-template> 
-      <ng-template pTemplate="body" let-rowData let-columns="columns">
-          <tr [pSelectableRow]="rowData">
-              <td *ngFor="let col of columns">
-                  {{rowData[col.field]}}
-              </td>
-              <td >
-                    <button pButton icon="fas fa-check" class="ui-button-success" (click)="aceitarPedido()"></button>
-                    <button pButton icon="fas fa-times" class="ui-button-danger" (click)="rejeitarPedido()"></button>  
-                </td>
-          </tr>
-      </ng-template> 
-      <ng-template pTemplate="summary" let-rowData>
-            <div style="text-align:left">
-                <button type="button" pButton icon="fa fa-plus" class="button" [routerLink] = "['/feed/adicionar-animal']" label="Adicionar animal" ></button>
-            </div>
-        </ng-template>         
-    </p-table>
-
-    <p-dialog header="Detalhe" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="350">
-        <div class="ui-g ui-fluid" *ngIf="animal">
-            <div class="ui-g-12">
-                <div class="ui-g-4">
-                    <label for="nome">Nome</label>
+        <p-dialog header="Detalhe" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"
+            [width]="350">
+            <div class="ui-g ui-fluid" *ngIf="animal">
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="nome">Nome</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="nome" [(ngModel)]="animal.nome" />
+                    </div>
                 </div>
-                <div class="ui-g-8">
-                    <input pInputText id="nome" [(ngModel)]="animal.nome" />
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="tipo">Tipo</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <p-radioButton label="Cachorro" value="Cachorro" [(ngModel)]="animal.tipo"></p-radioButton>
+                        <br />
+                        <p-radioButton label="Gato" value="Gato" [(ngModel)]="animal.tipo"></p-radioButton>
+                    </div>
                 </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="ui-g-4">
-                    <label for="tipo">Tipo</label>
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="idade">Idade</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <p-radioButton label="Filhote" value="Filhote" [(ngModel)]="animal.idade"></p-radioButton>
+                        <br />
+                        <p-radioButton label="Adulto" value="Adulto" [(ngModel)]="animal.idade"></p-radioButton>
+                    </div>
                 </div>
-                <div class="ui-g-8">
-                    <p-radioButton label="Cachorro" value="Cachorro" [(ngModel)]="animal.tipo"></p-radioButton>
-                    <br/>
-                    <p-radioButton label="Gato" value="Gato" [(ngModel)]="animal.tipo"></p-radioButton>                </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="ui-g-4">
-                    <label for="idade">Idade</label>
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="tipo">Sexo</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <p-radioButton label="Femea" value="Fêmea" [(ngModel)]="animal.sexo"></p-radioButton>
+                        <br />
+                        <p-radioButton label="Macho" value="Macho" [(ngModel)]="animal.sexo"></p-radioButton>
+                    </div>
                 </div>
-                <div class="ui-g-8">
-                    <p-radioButton label="Filhote" value="Filhote" [(ngModel)]="animal.idade"></p-radioButton>
-                    <br/>
-                    <p-radioButton label="Adulto" value="Adulto" [(ngModel)]="animal.idade"></p-radioButton>
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="porte">Porte</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <p-radioButton label="Pequeno" value="Pequeno" [(ngModel)]="animal.porte"></p-radioButton>
+                        <br />
+                        <p-radioButton label="Médio" value="Médio" [(ngModel)]="animal.porte"></p-radioButton>
+                        <br />
+                        <p-radioButton label="Grande" value="Grande" [(ngModel)]="animal.porte"></p-radioButton>
+                    </div>
                 </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="ui-g-4">
-                    <label for="tipo">Sexo</label>
-                </div>
-                <div class="ui-g-8">
-                <p-radioButton label="Femea" value="Fêmea" [(ngModel)]="animal.sexo"></p-radioButton>
-                <br/>
-                <p-radioButton label="Macho" value="Macho" [(ngModel)]="animal.sexo"></p-radioButton>
-                </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="ui-g-4">
-                    <label for="porte">Porte</label>
-                </div>
-                <div class="ui-g-8">
-                    <p-radioButton label="Pequeno" value="Pequeno" [(ngModel)]="animal.porte"></p-radioButton>
-                    <br/>
-                    <p-radioButton label="Médio" value="Médio" [(ngModel)]="animal.porte"></p-radioButton>
-                    <br/>
-                    <p-radioButton label="Grande" value="Grande" [(ngModel)]="animal.porte"></p-radioButton>                </div>
-            </div>             
-            <div class="ui-g-12">
+                <div class="ui-g-12">
                     <div class="ui-g-4">
                         <label for="Cor">Cor</label>
                     </div>
                     <div class="ui-g-8">
                         <input pInputText id="cor" [(ngModel)]="animal.cor" />
                     </div>
-                </div>          
-            <div class="ui-g-12">
+                </div>
+                <div class="ui-g-12">
                     <div class="ui-g-4">
                         <label for="Descrição">Descrição</label>
                     </div>
                     <div class="ui-g-8">
-                        <textarea [rows]="3" [cols]="10" id="descricao" pInputTextarea autoResize="autoResize" [(ngModel)]="animal.descricao"></textarea>                    </div>
-                </div>          
+                        <textarea [rows]="3" [cols]="10" id="descricao" pInputTextarea autoResize="autoResize"
+                            [(ngModel)]="animal.descricao"></textarea> </div>
+                </div>
             </div>
-        <p-footer>
-            <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                <button type="button" pButton icon="fa fa-check" (click)="atualizar()" label="Salvar" class="button ui-button-success"></button>
-                <button type="button" pButton icon="fa fa-close" (click)="apagar()" label="Apagar" class="button"></button>
-            </div>
-        </p-footer>
-    </p-dialog>  
+            <p-footer>
+                <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                    <button type="button" pButton icon="fa fa-check" (click)="atualizar()" label="Salvar" class="button ui-button-success"></button>
+                    <button type="button" pButton icon="fa fa-close" (click)="apagar()" label="Apagar" class="button"></button>
+                </div>
+            </p-footer>
+        </p-dialog>
 
     </div>
-  <div class="ui-g-2"></div>
+    <div class="ui-g-2"></div>
 </div>
