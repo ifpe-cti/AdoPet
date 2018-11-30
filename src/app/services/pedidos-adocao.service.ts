@@ -71,6 +71,9 @@ export class PedidosAdocaoService {
         pedido.idUsuario = this.usuarioService.getUsuarioId;
       })
   }
+  getIdPedido(){
+    return this.pedido.id;
+  }
   remover(pedido: PedidosAdocao){
     return this.pedidosCollection.doc(pedido.id).delete();
   }   

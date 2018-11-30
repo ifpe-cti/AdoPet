@@ -12,7 +12,7 @@ export class AnimalService {
   usuario: Usuario;
   animal: Animal;
 
-  constructor(private angularFirestore: AngularFirestore, private authService:AuthService, private usuarioService: UsuarioService) {
+  constructor(private angularFirestore: AngularFirestore, private authService:AuthService) {
     this.animalCollection = this.angularFirestore.collection<Animal>("animal");
   }
 //retorna os animais que não foram adotados
