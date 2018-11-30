@@ -17,11 +17,8 @@ export class MeusAnimaisComponent implements OnInit {
   cols: any[];
   listaDeAnimais: any[] = [];
   usuario: Usuario;
-  pedido: PedidosAdocao;
 
-  constructor(private animalService: AnimalService,
-    private pedidosAdocaoService: PedidosAdocaoService,
-    private authService: AuthService) { }
+  constructor(private animalService: AnimalService, private authService: AuthService) { }
 
   ngOnInit() {
     this.listar();
