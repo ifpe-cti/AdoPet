@@ -1,5 +1,5 @@
 export class PedidosAdocao{
-    id?: string;
+    id?: String;
     idAnimal: String;
     idUsuario: String;
 

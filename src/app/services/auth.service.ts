@@ -9,13 +9,15 @@ export class AuthService {
 	private user: Observable<firebase.User>;
 	private userDetails: firebase.User = null;
 	private idUserLogado: String = null;
+	private nomeUserLogado: String = null;
 
 	constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
 		this.user = firebaseAuth.authState;
 		this.user.subscribe(
-			(user) => {		
+			(user) => {
 				if (user) {
 					this.userDetails = user;
+					this.nomeUserLogado = this.userDetails.displayName;
 					this.idUserLogado = this.userDetails.uid;
 					console.log(this.idUserLogado);
 				} else {
@@ -23,11 +25,12 @@ export class AuthService {
 				}
 			});
 	}
-
-	getUsuarioLogado(){
+	getUsuarioLogado() {
 		return this.idUserLogado;
 	}
-
+	getNomeUsuarioLogado() {
+		return this.nomeUserLogado;
+	}
 	signInWithGoogle() {
 		return this.firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
 	}
