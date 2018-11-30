@@ -17,7 +17,6 @@ export class MeusAnimaisComponent implements OnInit {
   cols: any[];
   listaDeAnimais: any[] = [];
   usuario: Usuario;
-  pedido: PedidosAdocao;
 
   constructor(private animalService: AnimalService,
     private pedidosAdocaoService: PedidosAdocaoService,

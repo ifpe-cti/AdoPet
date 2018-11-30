@@ -1,7 +1,7 @@
 export class PedidosAdocao{
-    id?;
-    idAnimal;
-    idUsuarioPedido;
+    id?: string;
+    idAnimal: String;
+    idUsuarioPedido: String;
 
     constructor(){}
 

@@ -28,6 +28,23 @@ export class PedidosAdocaoService {
     });
     return meuObservable;
   }
+  listarPorIdAnimal(idAnimal: String): Observable<any[]> {
+    let resultados: any[] = [];
+    let meuObservable = new Observable<any[]>(observer => {
+    this.pedidosCollection = this.angularFirestore.collection<PedidosAdocao>("pedido", ref=>ref.where('idAnimal', '==', idAnimal));
+      this.pedidosCollection.snapshotChanges().subscribe(result => {
+        result.map(documents => {
+          let id = documents.payload.doc.id;
+          let data = documents.payload.doc.data();
+          let document = { id: id, ...data };
+          resultados.push(document);
+        });
+        observer.next(resultados);
+        observer.complete();
+      });
+    });
+    return meuObservable;
+  }
   salvar(pedido: PedidosAdocao){
     this.pedidosCollection.add(pedido).then(
       resultado => {

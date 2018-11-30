@@ -1,6 +1,7 @@
 import { PedidosAdocao } from './../../model/PedidosAdocao';
 import { PedidosAdocaoService } from './../../services/pedidos-adocao.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pedidos-adocao',
@@ -8,29 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pedidos-adocao.component.css']
 })
 export class PedidosAdocaoComponent implements OnInit {
-  listaDePedidos: any[] = [];
-  cols: any[];
-  pedido: PedidosAdocao;
+  pedido: any;
+  id: any;
 
-  constructor(private pedidosService: PedidosAdocaoService) { }
+  constructor(private pedidosService: PedidosAdocaoService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.listar();
-    this.cols = [
-      { field: 'nome', header: 'Nome' },
-      { field: 'idUsuarioPedido', header: 'Usuário' }
-    ]
+    this.route.params.subscribe(
+      (params: any) => {
+        this.id = params ['id'];
+      }
+    );
+    this.pedido = this.pedidosService.listarPorIdAnimal(this.id).subscribe(
+      resultadoObserverble => {
+        this.pedido = resultadoObserverble;
+      }) 
   }
-  listar(){
-    this.pedidosService.listar().subscribe(listaDePedidos =>{
-      this.listaDePedidos = listaDePedidos;
-    });
-  }
-  aceitar(){
-    //aceitou o pedido, faz o que?
-    alert("ok");
-  }
-  rejeitar(){
-    this.pedidosService.remover(this.pedido)
-  }
+ 
 }
