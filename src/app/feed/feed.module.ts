@@ -23,6 +23,7 @@ import { DialogModule } from 'primeng/components/dialog/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { MeusPedidosAdocaoComponent } from './meus-pedidos-adocao/meus-pedidos-adocao.component';
 //import { StorageServiceModule } from '@angular-webstorage-service';
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
         AdicionarAnimalComponent,
         VisualizarAnimalComponent,
         PedidosAdocaoComponent,
+        MeusPedidosAdocaoComponent,
     ],
     providers: [AnimalService],
 })

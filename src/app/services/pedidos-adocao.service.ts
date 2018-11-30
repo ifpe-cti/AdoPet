@@ -28,6 +28,7 @@ export class PedidosAdocaoService {
     });
     return meuObservable;
   }
+  //lista os pedidos passando o id do animal
   listarPorIdAnimal(idAnimal: String): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
@@ -45,11 +46,29 @@ export class PedidosAdocaoService {
     });
     return meuObservable;
   }
+  //lista os pedidos passando o id do usuário
+  listarPorIdUsuario(idUsuario: String): Observable<any[]> {
+    let resultados: any[] = [];
+    let meuObservable = new Observable<any[]>(observer => {
+    this.pedidosCollection = this.angularFirestore.collection<PedidosAdocao>("pedido", ref=>ref.where('idUsuario', '==', idUsuario));
+      this.pedidosCollection.snapshotChanges().subscribe(result => {
+        result.map(documents => {
+          let id = documents.payload.doc.id;
+          let data = documents.payload.doc.data();
+          let document = { id: id, ...data };
+          resultados.push(document);
+        });
+        observer.next(resultados);
+        observer.complete();
+      });
+    });
+    return meuObservable;
+  }
   salvar(pedido: PedidosAdocao){
     this.pedidosCollection.add(pedido).then(
       resultado => {
         pedido.id = resultado.id;
-        pedido.idUsuarioPedido = this.usuarioService.getUsuarioId;
+        pedido.idUsuario = this.usuarioService.getUsuarioId;
       })
   }
   remover(pedido: PedidosAdocao){

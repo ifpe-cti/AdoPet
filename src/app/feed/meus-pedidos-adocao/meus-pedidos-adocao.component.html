@@ -1,0 +1,26 @@
+<div class="ui-g">
+  <div class="ui-g-2"></div>
+  <div class="ui-g-8">
+
+    <p-table [columns]="cols" [value]="listaDePedidos" selectionMode="single" [(selection)]="animalSelecionado"
+      (onRowSelect)="onRowSelect($event)" [rows]="15">
+      <ng-template pTemplate="caption">
+        Meus pedidos de adoção
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th style="width:e5m">Nome do animal</th>
+          <th style="width:e5m">Dono</th>
+          <th style="width:e5m">Status de adoção</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+          <td *ngFor="let col of columns">
+            {{rowData[col.field]}}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

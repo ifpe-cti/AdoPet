@@ -1,7 +1,7 @@
 export class PedidosAdocao{
     id?: string;
     idAnimal: String;
-    idUsuarioPedido: String;
+    idUsuario: String;
 
     constructor(){}
 
@@ -9,11 +9,11 @@ export class PedidosAdocao{
         return {
             id: this.id,
             idAnimal: this.idAnimal,
-            idUsuarioPedido: this.idUsuarioPedido
+            idUsuarioPedido: this.idUsuario
         };
     }
     validar(){
-        if(this.id == "" && this.idAnimal == "" && this.idUsuarioPedido == ""){
+        if(this.id == "" && this.idAnimal == "" && this.idUsuario == ""){
             return false;
         }
         return true;

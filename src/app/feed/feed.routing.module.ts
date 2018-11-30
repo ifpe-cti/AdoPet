@@ -9,16 +9,18 @@ import { ListarAnimaisComponent } from './listar-animais/listar-animais.componen
 import { PedidosAdocaoComponent } from './pedidos-adocao/pedidos-adocao.component';
 import { TelaInicialComponent } from '../tela-inicial/tela-inicial.component';
 import { VisualizarAnimalComponent } from './visualizar-animal/visualizar-animal.component';
+import { MeusPedidosAdocaoComponent } from './meus-pedidos-adocao/meus-pedidos-adocao.component';
 
 const feedRoutes = [
     { path: 'feed/logout', component: TelaInicialComponent },
-    {path: 'feed', component: FeedComponent, children: [
+    {path: 'feed', component: FeedComponent, pathMatch: 'prefix', children: [
             { path: 'meu-perfil', component: PerfilComponent },
             { path: 'meus-animais', component: MeusAnimaisComponent },
             { path: 'adicionar-animal', component: AdicionarAnimalComponent },
             { path: 'listar-animais', component: ListarAnimaisComponent },
             { path: 'pedidos-adocao/:idAnimal', component: PedidosAdocaoComponent },
             { path: 'visualizar-animal/:id', component: VisualizarAnimalComponent },
+            { path: 'meus-pedidos-adocao', component: MeusPedidosAdocaoComponent },
         ]
     }
 ];
