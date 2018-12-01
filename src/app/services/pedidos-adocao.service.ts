@@ -1,6 +1,6 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { UsuarioService } from './usuario.service';
 import { Observable } from 'rxjs/Observable';
 import { PedidosAdocao } from '../model/PedidosAdocao';
 @Injectable()
@@ -8,7 +8,7 @@ export class PedidosAdocaoService {
   private pedidosCollection: AngularFirestoreCollection<PedidosAdocao>;
   pedido: PedidosAdocao;
 
-  constructor(private angularFirestore: AngularFirestore, private usuarioService: UsuarioService) {
+  constructor(private angularFirestore: AngularFirestore, private authService: AuthService) {
     this.pedidosCollection = this.angularFirestore.collection<PedidosAdocao>("pedidos-adocao");
    }
 
@@ -68,13 +68,19 @@ export class PedidosAdocaoService {
     this.pedidosCollection.add(pedido).then(
       resultado => {
         pedido.id = resultado.id;
-        pedido.idUsuario = this.usuarioService.getUsuarioId;
+        pedido.idUsuario = this.authService.getUsuarioLogado();
+        pedido.nomeUsuario = this.authService.getNomeUsuarioLogado();
       })
   }
   getIdPedido(){
     return this.pedido.id;
   }
+  //verifica se o pedido passado está na collection pedidos de adoção se estiver o status é pendente
+  status(pedido: PedidosAdocao){
+    
+  }
   remover(pedido: PedidosAdocao){
     return this.pedidosCollection.doc(pedido.id).delete();
-  }   
+  }
+     
 }

@@ -13,12 +13,12 @@ import { MeusPedidosAdocaoComponent } from './meus-pedidos-adocao/meus-pedidos-a
 
 const feedRoutes = [
     { path: 'feed/logout', component: TelaInicialComponent },
-    {path: 'feed', component: FeedComponent, pathMatch: 'prefix', children: [
+    {path: 'feed', component: FeedComponent, children: [
             { path: 'meu-perfil', component: PerfilComponent },
             { path: 'meus-animais', component: MeusAnimaisComponent },
             { path: 'adicionar-animal', component: AdicionarAnimalComponent },
             { path: 'listar-animais', component: ListarAnimaisComponent },
-            { path: 'pedidos-adocao/:idAnimal', component: PedidosAdocaoComponent },
+            { path: 'pedidos-adocao', component: PedidosAdocaoComponent },
             { path: 'visualizar-animal/:id', component: VisualizarAnimalComponent },
             { path: 'meus-pedidos-adocao', component: MeusPedidosAdocaoComponent },
         ]

@@ -14,7 +14,7 @@ export class MeusPedidosAdocaoComponent implements OnInit {
   status: string;
   pedido: PedidosAdocao;
 
-  constructor(private pedidosSevice: PedidosAdocaoService, private authService: AuthService) { }
+  constructor(private pedidosService: PedidosAdocaoService, private authService: AuthService) { }
 
   ngOnInit() {
     this.listar();
@@ -24,7 +24,7 @@ export class MeusPedidosAdocaoComponent implements OnInit {
     ]
   }
   listar(){
-    this.pedidosSevice.listarPorIdUsuario(this.authService.getUsuarioLogado()).subscribe(listaDePedidos => {
+    this.pedidosService.listarPorIdUsuario(this.authService.getUsuarioLogado()).subscribe(listaDePedidos => {
       this.listaDePedidos = listaDePedidos;
     });
   }
