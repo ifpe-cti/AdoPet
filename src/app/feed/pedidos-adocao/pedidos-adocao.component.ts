@@ -1,7 +1,9 @@
+import { AnimalService } from './../../services/animal.service';
 import { PedidosAdocao } from './../../model/PedidosAdocao';
 import { PedidosAdocaoService } from './../../services/pedidos-adocao.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Animal } from '../../model/Animal';
 
 @Component({
   selector: 'app-pedidos-adocao',
@@ -9,21 +11,26 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./pedidos-adocao.component.css']
 })
 export class PedidosAdocaoComponent implements OnInit {
+  animal: Animal;
   pedido: any;
-  id: any;
+  id: string;
+  cols: any[] = [];
+  listaDePedidos: any[] = [];
 
   constructor(private pedidosService: PedidosAdocaoService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.subscribe(
-      (params: any) => {
-        this.id = params ['id'];
-      }
-    );
-    this.pedido = this.pedidosService.listarPorIdAnimal(this.id).subscribe(
-      resultadoObserverble => {
-        this.pedido = resultadoObserverble;
-      }) 
+    this.listar();
+    this.cols = [
+      { field: 'nomeUsuario', header: 'Usuário' },
+      { field: 'status', header: 'Status' }
+    ]; 
   }
+  listar(){
+    this.pedidosService.listarPorIdAnimal(this.animal.id).subscribe(listaDePedidos => {
+      this.listaDePedidos = listaDePedidos;
+    });
+  }
+  
  
 }

@@ -77,4 +77,7 @@ export class AnimalService {
   delete(animal: Animal) {
     return this.animalCollection.doc(animal.id).delete();
   }
+  get idAnimal(){
+    return this.animal.id;
+  }
 }

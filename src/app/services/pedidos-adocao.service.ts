@@ -75,7 +75,12 @@ export class PedidosAdocaoService {
   getIdPedido(){
     return this.pedido.id;
   }
+  //verifica se o pedido passado está na collection pedidos de adoção se estiver o status é pendente
+  status(pedido: PedidosAdocao){
+    
+  }
   remover(pedido: PedidosAdocao){
     return this.pedidosCollection.doc(pedido.id).delete();
-  }   
+  }
+     
 }
