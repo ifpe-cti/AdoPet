@@ -1,8 +1,8 @@
 export class PedidosAdocao {
-
     id?: string;
     idAnimal: String;
     idUsuario: String;
+    nomeUsuario: String;
 
     constructor(){}
 
@@ -10,7 +10,8 @@ export class PedidosAdocao {
         return {
             id: this.id,
             idAnimal: this.idAnimal,
-            idUsuarioPedido: this.idUsuario
+            idUsuarioPedido: this.idUsuario,
+            nomeUsuario: this.nomeUsuario
         };
     }
     validar(){
