@@ -1,5 +1,6 @@
-export class Adocao{
+export class Adocao {
+    
     id?: string;
-    idPedidoAdocao: String;
+    idPedidoAdocao: string;
     data: Date;
 }

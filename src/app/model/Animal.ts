@@ -1,5 +1,6 @@
-export class Animal{
-    id?: String;
+export class Animal {
+
+    id?: string;
     nome: String;
     tipo: String;
     sexo: String;

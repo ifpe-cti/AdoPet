@@ -1,5 +1,6 @@
-export class PedidosAdocao{
-    id?: String;
+export class PedidosAdocao {
+
+    id?: string;
     idAnimal: String;
     idUsuario: String;
 
