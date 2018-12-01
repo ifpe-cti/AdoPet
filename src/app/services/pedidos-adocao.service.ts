@@ -7,12 +7,13 @@ import { PedidosAdocao } from '../model/PedidosAdocao';
 export class PedidosAdocaoService {
   private pedidosCollection: AngularFirestoreCollection<PedidosAdocao>;
   pedido: PedidosAdocao;
+  status: boolean;
 
   constructor(private angularFirestore: AngularFirestore, private authService: AuthService) {
     this.pedidosCollection = this.angularFirestore.collection<PedidosAdocao>("pedidos-adocao");
-   }
+  }
 
-   listar(): Observable<any[]> {
+  listar(): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
       this.pedidosCollection.snapshotChanges().subscribe(result => {
@@ -32,7 +33,7 @@ export class PedidosAdocaoService {
   listarPorIdAnimal(idAnimal: String): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
-    this.pedidosCollection = this.angularFirestore.collection<PedidosAdocao>("pedido", ref=>ref.where('idAnimal', '==', idAnimal));
+      this.pedidosCollection = this.angularFirestore.collection<PedidosAdocao>("pedido", ref => ref.where('idAnimal', '==', idAnimal));
       this.pedidosCollection.snapshotChanges().subscribe(result => {
         result.map(documents => {
           let id = documents.payload.doc.id;
@@ -50,7 +51,7 @@ export class PedidosAdocaoService {
   listarPorIdUsuario(idUsuario: String): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
-    this.pedidosCollection = this.angularFirestore.collection<PedidosAdocao>("pedido", ref=>ref.where('idUsuario', '==', idUsuario));
+      this.pedidosCollection = this.angularFirestore.collection<PedidosAdocao>("pedido", ref => ref.where('idUsuario', '==', idUsuario));
       this.pedidosCollection.snapshotChanges().subscribe(result => {
         result.map(documents => {
           let id = documents.payload.doc.id;
@@ -64,7 +65,7 @@ export class PedidosAdocaoService {
     });
     return meuObservable;
   }
-  salvar(pedido: PedidosAdocao){
+  salvar(pedido: PedidosAdocao) {
     this.pedidosCollection.add(pedido).then(
       resultado => {
         pedido.id = resultado.id;
@@ -72,15 +73,19 @@ export class PedidosAdocaoService {
         pedido.nomeUsuario = this.authService.getNomeUsuarioLogado();
       })
   }
-  getIdPedido(){
+  getIdPedido() {
     return this.pedido.id;
   }
   //verifica se o pedido passado está na collection pedidos de adoção se estiver o status é pendente
-  status(pedido: PedidosAdocao){
-    
+  retornaStatus(pedido: PedidosAdocao) {
+    var pedidosRef = this.angularFirestore.collection("pedidos-adocao");
+    var query = pedidosRef.ref.where("id", "==", pedido.id);
+    if (query) {
+      this.status == true;
+    }
   }
-  remover(pedido: PedidosAdocao){
+  remover(pedido: PedidosAdocao) {
     return this.pedidosCollection.doc(pedido.id).delete();
   }
-     
+
 }
