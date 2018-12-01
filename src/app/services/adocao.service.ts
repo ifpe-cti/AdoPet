@@ -5,19 +5,18 @@ import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/fires
 
 @Injectable()
 export class AdocaoService {
-  private adocaoCollection: AngularFirestoreCollection<Adocao>;
+  private animaisAdotadosCollection: AngularFirestoreCollection<Adocao>;
 
   constructor(private angularFirestore: AngularFirestore, private pedidosAdocao: PedidosAdocaoService) {
-    this.adocaoCollection = this.angularFirestore.collection<Adocao>("adocao");
-   }
+    this.animaisAdotadosCollection = this.angularFirestore.collection<Adocao>("animaisAdotados");
+  }
 
-   inserir(adocao: Adocao){
+  inserir(adocao: Adocao) {
     adocao.idPedidoAdocao = this.pedidosAdocao.getIdPedido();
-    this.adocaoCollection.add(adocao).then(
+    this.animaisAdotadosCollection.add(adocao).then(
       resultado => {
         adocao.id = resultado.id;
-      }
-    )
-   }
+      })
+  }
 
 }
