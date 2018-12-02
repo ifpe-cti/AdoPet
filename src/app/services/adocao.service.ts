@@ -6,6 +6,7 @@ import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/fires
 @Injectable()
 export class AdocaoService {
   private animaisAdotadosCollection: AngularFirestoreCollection<Adocao>;
+  idAnimalAdotado: String = null;
 
   constructor(private angularFirestore: AngularFirestore, private pedidosAdocao: PedidosAdocaoService) {
     this.animaisAdotadosCollection = this.angularFirestore.collection<Adocao>("animaisAdotados");
@@ -15,8 +16,13 @@ export class AdocaoService {
     adocao.idPedidoAdocao = this.pedidosAdocao.getIdPedido();
     this.animaisAdotadosCollection.add(adocao).then(
       resultado => {
+        this.idAnimalAdotado = adocao.id;
         adocao.id = resultado.id;
       })
+  }
+
+  getIdAnimalAdotado() {
+    return this.idAnimalAdotado;
   }
 
 }

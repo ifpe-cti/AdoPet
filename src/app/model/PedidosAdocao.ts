@@ -2,7 +2,7 @@ export class PedidosAdocao {
     id?: string;
     idAnimal: String;
     idUsuario: String;
-    nomeUsuario: String;
+    $nomeUsuario: String;
 
     constructor(){}
 
@@ -11,9 +11,10 @@ export class PedidosAdocao {
             id: this.id,
             idAnimal: this.idAnimal,
             idUsuarioPedido: this.idUsuario,
-            nomeUsuario: this.nomeUsuario
+            nomeUsuario: this.$nomeUsuario
         };
     }
+
     validar(){
         if(this.id == "" && this.idAnimal == "" && this.idUsuario == ""){
             return false;

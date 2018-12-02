@@ -33,7 +33,8 @@ export class PedidosAdocaoService {
   listarPorIdAnimal(idAnimal: String): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
-      this.pedidosCollection = this.angularFirestore.collection<PedidosAdocao>("pedido", ref => ref.where('idAnimal', '==', idAnimal));
+      this.pedidosCollection = this.angularFirestore
+      .collection<PedidosAdocao>("pedido", ref => ref.where('idAnimal', '==', idAnimal));
       this.pedidosCollection.snapshotChanges().subscribe(result => {
         result.map(documents => {
           let id = documents.payload.doc.id;
@@ -51,7 +52,8 @@ export class PedidosAdocaoService {
   listarPorIdUsuario(idUsuario: String): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
-      this.pedidosCollection = this.angularFirestore.collection<PedidosAdocao>("pedido", ref => ref.where('idUsuario', '==', idUsuario));
+      this.pedidosCollection = this.angularFirestore
+      .collection<PedidosAdocao>("pedido", ref => ref.where('idUsuario', '==', idUsuario));
       this.pedidosCollection.snapshotChanges().subscribe(result => {
         result.map(documents => {
           let id = documents.payload.doc.id;
@@ -70,7 +72,7 @@ export class PedidosAdocaoService {
       resultado => {
         pedido.id = resultado.id;
         pedido.idUsuario = this.authService.getUsuarioLogado();
-        pedido.nomeUsuario = this.authService.getNomeUsuarioLogado();
+        pedido.$nomeUsuario = this.authService.getNomeUsuarioLogado();
       })
   }
   getIdPedido() {
