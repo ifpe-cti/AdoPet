@@ -17,10 +17,8 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 //ROTAS
 import { routing } from './app.routing';
 //SERVIÇO
-import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { UsuarioService } from './services/usuario.service';
-import { NotifyService } from './services/notify.service';
 import { PedidosAdocaoService } from './services/pedidos-adocao.service';
 //COMPONENTES
 import { FeedModule } from './feed/feed.module';
@@ -57,12 +55,9 @@ import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.com
     DataViewModule,
     ScrollPanelModule
   ],
-  providers: [UsuarioService, AuthService, AuthGuard, NotifyService, FormBuilder, PedidosAdocaoService,
-    { provide: 'LOCALSTORAGE', useFactory: getLocalStorage }],
+  providers: [UsuarioService, AuthService, FormBuilder, PedidosAdocaoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-export function getLocalStorage() {
-  return (typeof window !== "undefined") ? window.localStorage : null;
-}
+

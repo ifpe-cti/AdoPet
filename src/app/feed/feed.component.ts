@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -10,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class FeedComponent implements OnInit {
   items: MenuItem[];
   email:string;
-  constructor(private route: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
     this.items = [
