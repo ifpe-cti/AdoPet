@@ -19,7 +19,6 @@ export class AuthService {
 					this.userDetails = user;
 					this.nomeUserLogado = this.userDetails.displayName;
 					this.idUserLogado = this.userDetails.uid;
-					console.log(this.idUserLogado);
 				} else {
 					this.userDetails = null;
 				}

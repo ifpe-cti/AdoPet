@@ -31,7 +31,7 @@ export class PerfilComponent implements OnInit {
     // this.usuarioService.atualizarUsuario(this.auguard.getUsuario);
   }
   cloneUsuaio(usuario: Usuario): Usuario {
-    let user = { nome: " ", email: " " , senha: ""};
+    let user = { $nome: " ", email: " " , senha: ""};
     for (let prop in user) {
       user[prop] = usuario[prop];
     }
