@@ -2,6 +2,7 @@ import { PedidosAdocaoService } from './pedidos-adocao.service';
 import { Injectable } from '@angular/core';
 import { Adocao } from '../model/Adocao';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AdocaoService {
@@ -23,6 +24,23 @@ export class AdocaoService {
 
   getIdAnimalAdotado() {
     return this.idAnimalAdotado;
+  }
+
+  listarTodosAdocao(): Observable<any[]> {
+    let resultados: any[] = [];
+    let meuObservable = new Observable<any[]>(observer => {
+      this.animaisAdotadosCollection.snapshotChanges().subscribe(result => {
+        result.map(documents => {
+          let id = documents.payload.doc.id;
+          let data = documents.payload.doc.data();
+          let document = { id: id, ...data };
+          resultados.push(document);
+        });
+        observer.next(resultados);
+        observer.complete();
+      });
+    });
+    return meuObservable;
   }
 
 }

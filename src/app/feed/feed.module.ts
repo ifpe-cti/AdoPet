@@ -24,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { MeusPedidosAdocaoComponent } from './meus-pedidos-adocao/meus-pedidos-adocao.component';
+import { AdocaoService } from '../services/adocao.service';
+import { PedidosAdocaoService } from '../services/pedidos-adocao.service';
 //import { StorageServiceModule } from '@angular-webstorage-service';
 
 @NgModule({
@@ -57,6 +59,6 @@ import { MeusPedidosAdocaoComponent } from './meus-pedidos-adocao/meus-pedidos-a
         PedidosAdocaoComponent,
         MeusPedidosAdocaoComponent,
     ],
-    providers: [AnimalService],
+    providers: [AnimalService, AdocaoService, PedidosAdocaoService],
 })
 export class FeedModule { }
