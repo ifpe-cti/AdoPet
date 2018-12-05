@@ -1,17 +1,19 @@
+import { Usuario } from './Usuario';
+import { Animal } from './Animal';
 export class PedidosAdocao {
     id?: string;
     idAnimal: String;
     idUsuario: String;
-    $nomeUsuario: String;
+    usuario:Usuario;
+    animal:Animal;
+    status:String;
 
     constructor(){}
 
-    toObject(){
+    toDocument(){
         return {
-            id: this.id,
             idAnimal: this.idAnimal,
-            idUsuarioPedido: this.idUsuario,
-            nomeUsuario: this.$nomeUsuario
+            idUsuarioPedido: this.idUsuario
         };
     }
 

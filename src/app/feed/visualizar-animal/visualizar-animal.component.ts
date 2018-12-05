@@ -30,7 +30,7 @@ export class VisualizarAnimalComponent implements OnInit {
   adotar(){
     this.showSuccess();
     this.pedidoAdocaoService.salvar(this.animal);
-    this.rota.navigate(['feed/listar-animais']);
+    //this.rota.navigate(['feed/listar-animais']);
   }
   showSuccess() {
     this.msgs = [];
