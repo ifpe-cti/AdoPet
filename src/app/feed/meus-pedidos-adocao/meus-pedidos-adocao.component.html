@@ -14,13 +14,14 @@
           <th style="width:e5m">Status de adoção</th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr [pSelectableRow]="rowData">
-          <td *ngFor="let col of columns">
-            {{rowData[col.field]}}
-          </td>
+      <ng-template pTemplate="body" let-pedido>
+        <tr>
+            <td>{{pedido.animal.nome}}</td>
+            <td>{{pedido.idUsuario}}</td>
+            <td></td>
+           
         </tr>
-      </ng-template>
+    </ng-template>
     </p-table>
   </div>
 </div>

@@ -1,7 +1,9 @@
+import { AnimalService } from './../../services/animal.service';
 import { PedidosAdocao } from './../../model/PedidosAdocao';
 import { Component, OnInit } from '@angular/core';
 import { PedidosAdocaoService } from '../../services/pedidos-adocao.service';
 import { AuthService } from '../../services/auth.service';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-meus-pedidos-adocao',
@@ -14,18 +16,33 @@ export class MeusPedidosAdocaoComponent implements OnInit {
   status: string;
   pedido: PedidosAdocao;
 
-  constructor(private pedidosService: PedidosAdocaoService, private authService: AuthService) { }
+  constructor(private pedidosService: PedidosAdocaoService, private usuarioService:UsuarioService, private authService: AuthService, private animalService:AnimalService) { }
 
   ngOnInit() {
     this.listar();
     this.cols = [
-      { field: 'nome', header: 'Nome do animal' },
+      { field: 'animal.nome', header: 'Nome do animal' },
       { field: 'idUsuario', header: 'Dono' },
     ]
   }
+
+  getUsuario(id, texto){
+    this.usuarioService.listarUsuario(id).subscribe(resultado=>{
+      texto = resultado.displayName;
+    });
+  }
+
   listar(){
     this.pedidosService.listarPorIdUsuario(this.authService.getUsuarioLogado()).subscribe(listaDePedidos => {
       this.listaDePedidos = listaDePedidos;
+      
+      for(let i = 0; i < this.listaDePedidos.length; i++){
+          this.animalService.listarId(this.listaDePedidos[i].idAnimal).subscribe(animal=>{
+            this.listaDePedidos[i].animal = animal;
+          });
+      }
+
+
     });
   }
   verificaStatus(){

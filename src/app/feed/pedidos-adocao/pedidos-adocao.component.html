@@ -10,19 +10,16 @@
                     <th style="width:e5m">Status de adoção</th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-rowData let-columns="columns">
-                <tr [pSelectableRow]="rowData">
-                    <td *ngFor="let col of columns">
-                        {{rowData[col.field]}}
-                    </td>
-                    <td>
-                        var
-                    </td>
-                    <td>
-                        <button pButton type="button" icon="fas fa-search" class="ui-button-secondary" [routerLink]="['/feed/pedidos-adocao']"></button>
-                    </td>
+            <ng-template pTemplate="body" let-pedido>
+                <tr>
+                    <td>{{pedido.idUsuarioPedido}}</td>
+                    <td></td>
+                    <td><button pButton type="button" icon="fas fa-search" class="ui-button-secondary" [routerLink]="['/feed/pedidos-adocao']"></button></td>
+                   
                 </tr>
             </ng-template>
+                        
+           
         </p-table>
     </div>
 </div>

@@ -18,7 +18,7 @@ const feedRoutes = [
             { path: 'meus-animais', component: MeusAnimaisComponent },
             { path: 'adicionar-animal', component: AdicionarAnimalComponent },
             { path: 'listar-animais', component: ListarAnimaisComponent },
-            { path: 'pedidos-adocao', component: PedidosAdocaoComponent },
+            { path: 'pedidos-adocao/:id', component: PedidosAdocaoComponent },
             { path: 'visualizar-animal/:id', component: VisualizarAnimalComponent },
             { path: 'meus-pedidos-adocao', component: MeusPedidosAdocaoComponent },
         ]

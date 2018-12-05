@@ -38,7 +38,7 @@ export class UsuarioService {
   listarUsuario(idUsuario): Observable<any> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any>(observer => {
-      this.usuarioCollection = this.angularFirestore.collection<Usuario>("usuario", ref => ref.where('usuarioId', '==', idUsuario));
+      this.usuarioCollection = this.angularFirestore.collection<Usuario>("users", ref => ref.where('id', '==', idUsuario));
       this.usuarioCollection.snapshotChanges().subscribe(result => {
         result.map(documents => {
           let id = documents.payload.doc.id;
