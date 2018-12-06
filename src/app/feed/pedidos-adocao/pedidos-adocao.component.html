@@ -1,21 +1,21 @@
 <div class="ui-g">
     <div class="ui-g-2"></div>
     <div class="ui-g-8">
-        <h5 align="center">Pedidos de adoção de {{animal.nome}}</h5>
-        <p-table [columns]="cols" [value]="listaDePedidos" selectionMode="single" [(selection)]="animalSelecionado"
+        <h5 align="center">Pedidos de adoção de ...</h5>
+        <p-table [columns]="cols" [value]="listaDePedidos" [(selection)]="animalSelecionado"
             (onRowSelect)="onRowSelect($event)" [rows]="15">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th style="width:e5m">Usuário</th>
-                    <th style="width:e5m">Status de adoção</th>
+                    <th style="width:e2m">Status de adoção</th>
+                    <th style="width:e5px"></th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-pedido>
                 <tr>
                     <td>{{pedido.idUsuarioPedido}}</td>
                     <td></td>
-                    <td><button pButton type="button" icon="fas fa-search" class="ui-button-secondary" [routerLink]="['/feed/pedidos-adocao']"></button></td>
-
+                    <td><button pButton type="button" icon="fas fa-check" class="ui-button-success" (click)="permitirAdocao()"></button></td>
                 </tr>
             </ng-template>
 

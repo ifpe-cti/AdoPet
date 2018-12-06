@@ -38,4 +38,8 @@ export class PedidosAdocaoComponent implements OnInit {
       }
     });
   }
+  permitirAdocao(){
+    alert("pegou");
+  }
+
 }
