@@ -9,20 +9,20 @@ export class AdocaoService {
   private animaisAdotadosCollection: AngularFirestoreCollection<Adocao>;
   idAnimalAdotado: String = null;
 
-  constructor(private angularFirestore: AngularFirestore, private pedidosAdocao: PedidosAdocaoService) {
+  constructor(private angularFirestore: AngularFirestore) {
     this.animaisAdotadosCollection = this.angularFirestore.collection<Adocao>("animaisAdotados");
   }
 
   
 
-  inserir(adocao: Adocao) {
-    adocao.idPedidoAdocao = this.pedidosAdocao.getIdPedido();
+ /* inserir(adocao: Adocao) {
+    adocao.id = this.pedidosAdocao.getIdPedido();
     this.animaisAdotadosCollection.add(adocao).then(
       resultado => {
         this.idAnimalAdotado = adocao.id;
         adocao.id = resultado.id;
       })
-  }
+  }*/
 
   getIdAnimalAdotado() {
     return this.idAnimalAdotado;

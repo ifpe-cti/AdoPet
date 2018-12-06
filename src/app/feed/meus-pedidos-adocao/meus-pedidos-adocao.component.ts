@@ -46,6 +46,7 @@ export class MeusPedidosAdocaoComponent implements OnInit {
     });
   }
   verificaStatus(){
+    //só quando aceitar
     
   }
 
