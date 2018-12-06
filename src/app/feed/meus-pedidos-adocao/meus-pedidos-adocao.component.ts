@@ -12,7 +12,6 @@ import { UsuarioService } from '../../services/usuario.service';
 })
 export class MeusPedidosAdocaoComponent implements OnInit {
   listaDePedidos: any[] = [];
-  cols: any[];
   status: string;
   pedido: PedidosAdocao;
 
@@ -20,10 +19,7 @@ export class MeusPedidosAdocaoComponent implements OnInit {
 
   ngOnInit() {
     this.listar();
-    this.cols = [
-      { field: 'animal.nome', header: 'Nome do animal' },
-      { field: 'idUsuario', header: 'Dono' },
-    ]
+    
   }
 
   getUsuario(id, texto){
