@@ -20,24 +20,22 @@ export class PedidosAdocaoComponent implements OnInit {
   constructor(private pedidoService: PedidosAdocaoService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    
+
     this.route.params.subscribe(
       (params: any) => {
-        this.id = params ['id'];
+        this.id = params['id'];
         this.listar();
       }
     );
   }
-  listar(){
+  listar() {
     this.pedidoService.listarPorIdAnimal(this.id).subscribe(listaDePedidos => {
       this.listaDePedidos = listaDePedidos;
-      for(let i = 0; i < this.listaDePedidos.length; i++){
-        this.pedidoService.getStatus(this.listaDePedidos[i].id).subscribe(status =>{
+      for (let i = 0; i < this.listaDePedidos.length; i++) {
+        this.pedidoService.getStatus(this.listaDePedidos[i].id).subscribe(status => {
           this.listaDePedidos[i].status = status;
         });
-    }
+      }
     });
   }
-  
- 
 }

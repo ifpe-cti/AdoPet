@@ -1,7 +1,7 @@
 <div class="ui-g">
     <div class="ui-g-2"></div>
     <div class="ui-g-8">
-        <h5 align="center">Pedidos de adoção de ...</h5>
+        <h5 align="center">Pedidos de adoção de {{animal.nome}}</h5>
         <p-table [columns]="cols" [value]="listaDePedidos" selectionMode="single" [(selection)]="animalSelecionado"
             (onRowSelect)="onRowSelect($event)" [rows]="15">
             <ng-template pTemplate="header" let-columns>
@@ -15,11 +15,11 @@
                     <td>{{pedido.idUsuarioPedido}}</td>
                     <td></td>
                     <td><button pButton type="button" icon="fas fa-search" class="ui-button-secondary" [routerLink]="['/feed/pedidos-adocao']"></button></td>
-                   
+
                 </tr>
             </ng-template>
-                        
-           
+
+
         </p-table>
     </div>
 </div>
