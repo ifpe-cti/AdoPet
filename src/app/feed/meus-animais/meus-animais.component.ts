@@ -25,10 +25,6 @@ export class MeusAnimaisComponent implements OnInit {
     this.cols = [
       { field: 'nome', header: 'Nome' },
       { field: 'tipo', header: 'Tipo' },
-      { field: 'idade', header: 'Idade' },
-      { field: 'sexo', header: 'Sexo' },
-      { field: 'porte', header: 'Porte' },
-      { field: 'cor', header: 'Cor' }
     ]
   }
   listar() {

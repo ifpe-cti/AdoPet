@@ -1,5 +1,3 @@
-import { AnimalService } from './../../services/animal.service';
-import { PedidosAdocao } from './../../model/PedidosAdocao';
 import { PedidosAdocaoService } from './../../services/pedidos-adocao.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
