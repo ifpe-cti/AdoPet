@@ -4,17 +4,31 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs/Observable';
 import { PedidosAdocao } from '../model/PedidosAdocao';
 import { Animal } from '../model/Animal';
+import { AdocaoService } from './adocao.service';
 @Injectable()
 export class PedidosAdocaoService {
   private pedidosCollection: AngularFirestoreCollection<any>;
   pedido: PedidosAdocao;
-  status: boolean;
+  private status: String;
 
-  constructor(private angularFirestore: AngularFirestore, private authService: AuthService) {
+  constructor(private angularFirestore: AngularFirestore, private authService: AuthService, 
+    private adocaoService: AdocaoService) {
     this.pedidosCollection = this.angularFirestore.collection<PedidosAdocao>("pedidos-adocao");
   }
 
   getStatus(idPedido){
+    let meuObservable = new Observable<any[]>(observer => {
+    let status: String = "Pendente";
+    this.adocaoService.listarAdocaoPorPedido(idPedido).subscribe(resultado =>{
+      if(resultado != ""){
+        this.status = "Adotado";
+      }
+    observer.next(resultado);
+    observer.complete();
+    });
+  });
+    return meuObservable;
+
     // fazer uma consulta no service de adocao.
     // Se tiver alguma adocao com esse pedido (ou seja, resultado for != 0), então o status é adotado
     // se não, o status é pendente.
@@ -97,7 +111,7 @@ export class PedidosAdocaoService {
     var pedidosRef = this.angularFirestore.collection("pedidos-adocao");
     var query = pedidosRef.ref.where("id", "==", pedido.id);
     if (query) {
-      this.status == true;
+      this.status = "Pendente"
     }
   }
   remover(pedido: PedidosAdocao) {

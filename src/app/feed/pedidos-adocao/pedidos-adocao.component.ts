@@ -32,7 +32,7 @@ export class PedidosAdocaoComponent implements OnInit {
     this.pedidoService.listarPorIdAnimal(this.id).subscribe(listaDePedidos => {
       this.listaDePedidos = listaDePedidos;
       for(let i = 0; i < this.listaDePedidos.length; i++){
-        this.pedidoService.getStatus(this.listaDePedidos[i].id).subscribe(status=>{
+        this.pedidoService.getStatus(this.listaDePedidos[i].id).subscribe(status =>{
           this.listaDePedidos[i].status = status;
         });
     }
