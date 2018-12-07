@@ -3,7 +3,7 @@
         <p-growl [(value)]="msgs"></p-growl>
         <div class="ui-g-5">
         <h4><p>Detalhe do animal</p></h4>
-        <p-card [style]="{width: '360px'}">               
+        <p-card [style]="{width: '400px'}">               
                 Nome: <b>{{animal.nome}}</b> 
                 <br/>       
                 Tipo de animal: <b>{{animal.tipo}}</b>
@@ -17,10 +17,10 @@
                 Cor: <b>{{animal.cor}}</b>
                 <br/>
                 Descrição: <b>{{animal.descricao}}</b>
-                <br/>
+                <br/><br/>
+                <button pButton type="button" label="Adotar" (click)="adotar()" class="button ui-button"></button>
         </p-card>
                 <div class="ui-g-6"></div>
-                <button pButton type="button" label="Adotar" (click)="adotar()" class="button ui-button"></button>
            </div>
         <div class="ui-g-2"></div>
       </div>

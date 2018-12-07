@@ -14,29 +14,25 @@ export class AdocaoService {
     this.animaisAdotadosCollection = this.angularFirestore.collection<Adocao>("adocao");
   }
 
-  
+
 
   salvar(idPedido: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       let adocao = new Adocao();
-    
-        adocao.idPedido = idPedido;
-        //adocao.data = ?;
-        console.log(JSON.stringify(adocao));
-        this.animaisAdotadosCollection.add(adocao.toDocument()).then(resultado => {
-            adocao.id = resultado.id;
-            resolve();
-          }).catch((error) => reject(error));
+      adocao.idPedido = idPedido;
+      //adocao.data = ?;
+      this.animaisAdotadosCollection.add(adocao.toDocument()).then(resultado => {
+        adocao.id = resultado.id;
+        resolve();
+      }).catch((error) => reject(error));
     })
-
-    
   }
 
- /* getIdAnimalAdotado() {
-    return this.idAnimalAdotado;
-  }*/
+  /* getIdAnimalAdotado() {
+     return this.idAnimalAdotado;
+   }*/
 
-  listarAdocaoPorPedido(idPedido){
+  listarAdocaoPorPedido(idPedido) {
     let resultados: any[] = [];
     let meuObservable = new Observable<any>(observer => {
       this.animaisAdotadosCollection = this.angularFirestore.collection<any>("adocao", ref => ref.where('idPedido', '==', idPedido));
@@ -70,5 +66,4 @@ export class AdocaoService {
     });
     return meuObservable;
   }
-
 }

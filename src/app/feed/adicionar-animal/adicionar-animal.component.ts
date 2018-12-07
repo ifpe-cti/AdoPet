@@ -47,14 +47,23 @@ export class AdicionarAnimalComponent implements OnInit {
 
   salvar(){
     if(this.animal.nome == "" || this.animal.tipo == "" || this.animal.sexo == "" || this.animal.cor == "" || this.animal.idade == "" || this.animal.descricao == ""){
-      this.showError();      
+      this.showError() 
     }else{
-      this.animalService.salvar(this.animal);
-      this.route.navigate(['feed/listar-animais']);
+      this.animalService.salvar(this.animal).then(() => {
+        this.showSuccess()
+        this.route.navigate(['feed/listar-animais']);
+      }).catch(error => {        
+        console.log(error)
+        this.showError()
+      })
     }
   }
   showError() {
     this.msgs = [];
     this.msgs.push({severity:'error', summary:'Erro', detail:'Preencha os dados corretamente.'});
+  }
+  showSuccess() {
+    this.msgs = [];
+    this.msgs.push({severity:'success', summary:'Animal adicionado com sucesso!'});
   }
 }
