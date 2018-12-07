@@ -1,10 +1,14 @@
 <div class="ui-g">
+    <p-growl [(value)]="msgs"></p-growl>
     <div class="ui-g-4"></div>
-    <div class="ui-g-5">
-        <p-growl [(value)]="msgs"></p-growl>
+    <div class="ui-g-6">
         <h4>
             <p>Insira os dados do seu animal</p>
         </h4>
+    </div>
+
+    <div class="ui-g-3"></div>
+    <div class="ui-g-3">
         <p>
             Nome:
             <br />
@@ -35,6 +39,8 @@
             <p-radioButton label="Macho" value="Macho" [(ngModel)]="animal.sexo"></p-radioButton>
             <br />
         </p>
+    </div>
+    <div class="ui-g-3">
         <p>
             Porte:
             <br />
@@ -56,7 +62,9 @@
             <br />
             <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="animal.descricao"></textarea>
         </p>
-        <div class="ui-g-4"></div>
+
+        <br/>
+        <div class="ui-g-7"></div>
         <button pButton type="button" label="Salvar" (click)="salvar()" class="button ui-button-success ui-growl-container"></button>
     </div>
     <div class="ui-g-4"></div>
