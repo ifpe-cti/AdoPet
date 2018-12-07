@@ -4,6 +4,7 @@ import { PedidosAdocaoService } from './../../services/pedidos-adocao.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Animal } from '../../model/Animal';
+import { Message } from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-pedidos-adocao',
@@ -16,6 +17,7 @@ export class PedidosAdocaoComponent implements OnInit {
   id: string;
   cols: any[] = [];
   listaDePedidos: any[] = [];
+  msgs: Message[];
 
   constructor(private pedidoService: PedidosAdocaoService, private route: ActivatedRoute, private adocaoService: AdocaoService) { }
 
@@ -38,14 +40,21 @@ export class PedidosAdocaoComponent implements OnInit {
       }
     });
   }
-  permitirAdocao(pedido){
-    console.log('id: ' + pedido.id);
-    this.adocaoService.salvar(pedido.id)
-      .then(() => {
-        alert('show de bola')
-      }).catch(error => {
-        alert('erro ao cadasrar');
-        console.error(error);
-      })
+  permitirAdocao(pedido) {
+    this.adocaoService.salvar(pedido.id).then(() => {
+      this.showSuccess()
+      //chama o método de status pra atualizar
+    }).catch(error => {
+      this.showError()
+      console.error(error);
+    })
+  }
+  showSuccess() {
+    this.msgs = [];
+    this.msgs.push({ severity: "success", summary: 'Adoção permitida', detail: 'Status do animal: Adotado'});
+  }
+  showError() {
+    this.msgs = [];
+    this.msgs.push({ severity: "error", summary: 'Erro ao permitir adoção' });
   }
 }

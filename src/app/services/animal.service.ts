@@ -9,8 +9,7 @@ import { PedidosAdocaoService } from './pedidos-adocao.service';
 
 @Injectable()
 export class AnimalService {
-  private animalCollection: AngularFirestoreCollection<Animal>;
-  private animaisDisponiveisCollection: AngularFirestoreCollection<Animal>;
+  private animalCollection: AngularFirestoreCollection<any>;
   animal$: Observable<Animal[]>;
   usuario: Usuario;
   animal: Animal;
@@ -94,13 +93,14 @@ export class AnimalService {
       });
     });
   }
-  salvar(animal: Animal) {
+  salvar(animal: Animal): Promise<void> {
+    return new Promise<void>((resolve, reject) => { 
     animal.idUsuario = this.authService.getUsuarioLogado();
-    this.animalCollection.add(animal).then(
-      resultado => {
+    this.animalCollection.add(animal).then(resultado => {
         animal.id = resultado.id;
-
-      });
+        resolve();
+      }).catch((error) => reject(error));
+    })
   }
   atualizarAnimal(animal: Animal) {
     return this.animalCollection.doc(animal.id).update(animal);
