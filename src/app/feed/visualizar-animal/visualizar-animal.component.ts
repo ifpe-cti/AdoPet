@@ -28,12 +28,20 @@ export class VisualizarAnimalComponent implements OnInit {
       }) 
   }
   adotar(){
-    this.showSuccess();
-    this.pedidoAdocaoService.salvar(this.animal);
-    this.rota.navigate(['feed/listar-animais']);
+    this.pedidoAdocaoService.salvar(this.animal).then(() => {
+      this.showSuccess()
+      this.rota.navigate(['feed/listar-animais']);
+    }).catch(error => {
+      this.showError()
+      console.error(error);
+    })
   }
   showSuccess() {
     this.msgs = [];
-    this.msgs.push({severity:'success', summary:'Parabéns!', detail:'Seu pedido de adoção foi enviado com sucesso.'});
+    this.msgs.push({severity:'success', summary:'Seu pedido de adoção foi enviado.', detail:'Aguarde a permição do dono na aba "Meus pedidos" no menu'});
+  }
+  showError() {
+    this.msgs = [];
+    this.msgs.push({severity:'error', summary:'Erro ao adotar o animal', detail:'Tente novamente'});
   }
 }

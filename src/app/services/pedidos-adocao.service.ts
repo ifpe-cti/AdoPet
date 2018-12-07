@@ -92,14 +92,17 @@ export class PedidosAdocaoService {
     });
     return meuObservable;
   }
-  salvar(animal: Animal) {
+  salvar(animal: Animal):  Promise<void> {
+    return new Promise<void>((resolve, reject) => {
     let pedido = new PedidosAdocao();
     pedido.idAnimal = animal.id;
     pedido.idUsuario = this.authService.getUsuarioLogado();
     this.pedidosCollection.add(pedido.toDocument()).then(resultado => {
         pedido.id = resultado.id;
-      })
-  }
+        resolve();
+      }).catch((error) => reject(error));
+    })
+}
   getIdPedido() {
     return this.pedido.id;
   }
