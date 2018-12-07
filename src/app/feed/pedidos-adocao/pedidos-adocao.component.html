@@ -6,9 +6,9 @@
             (onRowSelect)="onRowSelect($event)" [rows]="15">
             <ng-template pTemplate="header" let-columns>
                 <tr>
-                    <th style="width:e5m">Usuário</th>
-                    <th style="width:e2m">Status de adoção</th>
-                    <th style="width:e5px"></th>
+                    <th>Usuário</th>
+                    <th>Status de adoção</th>
+                    <th width="70px"></th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-pedido>
@@ -18,8 +18,6 @@
                     <td><button pButton type="button" icon="fas fa-check" class="ui-button-success" (click)="permitirAdocao()"></button></td>
                 </tr>
             </ng-template>
-
-
         </p-table>
     </div>
 </div>

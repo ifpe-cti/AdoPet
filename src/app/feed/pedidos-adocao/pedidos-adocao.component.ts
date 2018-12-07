@@ -1,5 +1,5 @@
-import { AnimalService } from './../../services/animal.service';
 import { PedidosAdocao } from './../../model/PedidosAdocao';
+import { AdocaoService } from './../../services/adocao.service';
 import { PedidosAdocaoService } from './../../services/pedidos-adocao.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -12,12 +12,12 @@ import { Animal } from '../../model/Animal';
 })
 export class PedidosAdocaoComponent implements OnInit {
   animal: Animal;
-  pedido: any;
+  pedido: PedidosAdocao;
   id: string;
   cols: any[] = [];
   listaDePedidos: any[] = [];
 
-  constructor(private pedidoService: PedidosAdocaoService, private route: ActivatedRoute) { }
+  constructor(private pedidoService: PedidosAdocaoService, private route: ActivatedRoute, private adocaoService: AdocaoService) { }
 
   ngOnInit() {
 
@@ -39,7 +39,7 @@ export class PedidosAdocaoComponent implements OnInit {
     });
   }
   permitirAdocao(){
-    alert("pegou");
+  // this.adocaoService.salvar(this.pedido)
+  alert("top")
   }
-
 }

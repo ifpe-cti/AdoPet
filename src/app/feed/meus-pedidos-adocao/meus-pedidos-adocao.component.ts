@@ -18,11 +18,11 @@ export class MeusPedidosAdocaoComponent implements OnInit {
   constructor(private pedidosService: PedidosAdocaoService, private usuarioService:UsuarioService, private authService: AuthService, private animalService:AnimalService) { }
 
   ngOnInit() {
-    this.listar();
-    
+    this.listar();    
   }
 
-  getUsuario(id, texto){
+  getUsuario(id){
+    let texto: any;
     this.usuarioService.listarUsuario(id).subscribe(resultado=>{
       texto = resultado.displayName;
     });
@@ -30,8 +30,7 @@ export class MeusPedidosAdocaoComponent implements OnInit {
 
   listar(){
     this.pedidosService.listarPorIdUsuario(this.authService.getUsuarioLogado()).subscribe(listaDePedidos => {
-      this.listaDePedidos = listaDePedidos;
-      
+      this.listaDePedidos = listaDePedidos;      
       for(let i = 0; i < this.listaDePedidos.length; i++){
           this.animalService.listarId(this.listaDePedidos[i].idAnimal).subscribe(animal=>{
             this.listaDePedidos[i].animal = animal;
