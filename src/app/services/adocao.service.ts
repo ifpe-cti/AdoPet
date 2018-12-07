@@ -16,13 +16,20 @@ export class AdocaoService {
 
   
 
-  salvar(pedido: PedidosAdocao) {
-    let adocao = new Adocao();
-    adocao.idPedido = pedido.id;
-    //adocao.data = ?;
-    this.animaisAdotadosCollection.add(adocao.toDocument()).then(resultado => {
-        adocao.id = resultado.id;
-      })
+  salvar(idPedido: string): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      let adocao = new Adocao();
+    
+        adocao.idPedido = idPedido;
+        //adocao.data = ?;
+        console.log(JSON.stringify(adocao));
+        this.animaisAdotadosCollection.add(adocao.toDocument()).then(resultado => {
+            adocao.id = resultado.id;
+            resolve();
+          }).catch((error) => reject(error));
+    })
+
+    
   }
 
  /* getIdAnimalAdotado() {

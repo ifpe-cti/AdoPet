@@ -38,8 +38,14 @@ export class PedidosAdocaoComponent implements OnInit {
       }
     });
   }
-  permitirAdocao(){
-  // this.adocaoService.salvar(this.pedido)
-  alert("top")
+  permitirAdocao(pedido){
+    console.log('id: ' + pedido.id);
+    this.adocaoService.salvar(pedido.id)
+      .then(() => {
+        alert('show de bola')
+      }).catch(error => {
+        alert('erro ao cadasrar');
+        console.error(error);
+      })
   }
 }
