@@ -9,8 +9,10 @@
             </ng-template>
             <ng-template pTemplate="header" let-columns>
                 <tr>
-                    <th style="width:e5m">Nome</th>
-                    <th style="width:e5m">Tipo</th>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                    </th>
                     <th style="width:e5m">Status de adoção</th>
                     <th style="width:e5m">Pedidos de adoção</th>
                 </tr>
