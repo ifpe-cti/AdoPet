@@ -1,3 +1,4 @@
+import { PedidosAdocao } from './../model/PedidosAdocao';
 import { PedidosAdocaoService } from './pedidos-adocao.service';
 import { Injectable } from '@angular/core';
 import { Adocao } from '../model/Adocao';
@@ -6,27 +7,27 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AdocaoService {
-  private animaisAdotadosCollection: AngularFirestoreCollection<Adocao>;
+  private animaisAdotadosCollection: AngularFirestoreCollection<any>;
   idAnimalAdotado: String = null;
 
   constructor(private angularFirestore: AngularFirestore) {
-    this.animaisAdotadosCollection = this.angularFirestore.collection<Adocao>("animaisAdotados");
+    this.animaisAdotadosCollection = this.angularFirestore.collection<Adocao>("adocao");
   }
 
   
 
- /* inserir(adocao: Adocao) {
-    adocao.id = this.pedidosAdocao.getIdPedido();
-    this.animaisAdotadosCollection.add(adocao).then(
-      resultado => {
-        this.idAnimalAdotado = adocao.id;
+  salvar(pedido: PedidosAdocao) {
+    let adocao = new Adocao();
+    adocao.idPedido = pedido.id;
+    //adocao.data = ?;
+    this.animaisAdotadosCollection.add(adocao.toDocument()).then(resultado => {
         adocao.id = resultado.id;
       })
-  }*/
-
-  getIdAnimalAdotado() {
-    return this.idAnimalAdotado;
   }
+
+ /* getIdAnimalAdotado() {
+    return this.idAnimalAdotado;
+  }*/
 
   listarAdocaoPorPedido(idPedido){
     let resultados: any[] = [];

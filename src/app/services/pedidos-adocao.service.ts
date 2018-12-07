@@ -96,11 +96,8 @@ export class PedidosAdocaoService {
     let pedido = new PedidosAdocao();
     pedido.idAnimal = animal.id;
     pedido.idUsuario = this.authService.getUsuarioLogado();
-    this.pedidosCollection.add(pedido.toDocument()).then(
-      resultado => {
+    this.pedidosCollection.add(pedido.toDocument()).then(resultado => {
         pedido.id = resultado.id;
-        //pedido.idUsuario = 
-        //pedido.$nomeUsuario = this.authService.getNomeUsuarioLogado();
       })
   }
   getIdPedido() {
