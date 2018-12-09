@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Animal } from '../../model/Animal';
 import { Message } from 'primeng/components/common/api';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-pedidos-adocao',
@@ -18,8 +19,12 @@ export class PedidosAdocaoComponent implements OnInit {
   cols: any[] = [];
   listaDePedidos: any[] = [];
   msgs: Message[];
+  status: Observable<any> = null;
 
-  constructor(private pedidoService: PedidosAdocaoService, private route: ActivatedRoute, private adocaoService: AdocaoService) { }
+  constructor(private pedidoService: PedidosAdocaoService, private route: ActivatedRoute, 
+    private adocaoService: AdocaoService) {
+      this.status = this.pedidoService.getStatus(this.id);
+     }
 
   ngOnInit() {
 
@@ -30,6 +35,7 @@ export class PedidosAdocaoComponent implements OnInit {
       }
     );
   }
+  
   listar() {
     this.pedidoService.listarPorIdAnimal(this.id).subscribe(listaDePedidos => {
       this.listaDePedidos = listaDePedidos;
