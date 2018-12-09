@@ -18,15 +18,16 @@ export class PedidosAdocaoService {
 
   getStatus(idPedido){
     let meuObservable = new Observable<any[]>(observer => {
-    let status: String = "Pendente";
+    this.status = "Pendente";
     this.adocaoService.listarAdocaoPorPedido(idPedido).subscribe(resultado =>{
-      if(resultado != ""){
+      if(resultado != 0){
         this.status = "Adotado";
       }
     observer.next(resultado);
     observer.complete();
     });
   });
+  //console.log("status " + this.status)
     return meuObservable;
 
     // fazer uma consulta no service de adocao.
