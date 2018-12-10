@@ -14,6 +14,8 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { DataViewModule } from 'primeng/dataview';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import {RadioButtonModule} from 'primeng/radiobutton';
+
 //ROTAS
 import { routing } from './app.routing';
 //SERVIÇO
@@ -55,7 +57,8 @@ import { MeusAnimaisEditComponent } from './feed/meus-animais-edit/meus-animais-
     FeedModule,
     ContextMenuModule,
     DataViewModule,
-    ScrollPanelModule
+    ScrollPanelModule,
+    RadioButtonModule,
   ],
   providers: [UsuarioService, AuthService, FormBuilder, PedidosAdocaoService],
   bootstrap: [AppComponent]
