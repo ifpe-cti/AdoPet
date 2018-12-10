@@ -36,7 +36,6 @@ export class PedidosAdocaoComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];

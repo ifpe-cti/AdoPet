@@ -1,6 +1,4 @@
 import { AuthService } from './../../services/auth.service';
-import { PedidosAdocao } from './../../model/PedidosAdocao';
-import { PedidosAdocaoService } from './../../services/pedidos-adocao.service';
 import { AnimalService } from './../../services/animal.service';
 import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../model/Animal';
@@ -32,32 +30,31 @@ export class MeusAnimaisComponent implements OnInit {
       this.listaDeAnimais = listaDeAnimais;
     });
   }
+  
+  onRowSelect(event){
+    console.log(event.data)
+    this.animal = this.cloneAnimal(event.data);
+    this.displayDialog = true;
+  }
+  cloneAnimal(animal: Animal): Animal {
+    let a = {idade: " ", porte: " ", descricao: " ", nome: " ", tipo: " ", sexo: " ", cor: " "};
+    for (let prop in a) {
+      a[prop] = animal[prop];
+    }
+    a["id"] = animal.id;
+    return a;
+  }
   atualizar() {
     if (this.animal.id != undefined)
       this.animalService.atualizarAnimal(this.animal).then(() => {
         this.listar();
         this.animal = null;
-        this.displayDialog = false;
       });
   }
   apagar() {
     this.animalService.delete(this.animal).then(() => {
       this.listar();
       this.animal = null;
-      this.displayDialog = false;
     });
-  }
-  onRowSelect(event) {
-    console.log(event.data)
-    this.animal = this.cloneAnimal(event.data);
-    this.displayDialog = true;
-  }
-  cloneAnimal(animal: Animal): Animal {
-    let a = { nome: " ", tipo: " ", sexo: " ", cor: " ", idade: "", porte: " ", descricao: " " };
-    for (let prop in a) {
-      a[prop] = animal[prop];
-    }
-    a["id"] = animal.id;
-    return a;
   }
 }
