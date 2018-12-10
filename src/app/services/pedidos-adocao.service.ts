@@ -29,11 +29,6 @@ export class PedidosAdocaoService {
   });
   //console.log("status " + this.status)
     return meuObservable;
-
-    // fazer uma consulta no service de adocao.
-    // Se tiver alguma adocao com esse pedido (ou seja, resultado for != 0), então o status é adotado
-    // se não, o status é pendente.
-    // retornar uma string, via observable.
   }
 
   listar(): Observable<any[]> {
