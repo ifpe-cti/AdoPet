@@ -1,6 +1,6 @@
 import { AnimalService } from './../../services/animal.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 
 @Component({
@@ -16,7 +16,7 @@ export class MeusAnimaisEditComponent implements OnInit {
   sexo: SelectItem[];
   porte: SelectItem[];
 
-  constructor(private route: ActivatedRoute, private animalService: AnimalService) { 
+  constructor(private route: ActivatedRoute, private animalService: AnimalService, private rota: Router) { 
     this.tipoDeAnimal = [
       {label: 'Selecione', value: null},
       {label: 'Cachorro', value: 'Cachorro'},
@@ -59,12 +59,14 @@ export class MeusAnimaisEditComponent implements OnInit {
       this.animalService.atualizarAnimal(this.animal).then(() => {
         this.listar();
         this.animal = null;
+        this.rota.navigate(['feed/meus-animais']);
       });
   }
   apagar() {
     this.animalService.delete(this.animal).then(() => {
       this.listar();
       this.animal = null;
+      this.rota.navigate(['feed/meus-animais']);
     });
   }
 
