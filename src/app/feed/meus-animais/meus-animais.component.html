@@ -12,6 +12,7 @@
                         {{col.header}}
                         <p-sortIcon [field]="col.field"></p-sortIcon>
                     </th>  
+                    <th>Status</th>
                     <th style="width:4em"></th>
 
                 </tr>
@@ -20,6 +21,7 @@
                 <tr>
                     <td>{{animal.nome}}</td>
                     <td>{{animal.tipo}}</td>
+                    <td>{{animal.status}}</td>
                     <td>
                         <button pButton type="button" icon="far fa-edit" class="ui-button-secondary" [routerLink]="['/feed/meus-animais-edit', animal.id]"></button>
                     </td>

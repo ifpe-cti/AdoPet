@@ -3,6 +3,9 @@ import { AnimalService } from './../../services/animal.service';
 import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../model/Animal';
 import { Usuario } from '../../model/Usuario';
+import { AdocaoService } from '../../services/adocao.service';
+import { Adocao } from '../../model/Adocao';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-meus-animais',
@@ -12,13 +15,17 @@ import { Usuario } from '../../model/Usuario';
 export class MeusAnimaisComponent implements OnInit {
   displayDialog: boolean;
   animal: Animal;
+  id: string;
   cols: any[];
   listaDeAnimais: any[] = [];
   usuario: Usuario;
+  adocoes: Adocao[];
 
-  constructor(private animalService: AnimalService, private authService: AuthService) { }
+  constructor(private animalService: AnimalService, private route: ActivatedRoute,
+    private authService: AuthService, private adocaoService: AdocaoService) { }
 
   ngOnInit() {
+    this.carregarAdocoes();
     this.listar();
     this.cols = [
       { field: 'nome', header: 'Nome' },
@@ -28,7 +35,27 @@ export class MeusAnimaisComponent implements OnInit {
   listar() {
     this.animalService.listarPorIdUsuario(this.authService.getUsuarioLogado()).subscribe(listaDeAnimais => {
       this.listaDeAnimais = listaDeAnimais;
+      this.listaDeAnimais.forEach(pedido => {
+        const adocoes = this.adocoes.filter(a => a.idPedido === pedido.id);
+        pedido['status'] = adocoes.length !== 0 ? 'Adotado' : 'Pendente';
+      });
     });
+  }
+  private carregarAdocoes() {
+    this.adocaoService.listarTodosAdocao()
+        .toPromise()
+        .then(lista => {
+          this.adocoes = lista;
+          this.carregarAnimais();
+        });
+  }
+
+  private carregarAnimais() {
+    this.route.params.subscribe(
+      (params: any) => {
+        this.id = params['id'];
+        this.listar();
+      });
   }
   
   onRowSelect(event){
