@@ -32,7 +32,7 @@ export class PedidosAdocaoComponent implements OnInit {
   ngOnInit() {
     this.carregarAdocoes();
   }
-
+  
   private carregarAdocoes() {
     this.adocaoService.listarTodosAdocao()
         .toPromise()
@@ -47,8 +47,7 @@ export class PedidosAdocaoComponent implements OnInit {
       (params: any) => {
         this.id = params['id'];
         this.listar();
-      }
-    );
+      });
   }
 
   listar() {

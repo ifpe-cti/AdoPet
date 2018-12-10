@@ -14,6 +14,8 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { DataViewModule } from 'primeng/dataview';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import {RadioButtonModule} from 'primeng/radiobutton';
+
 //ROTAS
 import { routing } from './app.routing';
 //SERVIÇO
@@ -28,6 +30,7 @@ import { BancoDeDadosComponent } from './banco-de-dados/banco-de-dados.component
 import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
 import { FeedComponent } from './feed/feed.component';
 import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.component';
+import { MeusAnimaisEditComponent } from './feed/meus-animais-edit/meus-animais-edit.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.com
     BancoDeDadosComponent,
     FeedComponent,
     ListarAnimaisComponent,
+    MeusAnimaisEditComponent,
   ],
   imports: [
     TabMenuModule,
@@ -53,7 +57,8 @@ import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.com
     FeedModule,
     ContextMenuModule,
     DataViewModule,
-    ScrollPanelModule
+    ScrollPanelModule,
+    RadioButtonModule,
   ],
   providers: [UsuarioService, AuthService, FormBuilder, PedidosAdocaoService],
   bootstrap: [AppComponent]
