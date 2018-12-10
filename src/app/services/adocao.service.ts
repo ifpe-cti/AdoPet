@@ -28,10 +28,6 @@ export class AdocaoService {
     })
   }
 
-  /* getIdAnimalAdotado() {
-     return this.idAnimalAdotado;
-   }*/
-
   listarAdocaoPorPedido(idPedido) {
     let resultados: any[] = [];
     let meuObservable = new Observable<any>(observer => {

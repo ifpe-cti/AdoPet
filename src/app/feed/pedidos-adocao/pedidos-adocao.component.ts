@@ -26,19 +26,40 @@ export class PedidosAdocaoComponent implements OnInit {
   constructor(private pedidoService: PedidosAdocaoService, private route: ActivatedRoute,
     private adocaoService: AdocaoService) {
     this.pedido = new PedidosAdocao;
+    this.pedido.animal = new Animal;
   }
 
   ngOnInit() {
     this.carregarAdocoes();
+  //  this.carregarAdocoesUser();
+    console.log("animal " + this.pedido.animal.nome)
   }
-  
+
   private carregarAdocoes() {
     this.adocaoService.listarTodosAdocao()
-        .toPromise()
-        .then(lista => {
-          this.adocoes = lista;
-          this.carregarPedidos();
-        });
+      .toPromise()
+      .then(lista => {
+        this.adocoes = lista;
+        this.carregarPedidos();
+      });
+  }
+
+  private carregarAdocoesUser() {
+    this.adocaoService.listarTodosAdocao()
+      .toPromise()
+      .then(lista => {
+        this.adocoes = lista;
+        this.carregarUsuarios();
+      });
+  }
+
+  private carregarUsuarios() {
+    this.adocaoService.listarTodosAdocao()
+      .toPromise()
+      .then(lista => {
+        this.adocoes = lista;
+        this.carregarPedidos();
+      });
   }
 
   private carregarPedidos() {
@@ -50,12 +71,12 @@ export class PedidosAdocaoComponent implements OnInit {
   }
 
   listar() {
-        this.pedidoService.listarPorIdAnimal(this.id).subscribe(listaDePedidos => {
-          this.listaDePedidos = listaDePedidos;
-          this.listaDePedidos.forEach(pedido => {
-            const adocoes = this.adocoes.filter(a => a.idPedido === pedido.id);
-            pedido['status'] = adocoes.length !== 0 ? 'Adotado' : 'Pendente';
-          });
+    this.pedidoService.listarPorIdAnimal(this.id).subscribe(listaDePedidos => {
+      this.listaDePedidos = listaDePedidos;
+      this.listaDePedidos.forEach(pedido => {
+        const adocoes = this.adocoes.filter(a => a.idPedido === pedido.id);
+        pedido['status'] = adocoes.length !== 0 ? 'Adotado' : 'Pendente';
+      });
     });
 
   }
