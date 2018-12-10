@@ -27,6 +27,9 @@ export class AdocaoService {
       }).catch((error) => reject(error));
     })
   }
+  atualizarAdocao(adocao: Adocao) {
+    return this.animaisAdotadosCollection.doc(adocao.id).update(adocao);
+  }
 
   listarAdocaoPorPedido(idPedido) {
     let resultados: any[] = [];
