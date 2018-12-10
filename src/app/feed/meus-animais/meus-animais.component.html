@@ -13,7 +13,6 @@
                         {{col.header}}
                         <p-sortIcon [field]="col.field"></p-sortIcon>
                     </th>
-                    <th style="width:e5m">Status de adoção</th>
                     <th style="width:e5m">Pedidos de adoção</th>
                 </tr>
             </ng-template>
@@ -21,7 +20,6 @@
                 <tr>
                     <td>{{animal.nome}}</td>
                     <td>{{animal.tipo}}</td>
-                    <td></td>
                     <td>
                         <button pButton type="button" icon="fas fa-search" class="ui-button-secondary" [routerLink]="['/feed/pedidos-adocao', animal.id]"></button>
                     </td>

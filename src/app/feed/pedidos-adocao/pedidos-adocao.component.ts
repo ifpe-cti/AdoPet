@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Animal } from '../../model/Animal';
 import { Message } from 'primeng/components/common/api';
+import { Observable } from 'rxjs/Observable';
+import { Adocao } from '../../model/Adocao';
 
 @Component({
   selector: 'app-pedidos-adocao',
@@ -13,48 +15,51 @@ import { Message } from 'primeng/components/common/api';
 })
 export class PedidosAdocaoComponent implements OnInit {
   animal: Animal;
+  animais: Animal[];
   pedido: PedidosAdocao;
   id: string;
   cols: any[] = [];
   listaDePedidos: any[] = [];
   msgs: Message[];
 
+  adocoes: Adocao[];
+
   constructor(private pedidoService: PedidosAdocaoService, private route: ActivatedRoute,
     private adocaoService: AdocaoService) {
     this.pedido = new PedidosAdocao;
   }
-
-  statusDeAdocao() {
-    this.pedidoService.listarPorIdAnimal(this.id).subscribe(result => {
-      result.map(documents => {
-        this.pedidoService.getStatus(this.id).subscribe(status => {
-          this.pedido.status = status;
-        })
-      })
-    });
-    console.log('status' + status)
+  
+  ngOnInit() {
+    this.carregarAdocoes();
   }
 
-  ngOnInit() {
+  private carregarAdocoes() {
+    this.adocaoService.listarTodosAdocao()
+        .toPromise()
+        .then(lista => {
+          this.adocoes = lista;
+          this.carregarPedidos();
+        });
+  }
 
+  private carregarPedidos() {
     this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
         this.listar();
-        this.statusDeAdocao();
       }
     );
   }
 
   listar() {
-    this.pedidoService.listarPorIdAnimal(this.id).subscribe(listaDePedidos => {
-      this.listaDePedidos = listaDePedidos;
-      for (let i = 0; i < this.listaDePedidos.length; i++) {
-        this.pedidoService.getStatus(this.listaDePedidos[i].id).subscribe(status => {
-          this.listaDePedidos[i].status = status;
-        });
-      }
+        this.pedidoService.listarPorIdAnimal(this.id).subscribe(listaDePedidos => {
+          this.listaDePedidos = listaDePedidos;
+          this.listaDePedidos.forEach(pedido => {
+            const adocoes = this.adocoes.filter(a => a.idPedido === pedido.id);
+            pedido['status'] = adocoes.length !== 0 ? 'Adotado' : 'Pendente';
+          });
     });
+
   }
   permitirAdocao(pedido) {
     this.adocaoService.salvar(pedido.id).then(() => {
