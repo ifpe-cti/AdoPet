@@ -1,3 +1,4 @@
+import { MeusAnimaisEditComponent } from './meus-animais-edit/meus-animais-edit.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 //COMPONENTES
@@ -20,6 +21,7 @@ const feedRoutes = [
             { path: 'listar-animais', component: ListarAnimaisComponent },
             { path: 'pedidos-adocao/:id', component: PedidosAdocaoComponent },
             { path: 'visualizar-animal/:id', component: VisualizarAnimalComponent },
+            { path: 'meus-animais-edit/:id', component: MeusAnimaisEditComponent },
             { path: 'meus-pedidos-adocao', component: MeusPedidosAdocaoComponent },
         ]
     }
