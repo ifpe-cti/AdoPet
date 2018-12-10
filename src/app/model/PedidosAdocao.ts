@@ -7,7 +7,7 @@ export class PedidosAdocao {
     idUsuario: String;
     usuario:Usuario;
     animal:Animal;
-    status: String;
+    status: any;
 
     constructor(){}
 
