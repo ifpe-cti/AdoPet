@@ -19,29 +19,33 @@ export class PedidosAdocaoComponent implements OnInit {
   listaDePedidos: any[] = [];
   msgs: Message[];
 
-  constructor(private pedidoService: PedidosAdocaoService, private route: ActivatedRoute, 
+  constructor(private pedidoService: PedidosAdocaoService, private route: ActivatedRoute,
     private adocaoService: AdocaoService) {
-      this.pedido = new PedidosAdocao;
-     }
+    this.pedido = new PedidosAdocao;
+  }
 
-     statusDeAdocao(){
-       this.pedidoService.getStatus(this.id).subscribe(status =>{
-         this.pedido.status = status;
-       })
-       console.log('status' + status)
-     }
+  statusDeAdocao() {
+    this.pedidoService.listarPorIdAnimal(this.id).subscribe(result => {
+      result.map(documents => {
+        this.pedidoService.getStatus(this.id).subscribe(status => {
+          this.pedido.status = status;
+        })
+      })
+    });
+    console.log('status' + status)
+  }
 
   ngOnInit() {
 
     this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
-        this.statusDeAdocao();
         this.listar();
+        this.statusDeAdocao();
       }
     );
   }
-  
+
   listar() {
     this.pedidoService.listarPorIdAnimal(this.id).subscribe(listaDePedidos => {
       this.listaDePedidos = listaDePedidos;
@@ -63,7 +67,7 @@ export class PedidosAdocaoComponent implements OnInit {
   }
   showSuccess() {
     this.msgs = [];
-    this.msgs.push({ severity: "success", summary: 'Adoção permitida', detail: 'Status do animal: Adotado'});
+    this.msgs.push({ severity: "success", summary: 'Adoção permitida', detail: 'Status do animal: Adotado' });
   }
   showError() {
     this.msgs = [];
