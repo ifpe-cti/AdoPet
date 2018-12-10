@@ -1,3 +1,4 @@
+import { PedidosAdocao } from './../../model/PedidosAdocao';
 import { AuthService } from './../../services/auth.service';
 import { AnimalService } from './../../services/animal.service';
 import { Component, OnInit } from '@angular/core';
@@ -6,6 +7,7 @@ import { Usuario } from '../../model/Usuario';
 import { AdocaoService } from '../../services/adocao.service';
 import { Adocao } from '../../model/Adocao';
 import { ActivatedRoute } from '@angular/router';
+import { PedidosAdocaoService } from '../../services/pedidos-adocao.service';
 
 @Component({
   selector: 'app-meus-animais',
@@ -20,13 +22,13 @@ export class MeusAnimaisComponent implements OnInit {
   listaDeAnimais: any[] = [];
   usuario: Usuario;
   adocoes: Adocao[];
+  pedidos: PedidosAdocao[];
 
   constructor(private animalService: AnimalService, private route: ActivatedRoute,
-    private authService: AuthService, private adocaoService: AdocaoService) { }
+    private authService: AuthService, private adocaoService: AdocaoService, private pedidosService: PedidosAdocaoService) { }
 
   ngOnInit() {
-    this.carregarAdocoes();
-    this.listar();
+    this.carregarPedidos();
     this.cols = [
       { field: 'nome', header: 'Nome' },
       { field: 'tipo', header: 'Tipo' }
@@ -35,12 +37,30 @@ export class MeusAnimaisComponent implements OnInit {
   listar() {
     this.animalService.listarPorIdUsuario(this.authService.getUsuarioLogado()).subscribe(listaDeAnimais => {
       this.listaDeAnimais = listaDeAnimais;
-      this.listaDeAnimais.forEach(pedido => {
-        const adocoes = this.adocoes.filter(a => a.idPedido === pedido.id);
-        pedido['status'] = adocoes.length !== 0 ? 'Adotado' : 'Pendente';
-      });
+      this.listaDeAnimais.forEach(animal => animal['status'] = this.possuiAdocao(animal) ? 'Adotado' : 'Pendente');
     });
   }
+
+  private possuiAdocao(animal: Animal) {
+    let possuiAdocao = false;
+
+    const pedidos = this.pedidos.filter(p => p.idAnimal === animal.id);
+    if (pedidos.length > 0 && this.adocoes.length > 0) {
+      possuiAdocao = this.adocoes.some(a => pedidos.some(p => p.id === a.idPedido));
+    }
+
+    return possuiAdocao;
+  }
+
+  private carregarPedidos() {
+    this.pedidosService.listar()
+        .toPromise()
+        .then(lista => {
+          this.pedidos = lista;
+          this.carregarAdocoes();
+        });
+  }
+
   private carregarAdocoes() {
     this.adocaoService.listarTodosAdocao()
         .toPromise()
