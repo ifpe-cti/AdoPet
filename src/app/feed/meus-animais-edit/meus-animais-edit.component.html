@@ -61,11 +61,12 @@
           <br />
           <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="animal.descricao"></textarea>
       </p>
-
-      <br/>
      <!-- <div class="ui-g-7"></div> -->
       <button type="button" pButton icon="fa fa-check" (click)="atualizar()" label="Salvar" class="button ui-button-success"></button>
       <button type="button" pButton icon="fa fa-close" (click)="apagar()" label="Apagar" class="button"></button>
+      <br/> <br/>
+      <button pButton type="button" icon="fas fa-search" label="Visualizar pedidos de adoção"class="ui-button-secondary" [routerLink]="['/feed/pedidos-adocao', animal.id]"></button>
+
     </div>
   <div class="ui-g-4"></div>
 </div> -->
