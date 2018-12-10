@@ -21,14 +21,13 @@ export class PedidosAdocaoComponent implements OnInit {
   cols: any[] = [];
   listaDePedidos: any[] = [];
   msgs: Message[];
-
   adocoes: Adocao[];
 
   constructor(private pedidoService: PedidosAdocaoService, private route: ActivatedRoute,
     private adocaoService: AdocaoService) {
     this.pedido = new PedidosAdocao;
   }
-  
+
   ngOnInit() {
     this.carregarAdocoes();
   }
