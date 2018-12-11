@@ -4,26 +4,26 @@
     <div class="ui-g-8">
         <h5 align="center" *ngIf="!listaDePedidos">Não há pedidos para esse animal</h5>
         <div *ngIf="listaDePedidos">
-        <h5 align="center">
-            <p> Pedidos de adoção de {{pedido.nome}} </p>
-           </h5>
-        <p-table [columns]="cols" [value]="listaDePedidos" [(selection)]="animalSelecionado" (onRowSelect)="onRowSelect($event)"
-            [rows]="15">
-            <ng-template pTemplate="header" let-columns>
-                <tr>
-                    <th>Usuário</th>
-                    <th>Status de adoção</th>
-                    <th width="70px"></th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-pedido>
-                <tr>
-                    <td>{{pedido.idUsuarioPedido}}</td>
-                    <td>{{pedido.status}}</td>
-                    <td><button pButton type="button" icon="fas fa-check" class="ui-button-success" (click)="permitirAdocao(pedido)"></button></td>
-                </tr>
-            </ng-template>
-        </p-table>
-    </div>
+            <h5 align="center">
+                <p> Pedidos de adoção </p>
+            </h5>
+            <p-table [columns]="cols" [value]="listaDePedidos" [(selection)]="animalSelecionado" (onRowSelect)="onRowSelect($event)"
+                [rows]="15">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th>Usuário</th>
+                        <th>Status de adoção</th>
+                        <th width="70px"></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-pedido>
+                    <tr>
+                        <td>{{pedido.idUsuarioPedido}}</td>
+                        <td>{{pedido.status}}</td>
+                        <td><button pButton type="button" icon="fas fa-check" class="ui-button-success" (click)="permitirAdocao(pedido)"></button></td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
     </div>
 </div>
