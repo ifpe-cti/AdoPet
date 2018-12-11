@@ -2,10 +2,9 @@ import { PedidosAdocao } from './../../model/PedidosAdocao';
 import { AdocaoService } from './../../services/adocao.service';
 import { PedidosAdocaoService } from './../../services/pedidos-adocao.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Animal } from '../../model/Animal';
 import { Message } from 'primeng/components/common/api';
-import { Observable } from 'rxjs/Observable';
 import { Adocao } from '../../model/Adocao';
 
 @Component({
@@ -22,7 +21,7 @@ export class PedidosAdocaoComponent implements OnInit {
   msgs: Message[];
   adocoes: Adocao[];
 
-  constructor(private pedidoService: PedidosAdocaoService, private route: ActivatedRoute,
+  constructor(private pedidoService: PedidosAdocaoService, private route: ActivatedRoute, private rota: Router,
     private adocaoService: AdocaoService) {
     this.pedido = new PedidosAdocao;
     this.pedido.animal = new Animal;
@@ -30,9 +29,6 @@ export class PedidosAdocaoComponent implements OnInit {
 
   ngOnInit() {
     this.carregarAdocoes();
-  //  this.carregarAdocoesUser();
-    //console.log("animal " + this.animal.id)
-    console.log("animal " + this.pedido.animal.nome)
   }
 
   private carregarAdocoes() {
@@ -65,6 +61,7 @@ export class PedidosAdocaoComponent implements OnInit {
   permitirAdocao(pedido) {
     this.adocaoService.salvar(pedido.id).then(() => {
       this.showSuccess()
+      this.rota.navigate(["feed/meus-animais"])
       //chama o método de status pra atualizar
     }).catch(error => {
       this.showError()

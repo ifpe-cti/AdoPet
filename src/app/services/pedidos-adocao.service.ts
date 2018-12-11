@@ -69,7 +69,7 @@ export class PedidosAdocaoService {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
       this.pedidosCollection = this.angularFirestore
-      .collection<PedidosAdocao>("pedidos-adocao", ref => ref.where('idUsuarioPedido', '==', idUsuario));
+      .collection<PedidosAdocao>("pedidos-adocao", ref => ref.where('idUsuario', '==', idUsuario));
       this.pedidosCollection.snapshotChanges().subscribe(result => {
         result.map(documents => {
           let id = documents.payload.doc.id;

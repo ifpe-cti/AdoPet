@@ -14,7 +14,7 @@ export class PedidosAdocao {
     toDocument(){
         return {
             idAnimal: this.idAnimal,
-            idUsuarioPedido: this.idUsuario
+            idUsuario: this.idUsuario
         };
     }
 

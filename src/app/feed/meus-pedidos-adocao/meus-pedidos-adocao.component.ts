@@ -7,6 +7,7 @@ import { UsuarioService } from '../../services/usuario.service';
 import { AdocaoService } from '../../services/adocao.service';
 import { Adocao } from '../../model/Adocao';
 import { ActivatedRoute } from '@angular/router';
+import { Usuario } from '../../model/Usuario';
 
 @Component({
   selector: 'app-meus-pedidos-adocao',
@@ -19,24 +20,20 @@ export class MeusPedidosAdocaoComponent implements OnInit {
   pedido: PedidosAdocao;
   adocoes: Adocao[];
   id: string;
+  usuario: Usuario
 
   constructor(private pedidosService: PedidosAdocaoService, private usuarioService: UsuarioService,
     private authService: AuthService, private animalService: AnimalService,
     private adocaoService: AdocaoService, private route: ActivatedRoute) {
     this.pedido = new PedidosAdocao;
+    this.usuario = new Usuario;
   }
+
 
   ngOnInit() {
     this.carregarAdocoes();
   }
 
-  getUsuario() {
-    let texto: string;
-    this.usuarioService.listarUsuario(this.id).subscribe(resultado => {
-      texto = resultado.displayName;
-    });
-    return texto;
-  }
   private carregarAdocoes() {
     this.adocaoService.listarTodosAdocao()
       .toPromise()
