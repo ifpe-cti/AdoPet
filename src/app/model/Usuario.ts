@@ -3,4 +3,6 @@ export class Usuario{
     email: string;
     senha: string;
     $id?: string;
+
+    constructor(){}
 }
