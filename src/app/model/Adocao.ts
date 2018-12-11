@@ -11,4 +11,10 @@ export class Adocao {
             //data: this.data
         };
     }
+    validar(){
+        if(this.idPedido == ""){
+            return false
+        }
+        return true
+    }
 }

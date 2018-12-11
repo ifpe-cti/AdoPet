@@ -6,7 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { UsuarioService } from '../../services/usuario.service';
 import { AdocaoService } from '../../services/adocao.service';
 import { Adocao } from '../../model/Adocao';
-import { RouterLinkActive, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-meus-pedidos-adocao',
@@ -23,12 +23,11 @@ export class MeusPedidosAdocaoComponent implements OnInit {
   constructor(private pedidosService: PedidosAdocaoService, private usuarioService: UsuarioService,
     private authService: AuthService, private animalService: AnimalService,
     private adocaoService: AdocaoService, private route: ActivatedRoute) {
-      this.pedido = new PedidosAdocao;
+    this.pedido = new PedidosAdocao;
   }
 
   ngOnInit() {
     this.carregarAdocoes();
-    this.listar();
   }
 
   getUsuario() {
@@ -68,9 +67,4 @@ export class MeusPedidosAdocaoComponent implements OnInit {
       });
     });
   }
-  verificaStatus() {
-    //só quando aceitar
-
-  }
-
 }

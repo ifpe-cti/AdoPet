@@ -19,7 +19,7 @@ export class PedidosAdocao {
     }
 
     validar(){
-        if(this.id == "" && this.idAnimal == "" && this.idUsuario == ""){
+        if(this.id == "" || this.idAnimal == "" || this.idUsuario == ""){
             return false;
         }
         return true;
