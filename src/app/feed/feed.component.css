@@ -1,0 +1,12 @@
+.img-esquerda{
+    float: left;
+    height: auto;
+}
+.img-direita{
+    float: right;
+    height: auto;
+}
+.menu{
+    margin-top: 3px;
+    margin-left: 18%;
+}

@@ -15,28 +15,29 @@ export class MeusAnimaisEditComponent implements OnInit {
   idade: SelectItem[];
   sexo: SelectItem[];
   porte: SelectItem[];
+  display: boolean = false;
 
-  constructor(private route: ActivatedRoute, private animalService: AnimalService, private rota: Router) { 
+  constructor(private route: ActivatedRoute, private animalService: AnimalService, private rota: Router) {
     this.tipoDeAnimal = [
-      {label: 'Selecione', value: null},
-      {label: 'Cachorro', value: 'Cachorro'},
-      {label: 'Gato', value: 'Gato'},
+      { label: 'Selecione', value: null },
+      { label: 'Cachorro', value: 'Cachorro' },
+      { label: 'Gato', value: 'Gato' },
     ];
     this.idade = [
-      {label: 'Selecione', value: null},
-      {label: 'Filhote', value: 'Filhote'},
-      {label: 'Adulto', value: 'Adulto'},
+      { label: 'Selecione', value: null },
+      { label: 'Filhote', value: 'Filhote' },
+      { label: 'Adulto', value: 'Adulto' },
     ];
     this.sexo = [
-      {label: 'Selecione', value: null},
-      {label: 'Fêmea', value: 'Femea'},
-      {label: 'Macho', value: 'Macho'},
+      { label: 'Selecione', value: null },
+      { label: 'Fêmea', value: 'Femea' },
+      { label: 'Macho', value: 'Macho' },
     ];
     this.porte = [
-      {label: 'Selecione', value: null},
-      {label: 'Pequeno', value: 'Pequeno'},
-      {label: 'Médio', value: 'Médio'},
-      {label: 'Grande', value: 'Grande'},
+      { label: 'Selecione', value: null },
+      { label: 'Pequeno', value: 'Pequeno' },
+      { label: 'Médio', value: 'Médio' },
+      { label: 'Grande', value: 'Grande' },
     ]
   }
 
@@ -48,7 +49,7 @@ export class MeusAnimaisEditComponent implements OnInit {
       }
     );
   }
-  listar(){
+  listar() {
     this.animal = this.animalService.listarId(this.id).subscribe(
       resultadoObserverble => {
         this.animal = resultadoObserverble;
@@ -61,6 +62,9 @@ export class MeusAnimaisEditComponent implements OnInit {
         this.animal = null;
         this.rota.navigate(['feed/meus-animais']);
       });
+  }
+  showDialog() {
+    this.display = true
   }
   apagar() {
     this.animalService.delete(this.animal).then(() => {

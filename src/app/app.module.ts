@@ -9,12 +9,13 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
-import { DialogModule } from 'primeng/components/dialog/dialog';
+import { DialogModule } from 'primeng/dialog';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { DataViewModule } from 'primeng/dataview';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import {RadioButtonModule} from 'primeng/radiobutton';
+
 
 //ROTAS
 import { routing } from './app.routing';
