@@ -10,14 +10,12 @@
       <ng-template pTemplate="header" let-columns>
         <tr>
           <th style="width:e5m">Nome do animal</th>
-          <th style="width:e5m">Dono do animal</th>
           <th style="width:e5m">Status de adoção</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-pedido>
         <tr>
-            <td>{{pedido.animal}}</td>
-            <td>{{pedido.usuario}}</td>
+            <td>{{pedido.animal?.nome}}</td>
             <td>{{pedido.status}}</td>           
         </tr>
     </ng-template>

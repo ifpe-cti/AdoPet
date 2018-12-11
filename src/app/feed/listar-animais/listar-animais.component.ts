@@ -39,12 +39,6 @@ export class ListarAnimaisComponent implements OnInit {
   listar() {
     this.animalService.listarTodos().subscribe(listaDeAnimais => {
       this.listaDeAnimais = listaDeAnimais;
-      this.listaDeAnimais.forEach(animal => {
-       // const adocoes = this.adocoes.filter(a => a.idPedido === pedido.id);
-       // pedido['status'] = adocoes.length !== 0 ? 'Adotado' : 'Pendente';
-      });
     });
-
-
   }
 }

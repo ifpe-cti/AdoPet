@@ -33,7 +33,7 @@ export class AnimalService {
         for (let i = 0; i < resultados.length; i++) {
           this.pedidosAdocao.listarPorIdAnimal(resultados[i].id).subscribe(pedidoAdocao => {
             for (let j = 0; j < pedidoAdocao.length; j++) {
-              this.pedidosAdocao.getStatus(this.pedidosAdocao[j].id).subscribe(status => {
+              this.pedidosAdocao.getStatus(pedidoAdocao[j].id).subscribe(status => {
                 if (status != 0) {
                   resultados.slice(i, 1);
                 }
