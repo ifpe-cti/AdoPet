@@ -18,7 +18,6 @@ export class PedidosAdocaoComponent implements OnInit {
   animais: Animal[];
   pedido: PedidosAdocao;
   id: string;
-  cols: any[] = [];
   listaDePedidos: any[] = [];
   msgs: Message[];
   adocoes: Adocao[];
@@ -35,24 +34,6 @@ export class PedidosAdocaoComponent implements OnInit {
   }
 
   private carregarAdocoes() {
-    this.adocaoService.listarTodosAdocao()
-      .toPromise()
-      .then(lista => {
-        this.adocoes = lista;
-        this.carregarPedidos();
-      });
-  }
-
-  private carregarAdocoesUser() {
-    this.adocaoService.listarTodosAdocao()
-      .toPromise()
-      .then(lista => {
-        this.adocoes = lista;
-        this.carregarUsuarios();
-      });
-  }
-
-  private carregarUsuarios() {
     this.adocaoService.listarTodosAdocao()
       .toPromise()
       .then(lista => {

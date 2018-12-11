@@ -11,8 +11,7 @@ export class PedidosAdocaoService {
   pedido: PedidosAdocao;
   private status: String;
 
-  constructor(private angularFirestore: AngularFirestore, private authService: AuthService, 
-    private adocaoService: AdocaoService) {
+  constructor(private angularFirestore: AngularFirestore, private authService: AuthService, private adocaoService: AdocaoService) {
     this.pedidosCollection = this.angularFirestore.collection<PedidosAdocao>("pedidos-adocao");
   }
 
@@ -27,9 +26,9 @@ export class PedidosAdocaoService {
     observer.complete();
     });
   });
-  //console.log("status " + this.status)
     return meuObservable;
   }
+
   listar(): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
@@ -97,14 +96,6 @@ export class PedidosAdocaoService {
 }
   getIdPedido() {
     return this.pedido.id;
-  }
-  //verifica se o pedido passado está na collection pedidos de adoção se estiver o status é pendente
-  retornaStatus(pedido: PedidosAdocao) {
-    var pedidosRef = this.angularFirestore.collection("pedidos-adocao");
-    var query = pedidosRef.ref.where("id", "==", pedido.id);
-    if (query) {
-      this.status = "Pendente"
-    }
   }
   remover(pedido: PedidosAdocao) {
     return this.pedidosCollection.doc(pedido.id).delete();
