@@ -43,12 +43,10 @@ export class MeusAnimaisComponent implements OnInit {
 
   private possuiAdocao(animal: Animal) {
     let possuiAdocao = false;
-
     const pedidos = this.pedidos.filter(p => p.idAnimal === animal.id);
     if (pedidos.length > 0 && this.adocoes.length > 0) {
       possuiAdocao = this.adocoes.some(a => pedidos.some(p => p.id === a.idPedido));
     }
-
     return possuiAdocao;
   }
 
@@ -76,32 +74,5 @@ export class MeusAnimaisComponent implements OnInit {
         this.id = params['id'];
         this.listar();
       });
-  }
-  
-  onRowSelect(event){
-    console.log(event.data)
-    this.animal = this.cloneAnimal(event.data);
-    this.displayDialog = true;
-  }
-  cloneAnimal(animal: Animal): Animal {
-    let a = {idade: " ", porte: " ", descricao: " ", nome: " ", tipo: " ", sexo: " ", cor: " "};
-    for (let prop in a) {
-      a[prop] = animal[prop];
-    }
-    a["id"] = animal.id;
-    return a;
-  }
-  atualizar() {
-    if (this.animal.id != undefined)
-      this.animalService.atualizarAnimal(this.animal).then(() => {
-        this.listar();
-        this.animal = null;
-      });
-  }
-  apagar() {
-    this.animalService.delete(this.animal).then(() => {
-      this.listar();
-      this.animal = null;
-    });
-  }
+  }  
 }

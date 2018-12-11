@@ -18,7 +18,7 @@ export class AnimalService {
     private adocaoService: AdocaoService, private pedidosAdocao: PedidosAdocaoService) {
     this.animalCollection = this.angularFirestore.collection<Animal>("animal");
   }
-  //retorna os animais que não foram adotados
+  //retorna todos os animais
   listarTodos(): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
