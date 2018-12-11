@@ -1,5 +1,3 @@
-import { PedidosAdocao } from './../model/PedidosAdocao';
-import { PedidosAdocaoService } from './pedidos-adocao.service';
 import { Injectable } from '@angular/core';
 import { Adocao } from '../model/Adocao';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
@@ -13,9 +11,6 @@ export class AdocaoService {
   constructor(private angularFirestore: AngularFirestore) {
     this.animaisAdotadosCollection = this.angularFirestore.collection<Adocao>("adocao");
   }
-
-
-
   salvar(idPedido: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       let adocao = new Adocao();

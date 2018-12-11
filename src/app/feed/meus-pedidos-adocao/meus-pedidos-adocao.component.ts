@@ -52,7 +52,6 @@ export class MeusPedidosAdocaoComponent implements OnInit {
         this.listar();
       });
   }
-
   listar() {
     this.pedidosService.listarPorIdUsuario(this.authService.getUsuarioLogado()).subscribe(listaDePedidos => {
       this.listaDePedidos = listaDePedidos;
