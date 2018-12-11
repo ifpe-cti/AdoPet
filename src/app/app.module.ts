@@ -27,7 +27,6 @@ import { PedidosAdocaoService } from './services/pedidos-adocao.service';
 import { FeedModule } from './feed/feed.module';
 import { AppComponent } from './app.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component'
-import { BancoDeDadosComponent } from './banco-de-dados/banco-de-dados.component';
 import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
 import { FeedComponent } from './feed/feed.component';
 import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.component';
@@ -37,7 +36,6 @@ import { MeusAnimaisEditComponent } from './feed/meus-animais-edit/meus-animais-
   declarations: [
     AppComponent,
     TelaInicialComponent,
-    BancoDeDadosComponent,
     FeedComponent,
     ListarAnimaisComponent,
     MeusAnimaisEditComponent,
