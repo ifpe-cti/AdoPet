@@ -30,7 +30,6 @@ export class PedidosAdocaoComponent implements OnInit {
 
   ngOnInit() {
     this.carregarAdocoes();
-  //  this.carregarAdocoesUser();
     console.log("animal " + this.pedido.animal.nome)
   }
 

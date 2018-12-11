@@ -6,7 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { UsuarioService } from '../../services/usuario.service';
 import { AdocaoService } from '../../services/adocao.service';
 import { Adocao } from '../../model/Adocao';
-import { RouterLinkActive, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-meus-pedidos-adocao',
@@ -53,7 +53,6 @@ export class MeusPedidosAdocaoComponent implements OnInit {
         this.listar();
       });
   }
-
   listar() {
     this.pedidosService.listarPorIdUsuario(this.authService.getUsuarioLogado()).subscribe(listaDePedidos => {
       this.listaDePedidos = listaDePedidos;
@@ -68,9 +67,4 @@ export class MeusPedidosAdocaoComponent implements OnInit {
       });
     });
   }
-  verificaStatus() {
-    //só quando aceitar
-
-  }
-
 }
