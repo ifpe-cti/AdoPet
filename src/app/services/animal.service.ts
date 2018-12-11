@@ -13,12 +13,13 @@ export class AnimalService {
   animal$: Observable<Animal[]>;
   usuario: Usuario;
   animal: Animal;
+  animais: Animal[]
 
   constructor(private angularFirestore: AngularFirestore, private authService: AuthService,
     private adocaoService: AdocaoService, private pedidosAdocao: PedidosAdocaoService) {
     this.animalCollection = this.angularFirestore.collection<Animal>("animal");
   }
-  //retorna todos os animais
+
   listarTodos(): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
@@ -29,6 +30,17 @@ export class AnimalService {
           let document = { id: id, ...data };
           resultados.push(document);
         });
+        for (let i = 0; i < resultados.length; i++) {
+          this.pedidosAdocao.listarPorIdAnimal(resultados[i].id).subscribe(pedidoAdocao => {
+            for (let j = 0; j < pedidoAdocao.length; j++) {
+              this.pedidosAdocao.getStatus(this.pedidosAdocao[j].id).subscribe(status => {
+                if (status != 0) {
+                  resultados.slice(i, 1);
+                }
+              })
+            }
+          })
+        }
         observer.next(resultados);
         observer.complete();
       });
@@ -94,9 +106,9 @@ export class AnimalService {
     });
   }
   salvar(animal: Animal): Promise<void> {
-    return new Promise<void>((resolve, reject) => { 
-    animal.idUsuario = this.authService.getUsuarioLogado();
-    this.animalCollection.add(animal).then(resultado => {
+    return new Promise<void>((resolve, reject) => {
+      animal.idUsuario = this.authService.getUsuarioLogado();
+      this.animalCollection.add(animal).then(resultado => {
         animal.id = resultado.id;
         resolve();
       }).catch((error) => reject(error));

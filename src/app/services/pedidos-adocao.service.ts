@@ -16,7 +16,7 @@ export class PedidosAdocaoService {
   }
 
   getStatus(idPedido){
-    let meuObservable = new Observable<any[]>(observer => {
+    let meuObservable = new Observable<any>(observer => {
     this.status = "Pendente";
     this.adocaoService.listarAdocaoPorPedido(idPedido).subscribe(resultado =>{
       if(resultado != 0){
@@ -28,7 +28,7 @@ export class PedidosAdocaoService {
   });
     return meuObservable;
   }
-//lista todos os pedidos de adoção
+
   listar(): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
