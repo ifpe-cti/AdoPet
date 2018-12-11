@@ -23,7 +23,7 @@ export class MeusPedidosAdocaoComponent implements OnInit {
   constructor(private pedidosService: PedidosAdocaoService, private usuarioService: UsuarioService,
     private authService: AuthService, private animalService: AnimalService,
     private adocaoService: AdocaoService, private route: ActivatedRoute) {
-
+      this.pedido = new PedidosAdocao;
   }
 
   ngOnInit() {
@@ -31,11 +31,12 @@ export class MeusPedidosAdocaoComponent implements OnInit {
     this.listar();
   }
 
-  getUsuario(id) {
-    let texto: String;
-    this.usuarioService.listarUsuario(id).subscribe(resultado => {
+  getUsuario() {
+    let texto: string;
+    this.usuarioService.listarUsuario(this.id).subscribe(resultado => {
       texto = resultado.displayName;
     });
+    return texto;
   }
   private carregarAdocoes() {
     this.adocaoService.listarTodosAdocao()
