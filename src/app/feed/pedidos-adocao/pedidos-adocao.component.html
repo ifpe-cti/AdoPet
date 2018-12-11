@@ -2,8 +2,10 @@
     <p-growl [(value)]="msgs"></p-growl>
     <div class="ui-g-2"></div>
     <div class="ui-g-8">
+        <h5 align="center" *ngIf="!listaDePedidos">Não há pedidos para esse animal</h5>
+        <div *ngIf="listaDePedidos">
         <h5 align="center">
-            <p> Pedidos de adoção de {{pedido?.id}} </p>
+            <p> Pedidos de adoção de {{pedido.nome}} </p>
            </h5>
         <p-table [columns]="cols" [value]="listaDePedidos" [(selection)]="animalSelecionado" (onRowSelect)="onRowSelect($event)"
             [rows]="15">
@@ -22,5 +24,6 @@
                 </tr>
             </ng-template>
         </p-table>
+    </div>
     </div>
 </div>
