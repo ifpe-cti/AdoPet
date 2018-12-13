@@ -31,6 +31,7 @@ import { BancoFirebaseConfig } from '../environments/BancoFirebaseConfig';
 import { FeedComponent } from './feed/feed.component';
 import { ListarAnimaisComponent } from './feed/listar-animais/listar-animais.component';
 import { MeusAnimaisEditComponent } from './feed/meus-animais-edit/meus-animais-edit.component';
+import { CometariosService } from './services/cometarios.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import { MeusAnimaisEditComponent } from './feed/meus-animais-edit/meus-animais-
     ScrollPanelModule,
     RadioButtonModule,
   ],
-  providers: [UsuarioService, AuthService, FormBuilder, PedidosAdocaoService],
+  providers: [UsuarioService, AuthService, FormBuilder, PedidosAdocaoService, CometariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
