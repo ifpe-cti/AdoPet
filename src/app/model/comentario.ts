@@ -1,5 +1,6 @@
 export class Comentario {
     id?: string;
     idUsuario: string;
-    comentario: string;
+    idAnimal: string;
+    texto: string;
 }

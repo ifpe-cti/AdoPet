@@ -6,18 +6,23 @@ import { Usuario } from '../model/Usuario';
 import { AuthService } from './auth.service';
 import { AdocaoService } from './adocao.service';
 import { PedidosAdocaoService } from './pedidos-adocao.service';
+import { Comentario } from '../model/comentario';
 
 @Injectable()
 export class AnimalService {
   private animalCollection: AngularFirestoreCollection<any>;
+  private comentarioCollection: AngularFirestoreCollection<any>;
   animal$: Observable<Animal[]>;
   usuario: Usuario;
   animal: Animal;
   animais: Animal[]
+  comentario: Comentario;
 
   constructor(private angularFirestore: AngularFirestore, private authService: AuthService,
     private adocaoService: AdocaoService, private pedidosAdocao: PedidosAdocaoService) {
     this.animalCollection = this.angularFirestore.collection<Animal>("animal");
+    this.comentarioCollection = this.angularFirestore.collection<Comentario>("comentario");
+    this.comentario = new Comentario;
   }
 
   listarTodos(): Observable<any[]> {
@@ -105,6 +110,22 @@ export class AnimalService {
       });
     });
   }
+  listarTodosComentarios(): Observable<any[]> {
+    let resultados: any[] = [];
+    let meuObservable = new Observable<any[]>(observer => {
+      this.comentarioCollection.snapshotChanges().subscribe(result => {
+        result.map(documents => {
+          let id = documents.payload.doc.id;
+          let data = documents.payload.doc.data();
+          let document = { id: id, ...data };
+          resultados.push(document);
+        });
+        observer.next(resultados);
+        observer.complete();
+      });
+    });
+    return meuObservable;
+  }
   salvar(animal: Animal): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       animal.idUsuario = this.authService.getUsuarioLogado();
@@ -113,6 +134,15 @@ export class AnimalService {
         resolve();
       }).catch((error) => reject(error));
     })
+  }
+  salvarComentario(comentario: Comentario["texto"]){
+    return new Promise<void>((resolve, reject) => {
+      this.comentarioCollection.add(this.comentario.texto).then(resultado => {
+        this.comentario.id = resultado.id;
+        resolve();
+      }).catch((error) => reject(error));
+    })
+    
   }
   atualizarAnimal(animal: Animal) {
     return this.animalCollection.doc(animal.id).update(animal);
