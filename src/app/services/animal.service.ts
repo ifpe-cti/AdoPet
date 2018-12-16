@@ -110,22 +110,6 @@ export class AnimalService {
       });
     });
   }
-  listarTodosComentarios(): Observable<any[]> {
-    let resultados: any[] = [];
-    let meuObservable = new Observable<any[]>(observer => {
-      this.comentarioCollection.snapshotChanges().subscribe(result => {
-        result.map(documents => {
-          let id = documents.payload.doc.id;
-          let data = documents.payload.doc.data();
-          let document = { id: id, ...data };
-          resultados.push(document);
-        });
-        observer.next(resultados);
-        observer.complete();
-      });
-    });
-    return meuObservable;
-  }
   salvar(animal: Animal): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       animal.idUsuario = this.authService.getUsuarioLogado();
@@ -134,15 +118,6 @@ export class AnimalService {
         resolve();
       }).catch((error) => reject(error));
     })
-  }
-  salvarComentario(comentario: Comentario["texto"]){
-    return new Promise<void>((resolve, reject) => {
-      this.comentarioCollection.add(this.comentario.texto).then(resultado => {
-        this.comentario.id = resultado.id;
-        resolve();
-      }).catch((error) => reject(error));
-    })
-    
   }
   atualizarAnimal(animal: Animal) {
     return this.animalCollection.doc(animal.id).update(animal);

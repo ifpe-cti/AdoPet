@@ -1,3 +1,4 @@
+import { CometariosService } from './../../services/cometarios.service';
 import { AnimalService } from './../../services/animal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -18,7 +19,7 @@ export class VisualizarAnimalComponent implements OnInit {
   listaDeComentarios: any[] = [];
 
   constructor(private route: ActivatedRoute, private rota: Router, private animalService: AnimalService,
-    private pedidoAdocaoService: PedidosAdocaoService) {
+    private pedidoAdocaoService: PedidosAdocaoService, private comentarioService: CometariosService) {
     this.comentario = new Comentario;
   }
 
@@ -53,19 +54,19 @@ export class VisualizarAnimalComponent implements OnInit {
   }
   showSuccessComent() {
     this.msgs = [];
-    this.msgs.push({ severity: 'success', summary: 'Seu comentário foi enviado.', detail: 'Aguarde a permição do dono na aba "Meus pedidos" no menu' });
+    this.msgs.push({ severity: 'success', summary: 'Seu comentário foi enviado.' });
   }
   showErrorComent() {
     this.msgs = [];
     this.msgs.push({ severity: 'error', summary: 'Erro ao enviar um comentário', detail: 'Tente novamente' });
   }
   enviar() {
-    console.log("coment " + this.comentario.texto)
-    if (this.comentario.texto == " ") {
+    if (this.comentario.texto == "") {
       this.showError()
     } else {
-      this.animalService.salvarComentario(this.comentario.texto).then(() => {
+      this.comentarioService.salvar(this.comentario.texto, this.animal.id).then(() => {
         this.showSuccessComent()
+        this.comentario.texto = ""
       }).catch(error => {
         console.log(error)
         this.showErrorComent()
@@ -73,7 +74,7 @@ export class VisualizarAnimalComponent implements OnInit {
     }
   }
   listarComentarios() {
-    this.animalService.listarTodosComentarios().subscribe(listaDeComentarios => {
+    this.comentarioService.listarComentarioAnimal(this.animal.id).subscribe(listaDeComentarios => {
       this.listaDeComentarios = listaDeComentarios;
     }
     )}

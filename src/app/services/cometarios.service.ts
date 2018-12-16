@@ -1,3 +1,5 @@
+import { AuthService } from './auth.service';
+import { AnimalService } from './animal.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -8,13 +10,14 @@ export class CometariosService {
 
   private comentarioCollection: AngularFirestoreCollection<any>;
   
-  constructor(private angularFirestore: AngularFirestore) { 
+  constructor(private angularFirestore: AngularFirestore, private authService: AuthService) { 
     this.comentarioCollection = this.angularFirestore.collection<Comentario>("comentario");
   }
 
-  listarTodos(): Observable<any[]> {
+  listarComentarioAnimal(idAnimal: String): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
+      this.comentarioCollection = this.angularFirestore.collection<Comentario>("comentario", ref => ref.where('idAnimal', '==', idAnimal));
       this.comentarioCollection.snapshotChanges().subscribe(result => {
         result.map(documents => {
           let id = documents.payload.doc.id;
@@ -28,8 +31,17 @@ export class CometariosService {
     });
     return meuObservable;
   }
-  salvar(comentario: Comentario) {
-    this.comentarioCollection.add(comentario)
+  salvar(texto: string, idAnimal: any): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      let comentario = new Comentario();
+      comentario.idAnimal = idAnimal;
+      comentario.idUsuario = this.authService.getUsuarioLogado();
+      comentario.texto = texto;
+      this.comentarioCollection.add(comentario.toDocument()).then(resultado => {
+        comentario.id = resultado.id;
+        resolve();
+      }).catch((error) => reject(error));
+    })
   }
   atualizar(comentario: Comentario) {
     return this.comentarioCollection.doc(comentario.id).update(comentario);
