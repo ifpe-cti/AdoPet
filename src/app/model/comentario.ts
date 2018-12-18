@@ -4,6 +4,9 @@ export class Comentario {
     idAnimal: String;
     texto: string;
 
+    getTexto(){
+        return { texto: this.texto};
+    }
     toDocument(){
         return {
             idUsuario: this.idUsuario,
