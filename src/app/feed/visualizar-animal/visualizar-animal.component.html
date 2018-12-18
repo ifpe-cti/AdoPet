@@ -47,13 +47,10 @@
                             {{col.header}}
                             <p-sortIcon [field]="col.field"></p-sortIcon>
                         </th>  
-                        <th>Comentario</th>
-                        <th style="width:9em"></th>
-                    </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-comentario>
                     <tr>
-                        <td>{{comentario.texto}}</td>
+                        <td>{{animal.comentario}}</td>
                         <td>
                             <button pButton type="button" icon="far fa-edit" class="ui-button-secondary"></button>
                         </td>
