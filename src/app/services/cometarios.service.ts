@@ -17,7 +17,7 @@ export class CometariosService {
   listarComentarioAnimal(idAnimal: String): Observable<any[]> {
     let resultados: any[] = [];
     let meuObservable = new Observable<any[]>(observer => {
-      this.comentarioCollection = this.angularFirestore.collection<Comentario>("comentario", ref => ref.where('idAnimal', '==', idAnimal));
+      this.comentarioCollection = this.angularFirestore.collection<Comentario>("texto", ref => ref.where('idAnimal', '==', idAnimal));
       this.comentarioCollection.snapshotChanges().subscribe(result => {
         result.map(documents => {
           let id = documents.payload.doc.id;

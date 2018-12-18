@@ -15,8 +15,9 @@ export class VisualizarAnimalComponent implements OnInit {
   animal: any;
   id: string;
   msgs: Message[];
-  comentario: Comentario;
+  comentario: any;
   listaDeComentarios: any[] = [];
+  cols: any[];
 
   constructor(private route: ActivatedRoute, private rota: Router, private animalService: AnimalService,
     private pedidoAdocaoService: PedidosAdocaoService, private comentarioService: CometariosService) {
@@ -32,9 +33,23 @@ export class VisualizarAnimalComponent implements OnInit {
     this.animal = this.animalService.listarId(this.id).subscribe(
       resultadoObserverble => {
         this.animal = resultadoObserverble;
+        this.carregarComentarios();
+        console.log("coment" + this.carregarComentarios()
+        )
+        this.cols = [
+          { field: 'comentario', header: 'Comentario' },
+        ]
       })
-      this.listarComentarios();
   }
+
+  private carregarComentarios() {
+    this.comentarioService.listarComentarioAnimal(this.id)
+    .toPromise()
+    .then(lista => {
+      this.listaDeComentarios = lista;
+      console.log("conent "+ this.listaDeComentarios)
+      });
+    }
   adotar() {
     this.pedidoAdocaoService.salvar(this.animal).then(() => {
       this.showSuccess()

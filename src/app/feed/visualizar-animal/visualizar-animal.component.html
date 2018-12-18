@@ -37,5 +37,27 @@
 </div>
 <br />
 <div align="center" >
-        <h5>Comentários </h5>
+        <p-table [columns]="cols" [value]="listaDeComentarios" [rows]="15">
+                <ng-template pTemplate="caption">
+                        Comentários
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                            {{col.header}}
+                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                        </th>  
+                        <th>Comentario</th>
+                        <th style="width:9em"></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-comentario>
+                    <tr>
+                        <td>{{comentario.texto}}</td>
+                        <td>
+                            <button pButton type="button" icon="far fa-edit" class="ui-button-secondary"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+        </p-table>
 </div>

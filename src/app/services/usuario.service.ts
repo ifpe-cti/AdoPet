@@ -46,7 +46,6 @@ export class UsuarioService {
           let document = { id: id, ...data };
           resultados.push(document);
         });
-        console.log("rseul"+resultados)
         observer.next(resultados[0]);
         observer.complete();
       });
