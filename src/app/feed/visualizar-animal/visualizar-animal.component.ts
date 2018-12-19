@@ -16,6 +16,7 @@ export class VisualizarAnimalComponent implements OnInit {
   id: string;
   msgs: Message[];
   comentario: any;
+  coment: Comentario
   listaDeComentarios: any[] = [];
   cols: any[];
 
@@ -34,11 +35,6 @@ export class VisualizarAnimalComponent implements OnInit {
       resultadoObserverble => {
         this.animal = resultadoObserverble;
         this.carregarComentarios();
-        console.log("coment" + this.carregarComentarios()
-        )
-        this.cols = [
-          { field: 'comentario', header: 'Comentario' },
-        ]
       })
   }
 
@@ -89,8 +85,8 @@ export class VisualizarAnimalComponent implements OnInit {
     }
   }
   listarComentarios() {
-    this.comentarioService.listarComentarioAnimal(this.animal.id).subscribe(listaDeComentarios => {
-      this.listaDeComentarios = listaDeComentarios;
+      this.comentarioService.listarComentarioAnimal(this.id).subscribe(listaDeComentarios => {
+        this.listaDeComentarios = listaDeComentarios;
+      });
     }
-    )}
 }

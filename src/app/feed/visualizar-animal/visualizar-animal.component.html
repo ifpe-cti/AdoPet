@@ -41,16 +41,11 @@
                 <ng-template pTemplate="caption">
                         Comentários
                 </ng-template>
-                <ng-template pTemplate="header" let-columns>
-                    <tr>
-                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-                            {{col.header}}
-                            <p-sortIcon [field]="col.field"></p-sortIcon>
-                        </th>  
+                <ng-template pTemplate="header" let-columns>  
                 </ng-template>
                 <ng-template pTemplate="body" let-comentario>
                     <tr>
-                        <td>{{animal.comentario}}</td>
+                        <td>{{animal.comentario.comentario}}</td>
                         <td>
                             <button pButton type="button" icon="far fa-edit" class="ui-button-secondary"></button>
                         </td>
