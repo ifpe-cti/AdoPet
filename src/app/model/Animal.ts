@@ -1,5 +1,3 @@
-import { Comentario } from "./comentario";
-
 export class Animal {
     id?: string;
     nome: String;
@@ -10,7 +8,6 @@ export class Animal {
     porte: String;
     descricao: String;
     idUsuario?: String;
-    comentario?: Comentario;
 
     constructor(){}
 }
