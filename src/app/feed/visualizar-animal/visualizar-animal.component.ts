@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { CometariosService } from './../../services/cometarios.service';
 import { AnimalService } from './../../services/animal.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,9 +19,10 @@ export class VisualizarAnimalComponent implements OnInit {
   comentario: any;
   listaDeComentarios: any[] = [];
   cols: any[];
+  display: boolean = false;
 
   constructor(private route: ActivatedRoute, private rota: Router, private animalService: AnimalService,
-    private pedidoAdocaoService: PedidosAdocaoService, private comentarioService: CometariosService) {
+    private pedidoAdocaoService: PedidosAdocaoService, private comentarioService: CometariosService, private authService: AuthService) {
     this.comentario = new Comentario;
   }
 
@@ -34,8 +36,6 @@ export class VisualizarAnimalComponent implements OnInit {
       resultadoObserverble => {
         this.animal = resultadoObserverble;
         this.carregarComentarios();
-        console.log("coment" + this.carregarComentarios()
-        )
         this.cols = [
           { field: 'comentario', header: 'Comentario' },
         ]
@@ -47,7 +47,6 @@ export class VisualizarAnimalComponent implements OnInit {
     .toPromise()
     .then(lista => {
       this.listaDeComentarios = lista;
-      console.log("conent "+ this.listaDeComentarios)
       });
     }
   adotar() {
@@ -82,6 +81,7 @@ export class VisualizarAnimalComponent implements OnInit {
       this.comentarioService.salvar(this.comentario.texto, this.animal.id).then(() => {
         this.showSuccessComent()
         this.comentario.texto = ""
+        this.carregarComentarios()
       }).catch(error => {
         console.log(error)
         this.showErrorComent()
@@ -89,8 +89,20 @@ export class VisualizarAnimalComponent implements OnInit {
     }
   }
   listarComentarios() {
-    this.comentarioService.listarComentarioAnimal(this.animal.id).subscribe(listaDeComentarios => {
-      this.listaDeComentarios = listaDeComentarios;
+    this.comentarioService.listarComentarioAnimal(this.animal.id).subscribe(resultadoObservable => {
+      this.listaDeComentarios = resultadoObservable;
     }
     )}
+    apagarComentario(){
+      if(this.comentario.idUsuario == this.authService.getUsuarioLogado()){
+        this.comentarioService.delete(this.comentario).then(
+          this.comentario = null
+        );
+
+      }
+      console.log("a")
+    }
+    showDialog() {
+      this.display = true
+    }
 }

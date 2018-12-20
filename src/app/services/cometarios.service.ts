@@ -37,14 +37,11 @@ export class CometariosService {
       comentario.idAnimal = idAnimal;
       comentario.idUsuario = this.authService.getUsuarioLogado();
       comentario.texto = texto;
-      this.comentarioCollection.add(comentario.getTexto()).then(resultado => {
+      this.comentarioCollection.add(comentario.toDocument()).then(resultado => {
         comentario.id = resultado.id;
         resolve();
       }).catch((error) => reject(error));
     })
-  }
-  atualizar(comentario: Comentario) {
-    return this.comentarioCollection.doc(comentario.id).update(comentario);
   }
   delete(comentario: Comentario) {
     return this.comentarioCollection.doc(comentario.id).delete();
