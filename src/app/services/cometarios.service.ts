@@ -42,10 +42,10 @@ export class CometariosService {
       }).catch((error) => reject(error));
     })
   }
-  atualizar(comentario: Comentario) {
-    return this.comentarioCollection.doc(comentario.id).update(comentario);
-  }
   delete(comentario: Comentario) {
     return this.comentarioCollection.doc(comentario.id).delete();
+  }
+  get idUsuario() {
+    return this.idUsuario;
   }
 }
