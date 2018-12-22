@@ -1,5 +1,4 @@
 import { AuthService } from './auth.service';
-import { AnimalService } from './animal.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -45,5 +44,8 @@ export class CometariosService {
   }
   delete(comentario: Comentario) {
     return this.comentarioCollection.doc(comentario.id).delete();
+  }
+  get idUsuario() {
+    return this.idUsuario;
   }
 }

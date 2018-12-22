@@ -17,6 +17,7 @@ export class VisualizarAnimalComponent implements OnInit {
   id: string;
   msgs: Message[];
   comentario: any;
+  coment: Comentario
   listaDeComentarios: any[] = [];
   cols: any[];
   display: boolean = false;
@@ -24,6 +25,7 @@ export class VisualizarAnimalComponent implements OnInit {
   constructor(private route: ActivatedRoute, private rota: Router, private animalService: AnimalService,
     private pedidoAdocaoService: PedidosAdocaoService, private comentarioService: CometariosService, private authService: AuthService) {
     this.comentario = new Comentario;
+    this.coment = new Comentario;
   }
 
   ngOnInit() {
@@ -44,11 +46,11 @@ export class VisualizarAnimalComponent implements OnInit {
 
   private carregarComentarios() {
     this.comentarioService.listarComentarioAnimal(this.id)
-    .toPromise()
-    .then(lista => {
-      this.listaDeComentarios = lista;
+      .toPromise()
+      .then(lista => {
+        this.listaDeComentarios = lista;
       });
-    }
+  }
   adotar() {
     this.pedidoAdocaoService.salvar(this.animal).then(() => {
       this.showSuccess()
@@ -92,17 +94,20 @@ export class VisualizarAnimalComponent implements OnInit {
     this.comentarioService.listarComentarioAnimal(this.animal.id).subscribe(resultadoObservable => {
       this.listaDeComentarios = resultadoObservable;
     }
-    )}
-    apagarComentario(){
-      if(this.comentario.idUsuario == this.authService.getUsuarioLogado()){
-        this.comentarioService.delete(this.comentario).then(
-          this.comentario = null
-        );
+    )
+  }
 
-      }
-      console.log("a")
+  apagarComentario() {
+    if (this.coment.idUsuario == this.authService.getUsuarioLogado()) {
+      this.comentarioService.delete(this.comentario).then(() => {
+        this.listarComentarios();
+        this.comentario = null
+        this.rota.navigate(['visualizar-animal/:id']);
+       });
     }
-    showDialog() {
-      this.display = true
-    }
+
+  }
+  showDialog() {
+    this.display = true
+  }
 }

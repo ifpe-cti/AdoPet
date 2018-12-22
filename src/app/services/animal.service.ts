@@ -71,32 +71,7 @@ export class AnimalService {
     return meuObservable;
   }
 
-  listarAnimaisParaAdocao() {
-    let resultados: any[] = [];
-    let meuObservable = new Observable<any[]>(observer => {
-      this.listarTodos().subscribe(animais => {
-        this.adocaoService.listarTodosAdocao().subscribe(animaisAdotados => {
-          for (let i = 0; i < animais.length; i++) {
-            for (let j = 0; j < animaisAdotados.length; j++) {
-              if (animais[i].animal_id != animaisAdotados[j].animal_id) {
-                this.animalCollection.snapshotChanges().subscribe(result => {
-                  result.map(documents => {
-                    let id = documents.payload.doc.id;
-                    let data = documents.payload.doc.data();
-                    let document = { id: id, ...data };
-                    resultados.push(document);
-                  });
-                  observer.next(resultados);
-                  observer.complete();
-                });
-              }
-            }
-          }
-        })
-      })
-    });
-    return meuObservable;
-  }
+  
   //retorna o animal que tem determinado id
   listarId(animalId) {
     return new Observable(observer => {
