@@ -11,6 +11,7 @@ export class CometariosService {
   
   constructor(private angularFirestore: AngularFirestore, private authService: AuthService) { 
     this.comentarioCollection = this.angularFirestore.collection<Comentario>("comentario");
+    
   }
 
   listarComentarioAnimal(idAnimal: String): Observable<any[]> {

@@ -57,18 +57,19 @@
                                                         (click)="showDialog()"></button>
                                         </td>
                                 </tr>
+
+                                <p-dialog header="Confirmação" [(visible)]="display" [modal]="true" [responsive]="true"
+                                        [width]="350" [minWidth]="200" [minY]="70">
+                                        <span>Tem certeza que quer deletar esse comentário?</span>
+                                        <p-footer>
+                                                <button type="button" class="ui-button-danger" pButton icon="fa-check"
+                                                        (click)="apagarComentario()" label="Sim"></button>
+                                                <button type="button" class="ui-button-success" pButton icon="fa-close"
+                                                        (click)="display=false" label="Não"></button>
+                                        </p-footer>
+                                </p-dialog>
                         </ng-template>
                 </p-table>
         </div>
-        <p-dialog header="Confirmação" [(visible)]="display" [modal]="true" [responsive]="true" [width]="350"
-                [minWidth]="200" [minY]="70">
-                <span>Tem certeza que quer deletar esse comentário?</span>
-                <p-footer>
-                        <button type="button" class="ui-button-danger" pButton icon="fa-check" (click)="apagarComentario()"
-                                label="Sim"></button>
-                        <button type="button" class="ui-button-success" pButton icon="fa-close" (click)="display=false"
-                                label="Não"></button>
-                </p-footer>
-        </p-dialog>
 
 </div>

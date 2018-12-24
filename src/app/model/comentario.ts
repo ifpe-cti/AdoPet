@@ -1,11 +1,12 @@
 export class Comentario {
-    id?: string;
+    id: string;
     idUsuario: String;
     idAnimal: String;
     texto: string;
 
     toDocument(){
         return {
+            id: this.id,
             idUsuario: this.idUsuario,
             idAnimal: this.idAnimal,
             texto: this.texto

@@ -102,9 +102,10 @@ export class VisualizarAnimalComponent implements OnInit {
       this.comentarioService.delete(this.comentario).then(() => {
         this.listarComentarios();
         this.comentario = null
-        this.rota.navigate(['visualizar-animal/:id']);
+        this.rota.navigate(['visualizar-animal/', this.animal.id]);
        });
     }
+    console.log(this.comentario.id)
 
   }
   showDialog() {
