@@ -16,40 +16,35 @@ export class VisualizarAnimalComponent implements OnInit {
   animal: any;
   id: string;
   msgs: Message[];
-  comentario: any;
-  coment: Comentario
+  comentario: Comentario;
   listaDeComentarios: any[] = [];
-  cols: any[];
   display: boolean = false;
+  comentarioSelecionado: Comentario;
 
   constructor(private route: ActivatedRoute, private rota: Router, private animalService: AnimalService,
     private pedidoAdocaoService: PedidosAdocaoService, private comentarioService: CometariosService, private authService: AuthService) {
-    this.comentario = new Comentario;
-    this.coment = new Comentario;
+    this.comentario = new Comentario()
   }
-
+  
   ngOnInit() {
     this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
       }
-    );
-    this.animal = this.animalService.listarId(this.id).subscribe(
-      resultadoObserverble => {
-        this.animal = resultadoObserverble;
-        this.carregarComentarios();
-        this.cols = [
-          { field: 'comentario', header: 'Comentario' },
-        ]
-      })
-  }
-
-  private carregarComentarios() {
-    this.comentarioService.listarComentarioAnimal(this.id)
-      .toPromise()
-      .then(lista => {
-        this.listaDeComentarios = lista;
-      });
+      );
+      this.animal = this.animalService.listarId(this.id).subscribe(
+        resultadoObserverble => {
+          this.animal = resultadoObserverble;
+          this.carregarComentarios();
+        })
+      }
+      
+      private carregarComentarios() {
+        this.comentarioService.listarComentarioAnimal(this.id)
+        .toPromise()
+        .then(lista => {
+          this.listaDeComentarios = lista;
+        });
   }
   adotar() {
     this.pedidoAdocaoService.salvar(this.animal).then(() => {
@@ -96,18 +91,29 @@ export class VisualizarAnimalComponent implements OnInit {
     }
     )
   }
+  deleteRow(){
+    console.log(this.comentario.texto)
+    //console.log(document.getElementById('myTable'))
+  }
 
-  apagarComentario() {
-    if (this.coment.idUsuario == this.authService.getUsuarioLogado()) {
-      this.comentarioService.delete(this.comentario).then(() => {
+  
+
+  apagarComentario(idComentario) {
+      this.comentarioService.delete(idComentario).then(() => {
         this.listarComentarios();
-        this.comentario = null
-        this.rota.navigate(['visualizar-animal/:id']);
+        //this.comentario = null
+        //this.rota.navigate(['visualizar-animal/:id']);
        });
-    }
-
   }
   showDialog() {
     this.display = true
+  }
+
+  cloneComentario(c: Comentario){
+    let comentario = {};
+    for (let prop in c) {
+        comentario[prop] = c[prop];
+    }
+    return comentario;
   }
 }
