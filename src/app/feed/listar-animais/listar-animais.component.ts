@@ -18,7 +18,7 @@ export class ListarAnimaisComponent implements OnInit {
   constructor(private animalService: AnimalService, private adocaoService: AdocaoService) { }
 
   ngOnInit() {
-    this.listar();
+    this.carregarAnimais();
   }
 
   private carregarAnimais() {

@@ -42,8 +42,8 @@ export class CometariosService {
       }).catch((error) => reject(error));
     })
   }
-  delete(comentario: Comentario) {
-    return this.comentarioCollection.doc(comentario.id).delete();
+  delete(comentario: string) {
+    return this.comentarioCollection.doc(comentario).delete();
   }
   get idUsuario() {
     return this.idUsuario;
